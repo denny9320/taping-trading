@@ -1,0 +1,150 @@
+{
+  "clothing": [
+    {
+      "id": "cl001",
+      "name": "丝绸衬衫",
+      "nameEn": "Silk Blouse",
+      "category": "上装",
+      "price": 2880,
+      "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80",
+      "description": "100%桑蚕丝材质，精致剪裁，适合正式场合",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["白色", "黑色", "米色"],
+      "featured": true
+    },
+    {
+      "id": "cl002",
+      "name": "羊毛大衣",
+      "nameEn": "Wool Coat",
+      "category": "外套",
+      "price": 8880,
+      "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&q=80",
+      "description": "100%澳毛大衣，经典双排扣设计，保暖时尚",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["驼色", "黑色", "深灰"],
+      "featured": true
+    },
+    {
+      "id": "cl003",
+      "name": "晚礼服",
+      "nameEn": "Evening Dress",
+      "category": "连衣裙",
+      "price": 12800,
+      "image": "https://images.unsplash.com/photo-1584370848010-d7cc6314c3e4?w=500&q=80",
+      "description": "高端定制礼服，珠绣装饰，优雅大方",
+      "sizes": ["XS", "S", "M", "L"],
+      "colors": ["黑色", "酒红", "深蓝"],
+      "featured": true
+    },
+    {
+      "id": "cl004",
+      "name": "羊绒毛衣",
+      "nameEn": "Cashmere Sweater",
+      "category": "针织衫",
+      "price": 4580,
+      "image": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&q=80",
+      "description": "100%山羊绒，轻柔保暖，经典圆领设计",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["灰色", "驼色", "黑色", "海军蓝"],
+      "featured": true
+    },
+    {
+      "id": "cl005",
+      "name": "休闲西裤",
+      "nameEn": "Chino Pants",
+      "category": "裤装",
+      "price": 1580,
+      "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&q=80",
+      "description": "棉质休闲西裤，舒适百搭",
+      "sizes": ["28", "30", "32", "34", "36"],
+      "colors": ["卡其", "黑色", "海军蓝"],
+      "featured": false
+    },
+    {
+      "id": "cl006",
+      "name": "真丝连衣裙",
+      "nameEn": "Silk Dress",
+      "category": "连衣裙",
+      "price": 6880,
+      "image": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&q=80",
+      "description": "100%桑蚕丝，飘逸优雅",
+      "sizes": ["XS", "S", "M", "L"],
+      "colors": ["淡粉", "浅蓝", "香槟"],
+      "featured": true
+    }
+  ],
+  "fragrance": [
+    {
+      "id": "fr001",
+      "name": "玫瑰精粹",
+      "nameEn": "Rose Essence",
+      "category": "花香调",
+      "price": 1680,
+      "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=80",
+      "description": "前调：���瑰花瓣；中调：茉莉；后调：白麝香",
+      "notes": "玫瑰、茉莉、白麝香",
+      "size": "50ml",
+      "featured": true
+    },
+    {
+      "id": "fr002",
+      "name": "沉香乌木",
+      "nameEn": "Oud Perfume",
+      "category": "木质调",
+      "price": 2980,
+      "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80",
+      "description": "前调：佛手柑；中调：沉香木；后调：檀香",
+      "notes": "沉香、檀香、佛手柑",
+      "size": "75ml",
+      "featured": true
+    },
+    {
+      "id": "fr003",
+      "name": "清新柑橘",
+      "nameEn": "Citrus Cologne",
+      "category": "柑橘调",
+      "price": 1280,
+      "image": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80",
+      "description": "前调：柠檬；中调：橙花；后调：海盐",
+      "notes": "柠檬、橙花、海盐",
+      "size": "100ml",
+      "featured": true
+    },
+    {
+      "id": "fr004",
+      "name": "香草梦境",
+      "nameEn": "Vanilla Dream",
+      "category": "东方调",
+      "price": 2180,
+      "image": "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&q=80",
+      "description": "前调：香草；中调：焦糖；后调：琥珀",
+      "notes": "香草、焦糖、琥珀",
+      "size": "50ml",
+      "featured": true
+    },
+    {
+      "id": "fr005",
+      "name": "海洋男士",
+      "nameEn": "Ocean Men",
+      "category": "馥奇调",
+      "price": 1580,
+      "image": "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=500&q=80",
+      "description": "前调：海风；中调：薰衣草；后调：檀木",
+      "notes": "海风、薰衣草、檀木",
+      "size": "100ml",
+      "featured": false
+    },
+    {
+      "id": "fr006",
+      "name": "法式薰衣草",
+      "nameEn": "French Lavender",
+      "category": "花香调",
+      "price": 980,
+      "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&q=80",
+      "description": "纯正法式薰衣草，淡雅持久",
+      "notes": "薰衣草、铃兰、麝香",
+      "size": "75ml",
+      "featured": false
+    }
+  ]
+}
