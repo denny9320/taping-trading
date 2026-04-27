@@ -1079,11 +1079,18 @@ function updatePageTranslations() {
     const t = translations[currentLang];
     if (!t) return;
     
-    // Navigation
+// Navigation
     updateElement('[data-i18n="nav.home"]', t.nav.home);
     updateElement('[data-i18n="nav.clothing"]', t.nav.clothing);
     updateElement('[data-i18n="nav.fragrance"]', t.nav.fragrance);
     updateElement('[data-i18n="nav.about"]', t.nav.about);
+    
+    // User dropdown menu
+    updateElements('[data-i18n="nav.profile"]', t.nav.profile);
+    updateElements('[data-i18n="nav.myOrders"]', t.nav.myOrders);
+    updateElements('[data-i18n="nav.addresses"]', t.nav.addresses);
+    updateElements('[data-i18n="nav.accountSettings"]', t.nav.accountSettings);
+    updateElements('[data-i18n="nav.signOut"]', t.nav.signOut);
     
     // Hero section
     updateElement('[data-i18n="hero.subtitle"]', t.hero.subtitle);
