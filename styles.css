@@ -1801,6 +1801,51 @@ button {
     left: -100%;
 }
 
+/* User Dropdown Button Styles */
+.user-dropdown-btn {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.user-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.user-dropdown-trigger:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.user-avatar-icon {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+.user-dropdown-trigger:hover .user-avatar-icon {
+    color: var(--color-accent);
+}
+
+.dropdown-arrow-icon {
+    color: var(--color-text-light);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.user-dropdown-trigger:hover .dropdown-arrow-icon {
+    color: var(--color-accent);
+}
+
+/* Arrow animation when dropdown is open */
+.user-dropdown-btn.dropdown-open .dropdown-arrow-icon {
+    transform: rotate(180deg);
+}
+
 /* User Dropdown Styles */
 #userBtn {
     position: relative;
