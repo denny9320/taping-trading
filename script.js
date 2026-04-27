@@ -458,8 +458,7 @@ async function initProductSystem() {
         // Initialize product filters
         initProductFilters();
         
-        console.log('Product system initialized:', 
-            productData.clothing.length + productData.fragrance.length, 'products');
+console.log('Product system initialized with', productData.clothing.length + productData.fragrance.length, 'products');
     } catch (error) {
         console.error('Failed to load products:', error);
         // Fallback to static HTML content
@@ -467,11 +466,14 @@ async function initProductSystem() {
 }
 
 function renderFeaturedProducts() {
+    // Since we now have only ~10 products per category, show all of them
+    // No need to filter by featured=true anymore
+    
     // Render clothing products
     const clothingGrid = document.querySelector('#clothing .products-grid');
     if (clothingGrid) {
-        const featuredClothing = productData.clothing.filter(p => p.featured);
-        clothingGrid.innerHTML = featuredClothing.map(product => 
+        const allClothing = productData.clothing;
+        clothingGrid.innerHTML = allClothing.map(product => 
             createProductCard(product, 'clothing')
         ).join('');
     }
@@ -479,8 +481,8 @@ function renderFeaturedProducts() {
     // Render fragrance products
     const fragranceGrid = document.querySelector('#fragrance .products-grid');
     if (fragranceGrid) {
-        const featuredFragrance = productData.fragrance.filter(p => p.featured);
-        fragranceGrid.innerHTML = featuredFragrance.map(product => 
+        const allFragrance = productData.fragrance;
+        fragranceGrid.innerHTML = allFragrance.map(product => 
             createProductCard(product, 'fragrance')
         ).join('');
     }
