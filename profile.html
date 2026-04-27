@@ -226,11 +226,13 @@
       }
       currentUser = user;
       document.getElementById('profileEmail').value = user.email;
+      
+      // Apply translations first, then load data
+      applyTranslations();
+      
       await loadProfile();
       await loadAddresses();
       await loadOrders();
-      applyTranslations();
-      initLangButtons();
     });
 
     // Initialize language buttons and apply translations from localStorage
@@ -345,7 +347,7 @@
 
     async function loadAddresses() {
       const container = document.getElementById('addressList');
-      const t = translations[currentLang].address;
+      const t = profileTranslations[currentLang].address;
       
       try {
         const q = query(collection(db, "addresses"), where("userId", "==", currentUser.uid));
@@ -415,7 +417,7 @@
         document.getElementById('newAddressDefault').checked = false;
         
         const msg = document.getElementById('addressMsg');
-        msg.textContent = translations[currentLang].address.added;
+        msg.textContent = profileTranslations[currentLang].address.added;
         msg.style.display = 'block';
         setTimeout(() => msg.style.display = 'none', 3000);
         
@@ -438,7 +440,7 @@
 
     async function loadOrders() {
       const container = document.getElementById('orderList');
-      const t = translations[currentLang].orders;
+      const t = profileTranslations[currentLang].orders;
       
       try {
         const q = query(collection(db, "orders"), where("userId", "==", currentUser.uid), orderBy("createdAt", "desc"));
