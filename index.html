@@ -307,7 +307,7 @@
                 <span data-i18n="cart.total">Total:</span>
                 <span id="cartTotal">$0</span>
             </div>
-            <button class="btn btn-primary checkout-btn" data-i18n="cart.checkout">Checkout</button>
+            <button class="btn btn-primary checkout-btn" onclick="goToCheckout()">Checkout</button>
         </div>
     </div>
     
@@ -455,8 +455,12 @@
       }
     };
 
-    window.showUserMenu = function() {
+window.showUserMenu = function() {
       window.location.href = 'admin-login.html';
+    };
+
+    window.goToCheckout = function() {
+      window.location.href = 'checkout.html';
     };
   </script>
 </body>

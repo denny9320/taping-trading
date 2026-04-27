@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>确认订单 - TapingTrading</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; background: #FAFAFA; }
+    
+    .header { background: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+    .header a { color: #1A1A1A; text-decoration: none; margin-right: 20px; }
+    .header a:hover { color: #C9A962; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 20px; }
+    .logo span:last-child { color: #C9A962; }
+    .header-right { display: flex; align-items: center; gap: 15px; }
+    .logout-btn { background: #1A1A1A; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; }
+    
+    .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+    
+    h1 { font-family: 'Playfair Display', serif; margin-bottom: 30px; color: #1A1A1A; }
+    
+    .section { background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .section h2 { font-size: 18px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+    
+    .cart-item { display: flex; gap: 15px; padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 5px; }
+    .cart-item-info { flex: 1; }
+    .cart-item-info h3 { font-size: 14px; margin-bottom: 5px; }
+    .cart-item-info p { color: #666; font-size: 13px; }
+    .cart-item-price { color: #C9A962; font-weight: bold; font-size: 16px; }
+    
+    .address-list { display: flex; flex-direction: column; gap: 15px; }
+    .address-item { display: flex; gap: 15px; padding: 15px; border: 2px solid #eee; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+    .address-item:hover { border-color: #C9A962; }
+    .address-item.selected { border-color: #C9A962; background: #FDF9F0; }
+    .address-item input[type="radio"] { margin-top: 5px; width: 18px; height: 18px; accent-color: #C9A962; }
+    .address-info { flex: 1; }
+    .address-info label { display: block; margin-bottom: 5px; font-weight: 500; cursor: pointer; }
+    .address-info p { color: #666; font-size: 13px; line-height: 1.5; }
+    
+    .no-address { text-align: center; padding: 30px; color: #999; }
+    .no-address a { color: #C9A962; }
+    
+    .add-address-btn { display: inline-block; background: #1A1A1A; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; cursor: pointer; border: none; font-size: 14px; }
+    .add-address-btn:hover { background: #333; }
+    
+    .order-summary { display: flex; flex-direction: column; gap: 10px; }
+    .summary-row { display: flex; justify-content: space-between; padding: 8px 0; }
+    .summary-row.total { border-top: 2px solid #1A1A1A; margin-top: 10px; padding-top: 15px; font-size: 18px; font-weight: bold; }
+    .summary-row.total .price { color: #C9A962; }
+    
+    .submit-btn { width: 100%; padding: 15px; background: #C9A962; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 20px; }
+    .submit-btn:hover { background: #B8984F; }
+    .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+    
+    .message { padding: 15px; border-radius: 8px; margin-top: 15px; display: none; }
+    .message.success { background: #D4EDDA; color: #155724; }
+    .message.error { background: #F8D7DA; color: #721C24; }
+    
+    .login-required { text-align: center; padding: 50px; }
+    .login-required a { color: #C9A962; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">TAPING<span>TRADING</span></a>
+    <div class="header-right">
+      <a href="profile.html">个人中心</a>
+      <button class="logout-btn" onclick="doLogout()">退出登录</button>
+    </div>
+  </header>
+  
+  <div class="container" id="mainContent">
+    <h1>确认订单</h1>
+    
+    <!-- Cart Items -->
+    <div class="section">
+      <h2>购物车商品</h2>
+      <div id="cartItems">
+        <p>加载中...</p>
+      </div>
+    </div>
+    
+    <!-- Address Selection -->
+    <div class="section">
+      <h2>选择收货地址</h2>
+      <div id="addressList">
+        <p>加载中...</p>
+      </div>
+      <div style="margin-top: 20px;">
+        <a href="profile.html#addresses" class="add-address-btn">+ 添加新地址</a>
+      </div>
+    </div>
+    
+    <!-- Order Summary -->
+    <div class="section">
+      <h2>订单汇总</h2>
+      <div class="order-summary">
+        <div class="summary-row">
+          <span>商品金额</span>
+          <span id="subtotal">¥0</span>
+        </div>
+        <div class="summary-row">
+          <span>运费</span>
+          <span>¥0</span>
+        </div>
+        <div class="summary-row total">
+          <span>总计</span>
+          <span class="price" id="totalPrice">¥0</span>
+        </div>
+      </div>
+    </div>
+    
+    <button class="submit-btn" id="submitBtn" onclick="placeOrder()">提交订单</button>
+    
+    <div id="message" class="message"></div>
+  </div>
+  
+  <div class="container" id="loginRequired" style="display:none;">
+    <h1>请先登录</h1>
+    <div class="section login-required">
+      <p>您需要先登录才能查看订单</p>
+      <p><a href="login-page.html">点击这里登录</a></p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
+      authDomain: "tapingtrading.firebaseapp.com",
+      projectId: "tapingtrading",
+      storageBucket: "tapingtrading.firebasestorage.app",
+      messagingSenderId: "248437210641",
+      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+    let cart = [];
+    let addresses = [];
+
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+      if (!user) {
+        document.getElementById('mainContent').style.display = 'none';
+        document.getElementById('loginRequired').style.display = 'block';
+        return;
+      }
+      await loadData();
+    });
+
+    async function loadData() {
+      // Load cart from localStorage
+      cart = JSON.parse(localStorage.getItem('tapingCart') || '[]');
+      renderCartItems();
+      
+      // Load addresses from Firestore
+      await loadAddresses();
+    }
+
+    function renderCartItems() {
+      const container = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">购物车是空的</p>';
+        document.getElementById('submitBtn').disabled = true;
+        return;
+      }
+      
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-info">
+            <h3>${item.name}</h3>
+            <p>数量: ${item.quantity}</p>
+          </div>
+          <div class="cart-item-price">¥${(item.price * item.quantity).toLocaleString('zh-CN')}</div>
+        </div>
+      `).join('');
+      
+      updateSummary();
+    }
+
+    async function loadAddresses() {
+      const container = document.getElementById('addressList');
+      try {
+        const q = query(collection(db, "addresses"), where("userId", "==", currentUser.uid));
+        const snapshot = await getDocs(q);
+        addresses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        
+        if (addresses.length === 0) {
+          container.innerHTML = `
+            <div class="no-address">
+              <p>您还没有保存的收货地址</p>
+              <p><a href="profile.html#addresses">去添加一个</a></p>
+            </div>
+          `;
+          document.getElementById('submitBtn').disabled = true;
+          return;
+        }
+        
+        container.innerHTML = addresses.map(addr => `
+          <div class="address-item ${addr.isDefault ? 'selected' : ''}" onclick="selectAddress('${addr.id}')">
+            <input type="radio" name="address" value="${addr.id}" ${addr.isDefault ? 'checked' : ''}>
+            <div class="address-info">
+              <label>${addr.recipient} ${addr.phone}</label>
+              <p>${addr.province} ${addr.city} ${addr.district}<br>${addr.detail}</p>
+            </div>
+          </div>
+        `).join('');
+        
+        document.getElementById('submitBtn').disabled = false;
+      } catch (e) {
+        console.error('Error loading addresses:', e);
+        container.innerHTML = '<p style="color:red;">加载地址失败</p>';
+      }
+    }
+
+    window.selectAddress = function(id) {
+      document.querySelectorAll('.address-item').forEach(el => el.classList.remove('selected'));
+      document.querySelector(`.address-item input[value="${id}"]`).closest('.address-item').classList.add('selected');
+      document.querySelector(`.address-item input[value="${id}"]`).checked = true;
+    };
+
+    function updateSummary() {
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      document.getElementById('subtotal').textContent = `¥${subtotal.toLocaleString('zh-CN')}`;
+      document.getElementById('totalPrice').textContent = `¥${subtotal.toLocaleString('zh-CN')}`;
+    }
+
+    window.placeOrder = async function() {
+      const selectedRadio = document.querySelector('input[name="address"]:checked');
+      if (!selectedRadio) {
+        showMessage('请选择收货地址', 'error');
+        return;
+      }
+      
+      if (cart.length === 0) {
+        showMessage('购物车是空的', 'error');
+        return;
+      }
+      
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = '提交中...';
+      
+      try {
+        const addressId = selectedRadio.value;
+        const address = addresses.find(a => a.id === addressId);
+        
+        const orderData = {
+          userId: currentUser.uid,
+          userEmail: currentUser.email,
+          items: cart.map(item => ({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            image: item.image
+          })),
+          address: {
+            id: address.id,
+            recipient: address.recipient,
+            phone: address.phone,
+            province: address.province,
+            city: address.city,
+            district: address.district,
+            detail: address.detail,
+            postalCode: address.postalCode
+          },
+          total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+          status: 'pending',
+          createdAt: new Date().toISOString()
+        };
+        
+        await addDoc(collection(db, "orders"), orderData);
+        
+        // Clear cart
+        localStorage.removeItem('tapingCart');
+        
+        showMessage('订单提交成功！感谢您的购买。', 'success');
+        submitBtn.textContent = '订单已提交';
+        
+        setTimeout(() => {
+          window.location.href = 'profile.html#orders';
+        }, 2000);
+      } catch (e) {
+        console.error('Order error:', e);
+        showMessage('提交失败: ' + e.message, 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = '提交订单';
+      }
+    };
+
+    function showMessage(text, type) {
+      const msg = document.getElementById('message');
+      msg.textContent = text;
+      msg.className = `message ${type}`;
+      msg.style.display = 'block';
+    }
+
+    window.doLogout = async function() {
+      await signOut(auth);
+      window.location.href = 'index.html';
+    };
+  </script>
+</body>
+</html>
