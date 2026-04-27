@@ -8,7 +8,14 @@
     "home": "Home",
     "clothing": "Clothing",
     "fragrance": "Fragrance",
-    "about": "About"
+    "about": "About",
+    "signIn": "Sign In",
+    "createAccount": "Create Account",
+    "profile": "My Profile",
+    "myOrders": "My Orders",
+    "addresses": "Addresses",
+    "accountSettings": "Account Settings",
+    "signOut": "Sign Out"
   },
   "hero": {
     "subtitle": "Elegance Redefined",

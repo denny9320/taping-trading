@@ -8,7 +8,14 @@
     "home": "Startseite",
     "clothing": "Kleidung",
     "fragrance": "Düfte",
-    "about": "Über uns"
+    "about": "Über uns",
+    "signIn": "Anmelden",
+    "createAccount": "Konto erstellen",
+    "profile": "Mein Profil",
+    "myOrders": "Meine Bestellungen",
+    "addresses": "Adressen",
+    "accountSettings": "Kontoeinstellungen",
+    "signOut": "Abmelden"
   },
   "hero": {
     "subtitle": "Eleganz neu definiert",

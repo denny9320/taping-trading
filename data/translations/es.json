@@ -8,7 +8,14 @@
     "home": "Inicio",
     "clothing": "Ropa",
     "fragrance": "Fragancias",
-    "about": "Nosotros"
+    "about": "Nosotros",
+    "signIn": "Iniciar sesión",
+    "createAccount": "Crear cuenta",
+    "profile": "Mi perfil",
+    "myOrders": "Mis pedidos",
+    "addresses": "Direcciones",
+    "accountSettings": "Configuración de cuenta",
+    "signOut": "Cerrar sesión"
   },
   "hero": {
     "subtitle": "Elegancia redefinida",

@@ -18,9 +18,9 @@ const languages = [
 
 // Translation data (embedded for reliability)
 const translationsData = {
-    'en': {
+'en': {
         meta: { langCode: 'en', langName: 'English', dir: 'ltr' },
-        nav: { home: 'Home', clothing: 'Clothing', fragrance: 'Fragrance', about: 'About' },
+        nav: { home: 'Home', clothing: 'Clothing', fragrance: 'Fragrance', about: 'About', signIn: 'Sign In', createAccount: 'Create Account', profile: 'My Profile', myOrders: 'My Orders', addresses: 'Addresses', accountSettings: 'Account Settings', signOut: 'Sign Out' },
         hero: { subtitle: 'Elegance Redefined', title: 'Discover Luxury', desc: 'Curated high-end fashion and premium fragrances', ctaClothing: 'Explore Clothing', ctaFragrance: 'Discover Fragrance', scroll: 'Scroll Down' },
         categories: { subtitle: 'Collections', title: 'Curated Selections', clothing: 'Fashion Collection', clothingDesc: 'Exquisite tailoring', fragrance: 'Fragrance Collection', fragranceDesc: 'Premium ingredients', explore: 'Explore More →' },
         products: { featured: 'Featured', clothingTitle: 'Featured Clothing', fragranceTitle: 'Signature Fragrances', viewAllClothing: 'View All', viewAllFragrance: 'View All', quickView: 'Quick View', addToCart: 'Add to Cart' },
@@ -33,7 +33,7 @@ const translationsData = {
     },
     'zh': {
         meta: { langCode: 'zh', langName: '中文', dir: 'ltr' },
-        nav: { home: '首页', clothing: '服装', fragrance: '香水', about: '关于我们' },
+        nav: { home: '首页', clothing: '服装', fragrance: '香水', about: '关于我们', signIn: '登录', createAccount: '创建账户', profile: '个人信息', myOrders: '我的订单', addresses: '收货地址', accountSettings: '账户设置', signOut: '退出登录' },
         hero: { subtitle: '优雅重新定义', title: '探索奢华', desc: '精选高端时装与香氛', ctaClothing: '探索服装', ctaFragrance: '发现香水', scroll: '向下滚动' },
         categories: { subtitle: '系列', title: '精选系列', clothing: '时装系列', clothingDesc: '精致剪裁', fragrance: '香氛系列', fragranceDesc: '顶级香料', explore: '探索更多 →' },
         products: { featured: '精选', clothingTitle: '精选服装', fragranceTitle: '甄选香水', viewAllClothing: '查看全部', viewAllFragrance: '查看全部', quickView: '快速查看', addToCart: '加入购物车' },
@@ -44,9 +44,9 @@ const translationsData = {
         search: { placeholder: '搜索产品...', noResults: '未找到产品' },
         notifications: { subscribeSuccess: '感谢订阅！', invalidEmail: '请输入有效邮箱', cartAdded: '已添加' }
     },
-    'de': {
+'de': {
         meta: { langCode: 'de', langName: 'Deutsch', dir: 'ltr' },
-        nav: { home: 'Startseite', clothing: 'Kleidung', fragrance: 'Düfte', about: 'Über uns' },
+        nav: { home: 'Startseite', clothing: 'Kleidung', fragrance: 'Düfte', about: 'Über uns', signIn: 'Anmelden', createAccount: 'Konto erstellen', profile: 'Mein Profil', myOrders: 'Meine Bestellungen', addresses: 'Adressen', accountSettings: 'Kontoeinstellungen', signOut: 'Abmelden' },
         hero: { subtitle: 'Eleganz', title: 'Entdecken Sie Luxus', desc: 'Hochwertige Mode und Düfte', ctaClothing: 'Kleidung', ctaFragrance: 'Düfte', scroll: 'Scroll' },
         categories: { subtitle: 'Kollektionen', title: 'Auswahl', clothing: 'Mode', clothingDesc: 'Exquisit', fragrance: 'Düfte', fragranceDesc: 'Premium', explore: 'Mehr →' },
         products: { featured: 'Empfohlen', clothingTitle: 'Kleidung', fragranceTitle: 'Düfte', viewAllClothing: 'Alle', viewAllFragrance: 'Alle', quickView: 'Schnellansicht', addToCart: 'In den Warenkorb' },
@@ -59,7 +59,7 @@ const translationsData = {
     },
     'fr': {
         meta: { langCode: 'fr', langName: 'Français', dir: 'ltr' },
-        nav: { home: 'Accueil', clothing: 'Vêtements', fragrance: 'Parfums', about: 'À propos' },
+        nav: { home: 'Accueil', clothing: 'Vêtements', fragrance: 'Parfums', about: 'À propos', signIn: 'Se connecter', createAccount: 'Créer un compte', profile: 'Mon profil', myOrders: 'Mes commandes', addresses: 'Adresses', accountSettings: 'Paramètres du compte', signOut: 'Se déconnecter' },
         hero: { subtitle: 'Élégance', title: 'Découvrez le luxe', desc: 'Mode et parfums premium', ctaClothing: 'Vêtements', ctaFragrance: 'Parfums', scroll: 'Défiler' },
         categories: { subtitle: 'Collections', title: 'Sélection', clothing: 'Mode', clothingDesc: 'Exquise', fragrance: 'Parfums', fragranceDesc: 'Premium', explore: 'Explorer →' },
         products: { featured: 'En vedette', clothingTitle: 'Vêtements', fragranceTitle: 'Parfums', viewAllClothing: 'Tous', viewAllFragrance: 'Tous', quickView: 'Aperçu', addToCart: 'Ajouter au panier' },
@@ -72,9 +72,9 @@ const translationsData = {
     },
     'es': {
         meta: { langCode: 'es', langName: 'Español', dir: 'ltr' },
-        nav: { home: 'Inicio', clothing: 'Ropa', fragrance: 'Fragancias', about: 'Nosotros' },
+        nav: { home: 'Inicio', clothing: 'Ropa', fragrance: 'Fragancias', about: 'Nosotros', signIn: 'Iniciar sesión', createAccount: 'Crear cuenta', profile: 'Mi perfil', myOrders: 'Mis pedidos', addresses: 'Direcciones', accountSettings: 'Configuración de cuenta', signOut: 'Cerrar sesión' },
         hero: { subtitle: 'Elegancia', title: 'Descubre el lujo', desc: 'Moda y fragancias premium', ctaClothing: 'Ropa', ctaFragrance: 'Fragancias', scroll: 'Desplazar' },
-        categories: { subtitle: 'Colecciones', title: 'Selección', clothing: 'Moda', clothingDesc: 'Exquisita', fragrance: 'Fragancias', fragranceDesc: 'Premium', explore: 'Explorar →' },
+        categories: { subtitle: 'Colecciones', title: 'Selección', clothing: 'Moda', clothingDesc: 'Exquisita', fragrance: 'Fragancias', fragranceDesc: 'Premium', explore: 'Explorar ���' },
         products: { featured: 'Destacados', clothingTitle: 'Ropa', fragranceTitle: 'Fragancias', viewAllClothing: 'Ver todos', viewAllFragrance: 'Ver todos', quickView: 'Vista rápida', addToCart: 'Añadir al carrito' },
         about: { subtitle: 'Nuestra historia', title: 'Sobre nosotros', text1: 'Curamos los mejores productos.', text2: 'Cada producto se selecciona cuidadosamente.', years: 'Años', brands: 'Marcas', customers: 'Clientes' },
         newsletter: { title: 'Newsletter', desc: 'Recibe actualizaciones', placeholder: 'Email', button: 'Suscribirse' },
@@ -85,7 +85,7 @@ const translationsData = {
     },
     'ar': {
         meta: { langCode: 'ar', langName: 'العربية', dir: 'rtl' },
-        nav: { home: 'الرئيسية', clothing: 'الأزياء', fragrance: 'العطور', about: 'من نحن' },
+        nav: { home: 'الرئيسية', clothing: 'الأزياء', fragrance: 'العطور', about: 'من نحن', signIn: 'تسجيل الدخول', createAccount: 'إنشاء حساب', profile: 'ملفي', myOrders: 'طلباتي', addresses: 'العناوين', accountSettings: 'إعدادات الحساب', signOut: 'تسجيل الخروج' },
         hero: { subtitle: 'الأناقة', title: 'اكتشف الفخامة', desc: 'أزياء وعطور فاخرة', ctaClothing: 'الأزياء', ctaFragrance: 'العطور', scroll: 'انتقل للأسفل' },
         categories: { subtitle: 'المجموعات', title: 'اختيارات', clothing: 'الأزياء', clothingDesc: 'رائعة', fragrance: 'العطور', fragranceDesc: 'فاخرة', explore: 'اكتشف المزيد ←' },
         products: { featured: 'مميز', clothingTitle: 'الأزياء', fragranceTitle: 'العطور', viewAllClothing: 'عرض الكل', viewAllFragrance: 'عرض الكل', quickView: 'عرض سريع', addToCart: 'أضف للسلة' },

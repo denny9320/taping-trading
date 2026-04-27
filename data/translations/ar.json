@@ -8,7 +8,14 @@
     "home": "الرئيسية",
     "clothing": "الأزياء",
     "fragrance": "العطور",
-    "about": "من نحن"
+    "about": "من نحن",
+    "signIn": "تسجيل الدخول",
+    "createAccount": "إنشاء حساب",
+    "profile": "ملفي",
+    "myOrders": "طلباتي",
+    "addresses": "العناوين",
+    "accountSettings": "إعدادات الحساب",
+    "signOut": "تسجيل الخروج"
   },
   "hero": {
     "subtitle": "إعادة تعريف الأناقة",

@@ -8,7 +8,14 @@
     "home": "首页",
     "clothing": "服装",
     "fragrance": "香水",
-    "about": "关于我们"
+    "about": "关于我们",
+    "signIn": "登录",
+    "createAccount": "创建账户",
+    "profile": "个人信息",
+    "myOrders": "我的订单",
+    "addresses": "收货地址",
+    "accountSettings": "账户设置",
+    "signOut": "退出登录"
   },
   "hero": {
     "subtitle": "重新定义优雅",

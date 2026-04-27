@@ -105,6 +105,15 @@ function updatePageTranslations() {
     updateElement('[data-i18n="nav.fragrance"]', t.nav.fragrance);
     updateElement('[data-i18n="nav.about"]', t.nav.about);
     
+    // User dropdown nav items
+    updateElement('[data-i18n="nav.signIn"]', t.nav.signIn);
+    updateElement('[data-i18n="nav.createAccount"]', t.nav.createAccount);
+    updateElement('[data-i18n="nav.profile"]', t.nav.profile);
+    updateElement('[data-i18n="nav.myOrders"]', t.nav.myOrders);
+    updateElement('[data-i18n="nav.addresses"]', t.nav.addresses);
+    updateElement('[data-i18n="nav.accountSettings"]', t.nav.accountSettings);
+    updateElement('[data-i18n="nav.signOut"]', t.nav.signOut);
+    
     // Hero section
     updateElement('[data-i18n="hero.subtitle"]', t.hero.subtitle);
     updateElement('[data-i18n="hero.title"]', t.hero.title);
