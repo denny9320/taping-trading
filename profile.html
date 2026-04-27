@@ -308,12 +308,12 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // Translations
-    const translations = {
+// Profile Translations (embedded for standalone use)
+    const profileTranslations = {
       en: {
         nav: { home: 'Home' },
         profile: { title: 'My Profile', name: 'Name', email: 'Email', phone: 'Phone', save: 'Save Profile', logout: 'Logout', saved: 'Profile saved successfully!' },
-        tabs: { profile: '个人资料', address: '收货地址', orders: '我的订单' },
+        tabs: { profile: 'My Profile', address: 'Addresses', orders: 'My Orders' },
         address: { title: 'My Addresses', recipient: 'Recipient Name', phone: 'Phone Number', province: 'Province', city: 'City', district: 'District', detail: 'Detailed Address', postalCode: 'Postal Code', addNew: 'Add New Address', addBtn: 'Add Address', setDefault: 'Set as default address', added: 'Address added successfully!', deleted: 'Address deleted', default: 'Default', noAddress: 'No saved addresses', addFirst: 'Add your first address' },
         orders: { title: 'My Orders', orderId: 'Order ID', status: 'Status', items: 'Items', total: 'Total', noOrders: 'No orders yet', pending: 'Pending', processing: 'Processing', completed: 'Completed', date: 'Date' }
       },
@@ -322,11 +322,39 @@
         profile: { title: '个人资料', name: '姓名', email: '邮箱', phone: '电话', save: '保存资料', logout: '退出登录', saved: '资料保存成功！' },
         tabs: { profile: '个人资料', address: '收货地址', orders: '我的订单' },
         address: { title: '我的收货地址', recipient: '收货人', phone: '电话号码', province: '省份', city: '城市', district: '区县', detail: '详细地址', postalCode: '邮政编码', addNew: '添加新地址', addBtn: '添加地址', setDefault: '设为默认地址', added: '地址添加成功！', deleted: '地址已删除', default: '默认', noAddress: '暂无保存的地址', addFirst: '添加您的第一个收货地址' },
-        orders: { title: '我的订单', orderId: '订单号', status: '状态', items: '商品', total: '总计', noOrders: '暂无订单', pending: '待处理', processing: '处理中', completed: '已完成', date: '��期' }
+        orders: { title: '我的订单', orderId: '订单号', status: '状态', items: '商品', total: '总计', noOrders: '暂无订单', pending: '待处理', processing: '处理中', completed: '已完成', date: '日期' }
+      },
+      de: {
+        nav: { home: 'Startseite' },
+        profile: { title: 'Mein Profil', name: 'Name', email: 'E-Mail', phone: 'Telefon', save: 'Speichern', logout: 'Abmelden', saved: 'Profil gespeichert!' },
+        tabs: { profile: 'Mein Profil', address: 'Adressen', orders: 'Bestellungen' },
+        address: { title: 'Meine Adressen', recipient: 'Empfänger', phone: 'Telefon', province: 'Provinz', city: 'Stadt', district: 'District', detail: 'Adresse', postalCode: 'PLZ', addNew: 'Neue Adresse', addBtn: 'Hinzufügen', setDefault: 'Als Standard', added: 'Adresse hinzugefügt!', deleted: 'Gelöscht', default: 'Standard', noAddress: 'Keine Adressen', addFirst: 'Erste Adresse hinzufügen' },
+        orders: { title: 'Meine Bestellungen', orderId: 'Bestellung', status: 'Status', items: 'Artikel', total: 'Gesamt', noOrders: 'Keine Bestellungen', pending: 'Ausstehend', processing: 'In Bearbeitung', completed: 'Abgeschlossen', date: 'Datum' }
+      },
+      fr: {
+        nav: { home: 'Accueil' },
+        profile: { title: 'Mon profil', name: 'Nom', email: 'Email', phone: 'Téléphone', save: 'Enregistrer', logout: 'Déconnexion', saved: 'Profil enregistré!' },
+        tabs: { profile: 'Mon profil', address: 'Adresses', orders: 'Commandes' },
+        address: { title: 'Mes adresses', recipient: 'Destinataire', phone: 'Téléphone', province: 'Province', city: 'Ville', district: 'District', detail: 'Adresse', postalCode: 'Code postal', addNew: 'Nouvelle adresse', addBtn: 'Ajouter', setDefault: 'Par défaut', added: 'Adresse ajoutée!', deleted: 'Supprimé', default: 'Par défaut', noAddress: 'Aucune adresse', addFirst: 'Ajouter une adresse' },
+        orders: { title: 'Mes commandes', orderId: 'Commande', status: 'Statut', items: 'Articles', total: 'Total', noOrders: 'Aucune commande', pending: 'En attente', processing: 'En cours', completed: 'Terminé', date: 'Date' }
+      },
+      es: {
+        nav: { home: 'Inicio' },
+        profile: { title: 'Mi perfil', name: 'Nombre', email: 'Correo', phone: 'Teléfono', save: 'Guardar', logout: 'Cerrar sesión', saved: '¡Perfil guardado!' },
+        tabs: { profile: 'Mi perfil', address: 'Direcciones', orders: 'Pedidos' },
+        address: { title: 'Mis direcciones', recipient: 'Destinatario', phone: 'Teléfono', province: 'Provincia', city: 'Ciudad', district: 'Distrito', detail: 'Dirección', postalCode: 'Código postal', addNew: 'Nueva dirección', addBtn: 'Añadir', setDefault: 'Por defecto', added: '¡Dirección añadida!', deleted: 'Eliminado', default: 'Por defecto', noAddress: 'Sin direcciones', addFirst: 'Añadir primera dirección' },
+        orders: { title: 'Mis pedidos', orderId: 'Pedido', status: 'Estado', items: 'Artículos', total: 'Total', noOrders: 'Sin pedidos', pending: 'Pendiente', processing: 'Procesando', completed: 'Completado', date: 'Fecha' }
+      },
+      ar: {
+        nav: { home: 'الرئيسية' },
+        profile: { title: 'ملفي', name: 'الاسم', email: 'البريد', phone: 'الهاتف', save: 'حفظ', logout: 'خروج', saved: 'تم الحفظ!' },
+        tabs: { profile: 'ملفي', address: 'العناوين', orders: 'طلباتي' },
+        address: { title: 'عناويني', recipient: 'المستلم', phone: 'الهاتف', province: 'المقاطعة', city: 'المدينة', district: 'المنطقة', detail: 'العنوان', postalCode: 'الرمز', addNew: 'عنوان جديد', addBtn: 'إضافة', setDefault: 'افتراضي', added: 'تمت الإضافة!', deleted: 'تم الحذف', default: 'افتراضي', noAddress: 'لا توجد عناوين', addFirst: 'أضف أول عنوان' },
+        orders: { title: 'طلباتي', orderId: 'طلب', status: 'الحالة', items: 'المنتجات', total: 'المجموع', noOrders: 'لا توجد طلبات', pending: 'قيد الانتظار', processing: 'قيد المعالجة', completed: 'مكتمل', date: 'التاريخ' }
       }
     };
-
-    let currentLang = localStorage.getItem('tapingLang') || 'zh';
+    
+    let currentLang = localStorage.getItem('taping_lang') || 'zh';
     let currentUser = null;
 
     // Initialize
@@ -341,11 +369,22 @@
       await loadAddresses();
       await loadOrders();
       applyTranslations();
+      initLangButtons();
     });
+
+    // Initialize language buttons and apply translations from localStorage
+    function initLangButtons() {
+      // Get language from localStorage (same as homepage)
+      currentLang = localStorage.getItem('taping_lang') || 'zh';
+      applyTranslations();
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().includes(currentLang));
+      });
+    }
 
     function setLang(lang) {
       currentLang = lang;
-      localStorage.setItem('tapingLang', lang);
+      localStorage.setItem('taping_lang', lang);
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.toLowerCase().includes(lang));
       });
@@ -353,14 +392,53 @@
     }
 
     function applyTranslations() {
-      const t = translations[currentLang];
+      const t = profileTranslations[currentLang];
+      if (!t) return;
+      
+      // Update all elements with data-i18n attribute
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         const keys = key.split('.');
         let value = t;
-        keys.forEach(k => value = value[k]);
-        if (value) el.textContent = value;
+        keys.forEach(k => value = value ? value[k] : null);
+        if (value) {
+          // Check if element has a parent span with class option-text
+          if (el.classList.contains('option-text')) {
+            el.textContent = value;
+          } else {
+            el.textContent = value;
+          }
+        }
       });
+      
+      // Update selected text in dropdown
+      updateDropdownSelectedText();
+      
+      // Reload dynamic content
+      loadAddresses();
+      loadOrders();
+    }
+    
+    function updateDropdownSelectedText() {
+      const t = profileTranslations[currentLang];
+      const selectedText = document.getElementById('selectedText');
+      const options = document.querySelectorAll('.dropdown-option');
+      const activeOption = document.querySelector('.dropdown-option.active');
+      
+      if (selectedText && activeOption) {
+        const iconSvg = activeOption.querySelector('svg').outerHTML;
+        const labelKey = activeOption.querySelector('[data-i18n]')?.dataset.i18n;
+        let labelText = activeOption.querySelector('.option-text')?.textContent;
+        
+        if (labelKey) {
+          const keys = labelKey.split('.');
+          let value = t;
+          keys.forEach(k => value = value ? value[k] : null);
+          if (value) labelText = value;
+        }
+        
+        selectedText.innerHTML = iconSvg + `<span>${labelText}</span>`;
+      }
     }
 
     // 下拉菜单功能
