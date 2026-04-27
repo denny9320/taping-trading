@@ -1801,57 +1801,49 @@ button {
     left: -100%;
 }
 
-/* User Dropdown Button Styles */
-.user-dropdown-btn {
+/* User Account Dropdown Menu */
+.user-account-menu {
     position: relative;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
 }
 
-.user-dropdown-trigger {
+.user-account-trigger {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding: 8px;
-    border-radius: 50%;
-    transition: background 0.3s ease;
+    gap: 6px;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.user-dropdown-trigger:hover {
+.user-account-trigger:hover {
     background: rgba(0, 0, 0, 0.05);
+    border-color: var(--color-border);
 }
 
-.user-avatar-icon {
+.user-email-text {
+    font-size: 14px;
+    font-weight: 500;
     color: var(--color-primary);
-    transition: color 0.3s ease;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.user-dropdown-trigger:hover .user-avatar-icon {
-    color: var(--color-accent);
-}
-
-.dropdown-arrow-icon {
+.user-account-arrow {
     color: var(--color-text-light);
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
-.user-dropdown-trigger:hover .dropdown-arrow-icon {
-    color: var(--color-accent);
-}
-
-/* Arrow animation when dropdown is open */
-.user-dropdown-btn.dropdown-open .dropdown-arrow-icon {
+.user-account-menu.open .user-account-arrow {
     transform: rotate(180deg);
 }
 
-/* User Dropdown Styles */
-#userBtn {
-    position: relative;
-}
-
-.user-dropdown {
+.user-account-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
@@ -1859,82 +1851,88 @@ button {
     min-width: 200px;
     background: var(--color-white);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: var(--transition-fast);
+    transition: all 0.3s ease;
     z-index: 1001;
     overflow: hidden;
+    padding: 8px 0;
 }
 
-.user-dropdown.show {
+.user-account-menu.open .user-account-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.user-dropdown-section {
-    padding: 8px 0;
-}
-
-.user-dropdown-header {
-    padding: 12px 16px;
-    font-size: 12px;
-    color: var(--color-text-light);
-    background: var(--color-bg);
-}
-
-.user-dropdown-item {
+.user-account-item {
     display: flex;
     align-items: center;
     gap: 12px;
     width: 100%;
-    padding: 10px 16px;
+    padding: 12px 16px;
     color: var(--color-text);
     text-decoration: none;
     background: transparent;
     border: none;
     cursor: pointer;
-    transition: var(--transition-fast);
+    transition: background 0.2s ease;
     text-align: left;
     font-size: 14px;
 }
 
-.user-dropdown-item:hover {
+.user-account-item:hover {
     background-color: var(--color-secondary);
 }
 
-.user-dropdown-item svg {
+.user-account-item svg {
     flex-shrink: 0;
     color: var(--color-text-light);
 }
 
-.user-dropdown-divider {
+.user-account-item:hover svg {
+    color: var(--color-accent);
+}
+
+.user-account-divider {
     height: 1px;
     background: var(--color-border);
     margin: 8px 0;
 }
 
-.user-dropdown-signout {
-    color: var(--color-error);
+.user-account-logout {
+    color: #e74c3c;
 }
 
-.user-dropdown-signout svg {
-    color: var(--color-error);
+.user-account-logout svg {
+    color: #e74c3c;
 }
 
-/* Mobile adjustments */
+.user-account-logout:hover {
+    background-color: #fef2f2;
+}
+
+/* User Login Button */
+.user-login-btn {
+    display: flex;
+}
+
+/* Mobile Responsive for User Account Menu */
 @media (max-width: 768px) {
-    .user-dropdown {
-        right: -10px;
+    .user-account-trigger {
+        padding: 8px;
     }
-}
-
-/* RTL adjustments */
-[dir="rtl"] .user-dropdown {
-    right: auto;
-    left: 0;
+    
+    .user-email-text {
+        max-width: 120px;
+    }
+    
+    .user-account-dropdown {
+        right: -10px;
+        min-width: 180px;
+    }
 }
 }
