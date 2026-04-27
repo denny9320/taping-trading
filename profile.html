@@ -18,125 +18,12 @@
     .lang-btn { padding: 5px 10px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 3px; }
     .lang-btn.active { background: #C9A962; color: white; border-color: #C9A962; }
     
-    .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+.container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
     
-    /* 下拉选择器样式 */
-    .dropdown-selector {
-      position: relative;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-    }
-    
-    .dropdown-selected {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 24px;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: var(--transition-fast);
-    }
-    
-    .dropdown-selected:hover {
-      background: #f9f9f9;
-    }
-    
-    .dropdown-selected .selected-text {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 16px;
-      font-weight: 500;
-    }
-    
-    .dropdown-selected .selected-text svg {
-      color: #C9A962;
-    }
-    
-    .dropdown-arrow {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-      color: #666;
-    }
-    
-    .dropdown-selector.open .dropdown-arrow {
-      transform: rotate(180deg);
-    }
-    
-    .dropdown-options {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      margin-top: 8px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      z-index: 100;
-      overflow: hidden;
-    }
-    
-    .dropdown-selector.open .dropdown-options {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    
-    .dropdown-option {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 24px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    
-    .dropdown-option:last-child {
-      border-bottom: none;
-    }
-    
-    .dropdown-option:hover {
-      background: #f9f9f9;
-    }
-    
-    .dropdown-option.active {
-      background: #f9f9f0;
-    }
-    
-    .dropdown-option.active .option-text {
-      color: #C9A962;
-      font-weight: 600;
-    }
-    
-    .dropdown-option svg {
-      color: #999;
-    }
-    
-    .dropdown-option.active svg {
-      color: #C9A962;
-    }
-    
-    .dropdown-option .option-text {
-      font-size: 15px;
-      color: #333;
-    }
-    
-    .dropdown-divider {
-      height: 1px;
-      background: #eee;
-      margin: 8px 24px;
-    }
+    .tabs { display: flex; background: white; border-radius: 10px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; border: none; background: white; font-size: 15px; }
+    .tab:hover { background: #f5f5f5; }
+    .tab.active { background: #C9A962; color: white; }
     
     .panel { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: none; }
     .panel.active { display: block; }
@@ -181,43 +68,17 @@
   <div class="header">
     <a href="index.html" class="logo">TAPING<span>TRADING</span></a>
     <div style="display:flex;align-items:center;gap:15px">
-      <div class="lang-selector">
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('zh')">中文</button>
-      </div>
-      <a href="index.html" data-i18n="nav.home">Home</a>
-      <button class="logout-btn" onclick="logout()" data-i18n="profile.logout">Logout</button>
+      <a href="index.html" data-i18n="nav.home">首页</a>
+      <button class="logout-btn" onclick="logout()" data-i18n="profile.logout">退出登录</button>
     </div>
   </div>
 
   <div class="container">
-    <!-- 下拉选择器 -->
-    <div class="dropdown-selector" id="mainDropdown">
-      <div class="dropdown-selected" onclick="toggleDropdown()">
-        <div class="selected-text" id="selectedText">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span data-i18n="tabs.profile">个人资料</span>
-        </div>
-        <div class="dropdown-arrow">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </div>
-      </div>
-      <div class="dropdown-options">
-        <div class="dropdown-option active" data-value="profile" onclick="selectOption('profile')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span class="option-text" data-i18n="tabs.profile">个人资料</span>
-        </div>
-        <div class="dropdown-option" data-value="address" onclick="selectOption('address')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6.4-10 12-10 12s-10-5.6-10-12a10 10 0 0110-10z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <span class="option-text" data-i18n="tabs.address">收货地址</span>
-        </div>
-        <div class="dropdown-option" data-value="orders" onclick="selectOption('orders')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
-          <span class="option-text" data-i18n="tabs.orders">我的订单</span>
-        </div>
-      </div>
+    <!-- 标签页切换 -->
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('profile')" data-i18n="tabs.profile">个人资料</button>
+      <button class="tab" onclick="showTab('address')" data-i18n="tabs.address">收货地址</button>
+      <button class="tab" onclick="showTab('orders')" data-i18n="tabs.orders">我的订单</button>
     </div>
 
     <!-- Profile Tab -->
@@ -420,88 +281,25 @@
     }
     
     function updateDropdownSelectedText() {
-      const t = profileTranslations[currentLang];
-      const selectedText = document.getElementById('selectedText');
-      const options = document.querySelectorAll('.dropdown-option');
-      const activeOption = document.querySelector('.dropdown-option.active');
-      
-      if (selectedText && activeOption) {
-        const iconSvg = activeOption.querySelector('svg').outerHTML;
-        const labelKey = activeOption.querySelector('[data-i18n]')?.dataset.i18n;
-        let labelText = activeOption.querySelector('.option-text')?.textContent;
-        
-        if (labelKey) {
-          const keys = labelKey.split('.');
-          let value = t;
-          keys.forEach(k => value = value ? value[k] : null);
-          if (value) labelText = value;
-        }
-        
-        selectedText.innerHTML = iconSvg + `<span>${labelText}</span>`;
-      }
+      // No longer needed - using tabs instead
     }
 
-    // 下拉菜单功能
-    window.toggleDropdown = function() {
-      const dropdown = document.getElementById('mainDropdown');
-      dropdown.classList.toggle('open');
-    };
-
-    window.selectOption = function(tab) {
-      const dropdown = document.getElementById('mainDropdown');
-      const options = document.querySelectorAll('.dropdown-option');
-      const selectedText = document.getElementById('selectedText');
-      
-      // 更新选项状态
-      options.forEach(opt => {
-        opt.classList.remove('active');
-        if (opt.dataset.value === tab) {
-          opt.classList.add('active');
-        }
-      });
-      
-      // 更新选中文本
-      const activeOption = document.querySelector(`.dropdown-option[data-value="${tab}"]`);
-      if (activeOption) {
-        selectedText.innerHTML = activeOption.querySelector('svg').outerHTML + `<span>${activeOption.querySelector('span').textContent}</span>`;
-      }
-      
-      // 关闭下拉菜单
-      dropdown.classList.remove('open');
-      
-      // 显示对应面板
-      showTab(tab);
-    };
-
     window.showTab = function(tab) {
-      // 同步更新下拉选择器
-      const dropdown = document.getElementById('mainDropdown');
-      const options = document.querySelectorAll('.dropdown-option');
-      const selectedText = document.getElementById('selectedText');
+      // Update tab buttons
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelector(`.tab[onclick*="${tab}"]`).classList.add('active');
       
-      options.forEach(opt => {
-        opt.classList.remove('active');
-        if (opt.dataset.value === tab) {
-          opt.classList.add('active');
-        }
-      });
-      
-      const activeOption = document.querySelector(`.dropdown-option[data-value="${tab}"]`);
-      if (activeOption) {
-        selectedText.innerHTML = activeOption.querySelector('svg').outerHTML + `<span>${activeOption.querySelector('.option-text').textContent}</span>`;
-      }
-      
+      // Update panels
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       document.getElementById(`panel-${tab}`).classList.add('active');
-    };
-
-    // 点击外部关闭下拉菜单
-    document.addEventListener('click', function(event) {
-      const dropdown = document.getElementById('mainDropdown');
-      if (dropdown && !dropdown.contains(event.target)) {
-        dropdown.classList.remove('open');
+      
+      // Reload data if needed
+      if (tab === 'address') {
+        loadAddresses();
+      } else if (tab === 'orders') {
+        loadOrders();
       }
-    });
+    };
 
     async function loadProfile() {
       try {
