@@ -1,86 +1,85 @@
-# TapingTrading - 跨境电商网站规格文档
+# TapingTrading - E-commerce Website Specification
 
-## 1. 项目概述
+## 1. Project Overview
 
-- **项目名称**: TapingTrading
-- **项目类型**: 高端服装与香水跨境电商网站
-- **核心功能**: 展示和销售高端服装、香水产品，传递品牌价值
-- **目标用户**: 追求品质生活的中高端消费群体
+- **Project Name**: TapingTrading
+- **Project Type**: Luxury Fashion & Fragrance E-commerce Website
+- **Core Function**: Showcase and sell high-end fashion and fragrance products
+- **Target Users**: Quality-conscious mid-to-high-end consumers
 
-## 2. UI/UX 规格
+## 2. UI/UX Specification
 
-### 布局结构
+### Layout Structure
 
-- **Header**: 固定顶部导航，包含Logo、导航菜单、搜索、购物车
-- **Hero Section**: 全屏视觉Banner，展示品牌形象
-- **Categories Section**: 产品分类入口（服装/香水）
-- **Featured Products**: 精选产品展示
-- **About Section**: 品牌故事
-- **Footer**: 联系信息、社交媒体、Newsletter订阅
+- **Header**: Fixed top navigation with Logo, Nav Menu, Search, Cart
+- **Hero Section**: Full-screen visual banner showcasing brand image
+- **Categories Section**: Product category entry (Clothing/Fragrance)
+- **Featured Products**: Featured product display
+- **About Section**: Brand story
+- **Footer**: Contact info, social media, Newsletter subscription
 
-### 响应式断点
+### Responsive Breakpoints
 - Mobile: < 768px
 - Tablet: 768px - 1024px
 - Desktop: > 1024px
 
-### 视觉设计
+### Visual Design
 
-#### 色彩方案
-- **主色调**: #1A1A1A (深炭黑 - 奢华神秘)
-- **辅助色**: #F5F5F0 (象牙白 - 温暖优雅)
-- **强调色**: #C9A962 (香槟金 - 精致高贵)
-- **文字色**: #2D2D2D (深灰)
-- **浅色背景**: #FAFAFA
+#### Color Scheme
+- **Primary**: #1A1A1A (Deep Charcoal - luxurious & mysterious)
+- **Secondary**: #F5F5F0 (Ivory - warm & elegant)
+- **Accent**: #C9A962 (Champagne Gold - refined & noble)
+- **Text**: #2D2D2D (Dark Gray)
+- **Light Background**: #FAFAFA
 
-#### 字体
-- **标题字体**: Playfair Display (衬线，优雅)
-- **正文字体**: Lato (无衬线，现代)
-- **中文支持**: Noto Sans SC
+#### Typography
+- **Display Font**: Playfair Display (serif, elegant)
+- **Body Font**: Lato (sans-serif, modern)
 
-#### 间距系统
-- Section间距: 100px
-- 元素间距: 24px
-- 内边距: 16px / 24px / 32px
+#### Spacing System
+- Section spacing: 100px
+- Element spacing: 24px
+- Padding: 16px / 24px / 32px
 
-### 组件设计
+### Component Design
 
-#### 导航栏
-- 透明背景，滚动后变白
-- Logo居左，导航居中，图标居右
-- 悬停效果: 金色下划线
+#### Navigation Bar
+- Transparent background, turns white on scroll
+- Logo left, navigation center, icons right
+- Hover effect: gold underline
 
-#### 产品卡片
-- 悬停时显示快捷操作
-- 图片放大效果 (scale 1.05)
-- 简洁的价格标签
-- "Quick View" 悬停按钮
+#### Product Card
+- Quick actions on hover
+- Image zoom effect (scale 1.05)
+- Clean price tag
+- "Quick View" hover button
 
-#### 按钮
-- 主按钮: 黑色背景，白色文字，金色悬停
-- 次按钮: 透明边框，黑色文字
-- 圆角: 0 (保持简约线条感)
+#### Buttons
+- Primary: Black background, white text, gold on hover
+- Secondary: Transparent border, black text
+- Border radius: 0 (minimalist lines)
 
-## 3. 功能规格
+## 3. Functionality Specification
 
-### 页面结构
-1. **首页** - 品牌展示、产品浏览
-2. **服装分类页** - Clothing
-3. **香水分类页** - Fragrance
-4. **产品详情页** - Product Detail
-5. **关于我们** - About Us
+### Page Structure
+1. **Home** - Brand showcase, product browsing
+2. **Clothing Category** - Fashion products
+3. **Fragrance Category** - Fragrance products
+4. **Product Detail** - Product details modal
+5. **About Us** - Brand story
 
-### 交互功能
-- 导航菜单移动端汉堡菜单
-- 产品图片悬停效果
-- 平滑滚动动画
-- 购物车图标动画
-- 图片懒加载
-- 滚动reveal动画
+### Interactive Features
+- Mobile hamburger menu
+- Product image hover effects
+- Smooth scroll animation
+- Cart icon animation
+- Image lazy loading
+- Scroll reveal animation
 
-## 4. 验收标准
+## 4. Acceptance Criteria
 
-- [ ] 网站在所有设备上正常显示
-- [ ] 所有动画流畅无卡顿
-- [ ] 图片正确加载
-- [ ] 导航链接可点击
-- [ ] 响应式布局在各断点正常工作
+- [ ] Website displays correctly on all devices
+- [ ] All animations are smooth
+- [ ] Images load correctly
+- [ ] Navigation links are clickable
+- [ ] Responsive layout works at all breakpoints

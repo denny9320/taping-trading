@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TapingTrading | 高端服装与香水</title>
+    <title>TapingTrading | Luxury Fashion & Fragrance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,21 +20,34 @@
             
             <nav class="nav" id="nav">
                 <ul class="nav-list">
-                    <li><a href="#home" class="nav-link active">首页</a></li>
-                    <li><a href="#clothing" class="nav-link">服装</a></li>
-                    <li><a href="#fragrance" class="nav-link">香水</a></li>
-                    <li><a href="#about" class="nav-link">关于我们</a></li>
+                    <li><a href="#home" class="nav-link active" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#clothing" class="nav-link" data-i18n="nav.clothing">Clothing</a></li>
+                    <li><a href="#fragrance" class="nav-link" data-i18n="nav.fragrance">Fragrance</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
                 </ul>
             </nav>
             
             <div class="header-actions">
-                <button class="icon-btn search-btn" aria-label="搜索" id="searchBtn">
+                <button class="icon-btn" id="loginBtn" aria-label="Login" onclick="showLoginModal()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+                <button class="icon-btn" id="userBtn" aria-label="My Account" onclick="showUserMenu()" style="display:none">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 8v8M8 12h8"></path>
+                    </svg>
+                </button>
+                <span id="userEmail" style="font-size:12px;margin-left:10px;display:none"></span>
+                <button class="icon-btn search-btn" aria-label="Search" id="searchBtn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"></circle>
                         <path d="M21 21l-4.35-4.35"></path>
                     </svg>
                 </button>
-                <button class="icon-btn cart-btn" aria-label="购物车">
+                <button class="icon-btn cart-btn" aria-label="Cart">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -42,7 +55,7 @@
                     </svg>
                     <span class="cart-count">0</span>
                 </button>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -57,16 +70,19 @@
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
-            <span class="hero-subtitle">Elegance Redefined</span>
-            <h1 class="hero-title">探索奢华之美</h1>
-            <p class="hero-desc">甄选高端时装与顶级香氛，为您打造独特品味</p>
-            <div class="hero-buttons">
-                <a href="#clothing" class="btn btn-primary">探索服装</a>
-                <a href="#fragrance" class="btn btn-secondary">发现香水</a>
+            <span class="hero-subtitle" data-i18n="hero.subtitle">Elegance Redefined</span>
+            <h1 class="hero-title" data-i18n="hero.title">Discover Luxury</h1>
+            <p class="hero-desc" data-i18n="hero.desc">Curated high-end fashion and premium fragrances for your unique style</p>
+<div class="hero-buttons">
+                <a href="#clothing" class="btn btn-primary">Explore Clothing</a>
+                <a href="#fragrance" class="btn btn-secondary">Discover Fragrance</a>
+            </div>
+            <div class="hero-buttons" style="margin-top: 16px;">
+                <a href="order-form.html" class="btn btn-outline">🛒 Place Order</a>
             </div>
         </div>
         <div class="hero-scroll">
-            <span>向下滚动</span>
+            <span data-i18n="hero.scroll">Scroll Down</span>
             <div class="scroll-line"></div>
         </div>
     </section>
@@ -75,28 +91,28 @@
     <section class="categories section">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Collections</span>
-                <h2 class="section-title">精选系列</h2>
+                <span class="section-subtitle" data-i18n="categories.subtitle">Collections</span>
+                <h2 class="section-title" data-i18n="categories.title">Curated Selections</h2>
             </div>
             <div class="categories-grid">
                 <a href="#clothing" class="category-card category-card-clothing">
                     <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="服装">
+                        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Fashion">
                     </div>
                     <div class="category-content">
-                        <h3 class="category-title">时装系列</h3>
-                        <p class="category-desc">精致剪裁，优雅设计</p>
-                        <span class="category-link">探索更多 →</span>
+                        <h3 class="category-title" data-i18n="categories.clothing">Fashion Collection</h3>
+                        <p class="category-desc" data-i18n="categories.clothingDesc">Exquisite tailoring, elegant design</p>
+                        <span class="category-link" data-i18n="categories.explore">Explore More →</span>
                     </div>
                 </a>
                 <a href="#fragrance" class="category-card category-card-fragrance">
                     <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=80" alt="香水">
+                        <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=600&q=80" alt="Fragrance">
                     </div>
                     <div class="category-content">
-                        <h3 class="category-title">香氛系列</h3>
-                        <p class="category-desc">顶级香料，持久留香</p>
-                        <span class="category-link">探索更多 →</span>
+                        <h3 class="category-title" data-i18n="categories.fragrance">Fragrance Collection</h3>
+                        <p class="category-desc" data-i18n="categories.fragranceDesc">Premium ingredients, lasting impressions</p>
+                        <span class="category-link" data-i18n="categories.explore">Explore More →</span>
                     </div>
                 </a>
             </div>
@@ -107,65 +123,14 @@
     <section class="products section" id="clothing">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Featured</span>
-                <h2 class="section-title">精选服装</h2>
+                <span class="section-subtitle" data-i18n="products.subtitle">Featured</span>
+                <h2 class="section-title" data-i18n="products.clothingTitle">Featured Clothing</h2>
             </div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80" alt="Silk Blouse">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">上装</span>
-                        <h3 class="product-name">丝绸衬衫</h3>
-                        <span class="product-price">¥2,880</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&q=80" alt="Wool Coat">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">外套</span>
-                        <h3 class="product-name">羊毛大衣</h3>
-                        <span class="product-price">¥8,880</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1584370848010-d7cc6314c3e4?w=500&q=80" alt="Evening Dress">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">连衣裙</span>
-                        <h3 class="product-name">晚礼服</h3>
-                        <span class="product-price">¥12,800</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&q=80" alt="Cashmere Sweater">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">针织衫</span>
-                        <h3 class="product-name">羊绒毛衣</h3>
-                        <span class="product-price">¥4,580</span>
-                    </div>
-                </div>
+            <div class="products-grid" id="clothingGrid">
+                <!-- Products loaded dynamically -->
             </div>
             <div class="products-cta">
-                <a href="#" class="btn btn-outline">查看全部服装</a>
+                <a href="#" class="btn btn-outline" data-i18n="products.viewAllClothing">View All Clothing</a>
             </div>
         </div>
     </section>
@@ -175,64 +140,13 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Essence</span>
-                <h2 class="section-title">甄选香水</h2>
+                <h2 class="section-title" data-i18n="products.fragranceTitle">Signature Fragrances</h2>
             </div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=80" alt="Rose Essence">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">花香调</span>
-                        <h3 class="product-name">玫瑰精粹</h3>
-                        <span class="product-price">¥1,680</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80" alt="Oud Perfume">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">木质调</span>
-                        <h3 class="product-name">沉香乌木</h3>
-                        <span class="product-price">¥2,980</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80" alt="Citrus Cologne">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">柑橘调</span>
-                        <h3 class="product-name">清新柑橘</h3>
-                        <span class="product-price">¥1,280</span>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&q=80" alt="Vanilla Dream">
-                        <div class="product-overlay">
-                            <button class="quick-view-btn">快速查看</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">东方调</span>
-                        <h3 class="product-name">香草梦境</h3>
-                        <span class="product-price">¥2,180</span>
-                    </div>
-                </div>
+            <div class="products-grid" id="fragranceGrid">
+                <!-- Products loaded dynamically -->
             </div>
             <div class="products-cta">
-                <a href="#" class="btn btn-outline">查看全部香水</a>
+                <a href="#" class="btn btn-outline" data-i18n="products.viewAllFragrance">View All Fragrances</a>
             </div>
         </div>
     </section>
@@ -242,30 +156,26 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&q=80" alt="品牌故事">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&q=80" alt="Our Story">
                     <div class="about-image-accent"></div>
                 </div>
                 <div class="about-content">
-                    <span class="section-subtitle">Our Story</span>
-                    <h2 class="section-title">关于 TapingTrading</h2>
-                    <p class="about-text">
-                        TapingTrading 致力于为您甄选全球最优质的高端时装与香氛产品。我们相信，真正的奢华不仅在于产品本身，更在于它所带来的独特体验与情感共鸣。
-                    </p>
-                    <p class="about-text">
-                        每一件产品都经过精心挑选，确保品质卓越、设计独特。无论是优雅的丝绸衬衫还是精致的法式香氛，我们都希望为您带来与众不同的品味之选。
-                    </p>
+                    <span class="section-subtitle" data-i18n="about.subtitle">Our Story</span>
+                    <h2 class="section-title" data-i18n="about.title">About TapingTrading</h2>
+                    <p class="about-text" data-i18n="about.text1">TapingTrading is dedicated to curating the finest high-end fashion and premium fragrance products from around the world. We believe that true luxury lies not only in the products themselves but in the unique experiences and emotional connections they create.</p>
+                    <p class="about-text" data-i18n="about.text2">Every product is carefully selected to ensure exceptional quality and distinctive design. Whether it's an elegant silk blouse or a refined French fragrance, we strive to offer you a unique selection that sets you apart.</p>
                     <div class="about-features">
                         <div class="about-feature">
                             <span class="feature-number">10+</span>
-                            <span class="feature-label">年全球采购经验</span>
+                            <span class="feature-label" data-i18n="about.years">Years of Global Sourcing</span>
                         </div>
                         <div class="about-feature">
                             <span class="feature-number">500+</span>
-                            <span class="feature-label">精选品牌合作</span>
+                            <span class="feature-label" data-i18n="about.brands">Curated Brand Partnerships</span>
                         </div>
                         <div class="about-feature">
                             <span class="feature-number">50k+</span>
-                            <span class="feature-label">忠实客户信赖</span>
+                            <span class="feature-label" data-i18n="about.customers">Loyal Customers</span>
                         </div>
                     </div>
                 </div>
@@ -277,11 +187,11 @@
     <section class="newsletter section">
         <div class="container">
             <div class="newsletter-content">
-                <h2 class="newsletter-title">订阅我们的资讯</h2>
-                <p class="newsletter-desc">获取最新产品信息、专属优惠和时尚资讯</p>
+                <h2 class="newsletter-title" data-i18n="newsletter.title">Subscribe to Our Newsletter</h2>
+                <p class="newsletter-desc" data-i18n="newsletter.desc">Get the latest product updates, exclusive offers, and fashion insights</p>
                 <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="输入您的邮箱地址">
-                    <button type="submit" class="btn btn-primary">订阅</button>
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" data-i18n-placeholder="newsletter.placeholder">
+                    <button type="submit" class="btn btn-primary" data-i18n="newsletter.button">Subscribe</button>
                 </form>
             </div>
         </div>
@@ -296,7 +206,7 @@
                         <span class="logo-text">TAPING</span>
                         <span class="logo-accent">TRADING</span>
                     </a>
-                    <p class="footer-desc">甄选全球高端时装与香氛，为您打造独特品味。</p>
+                    <p class="footer-desc" data-i18n="footer.desc">Curating luxury fashion and fragrances from around the world.</p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Instagram">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -318,32 +228,33 @@
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">快速链接</h4>
+                    <h4 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="#clothing">服装系列</a></li>
-                        <li><a href="#fragrance">香氛系列</a></li>
-                        <li><a href="#about">关于我们</a></li>
-                        <li><a href="#">最新资讯</a></li>
+                        <li><a href="#clothing" data-i18n="nav.clothing">Fashion Collection</a></li>
+                        <li><a href="#fragrance" data-i18n="nav.fragrance">Fragrance Collection</a></li>
+                        <li><a href="#about" data-i18n="nav.about">About Us</a></li>
+                        <li><a href="#">Latest News</a></li>
+                        <li><a href="admin.html" target="_blank">Admin Panel</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">客户服务</h4>
+                    <h4 class="footer-title" data-i18n="footer.service">Customer Service</h4>
                     <ul class="footer-links">
-                        <li><a href="#">配送说明</a></li>
-                        <li><a href="#">退换政策</a></li>
-                        <li><a href="#">隐私条款</a></li>
-                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#" data-i18n="footer.shipping">Shipping Info</a></li>
+                        <li><a href="#" data-i18n="footer.returns">Returns & Exchanges</a></li>
+                        <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="#" data-i18n="footer.contactUs">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 class="footer-title">联系我们</h4>
+                    <h4 class="footer-title" data-i18n="footer.contact">Contact Us</h4>
                     <ul class="footer-contact">
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            <span>全球采购，品质保证</span>
+                            <span data-i18n="footer.globalSourcing">Global sourcing, quality assured</span>
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -356,7 +267,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 TapingTrading. All rights reserved.</p>
+                <p>&copy; 2026 TapingTrading. <span data-i18n="footer.copyright">All rights reserved.</span></p>
             </div>
         </div>
     </footer>
@@ -372,7 +283,7 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-            <input type="text" class="search-input" placeholder="搜索产品..." id="searchInput">
+            <input type="text" class="search-input" placeholder="Search products..." data-i18n-placeholder="search.placeholder" id="searchInput">
             <div class="search-results" id="searchResults"></div>
         </div>
     </div>
@@ -380,7 +291,7 @@
     <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
-            <h3>购物车</h3>
+            <h3 data-i18n="cart.title">Shopping Cart</h3>
             <button class="cart-close" id="cartClose">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -389,14 +300,14 @@
             </button>
         </div>
         <div class="cart-items" id="cartItems">
-            <p class="cart-empty">购物车是空的</p>
+            <p class="cart-empty" data-i18n="cart.empty">Your cart is empty</p>
         </div>
         <div class="cart-footer">
             <div class="cart-total">
-                <span>总计:</span>
-                <span id="cartTotal">¥0</span>
+                <span data-i18n="cart.total">Total:</span>
+                <span id="cartTotal">$0</span>
             </div>
-            <button class="btn btn-primary checkout-btn">立即结算</button>
+            <button class="btn btn-primary checkout-btn" data-i18n="cart.checkout">Checkout</button>
         </div>
     </div>
     
@@ -417,5 +328,136 @@
     
     <!-- Cart Overlay -->
     <div class="cart-overlay" id="cartOverlay"></div>
+    
+    <!-- Login Modal -->
+    <div class="product-modal" id="loginModal" style="display:none">
+        <div class="modal-content" style="max-width:400px">
+            <button class="modal-close" onclick="closeLoginModal()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-body" style="padding:40px">
+                <h2 style="text-align:center;margin-bottom:30px;font-family:'Playfair Display',serif">TAPING<span style="color:#C9A962">TRADING</span></h2>
+                <div id="loginForm" style="display:none">
+                    <div class="form-group">
+                        <label style="display:block;margin-bottom:8px;color:#666">邮箱</label>
+                        <input type="email" id="loginEmail" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:5px">
+                    </div>
+                    <div class="form-group">
+                        <label style="display:block;margin-bottom:8px;color:#666">密码</label>
+                        <input type="password" id="loginPassword" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:5px">
+                    </div>
+                    <button onclick="doLogin()" style="width:100%;padding:14px;background:#1A1A1A;color:white;border:none;border-radius:5px;cursor:pointer">登录</button>
+                </div>
+                <div id="registerForm">
+                    <div class="form-group">
+                        <label style="display:block;margin-bottom:8px;color:#666">名字</label>
+                        <input type="text" id="regName" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:5px">
+                    </div>
+                    <div class="form-group">
+                        <label style="display:block;margin-bottom:8px;color:#666">邮箱</label>
+                        <input type="email" id="regEmail" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:5px">
+                    </div>
+                    <div class="form-group">
+                        <label style="display:block;margin-bottom:8px;color:#666">密码</label>
+                        <input type="password" id="regPassword" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:5px">
+                    </div>
+                    <button onclick="doRegister()" style="width:100%;padding:14px;background:#27ae60;color:white;border:none;border-radius:5px;cursor:pointer">注册</button>
+                </div>
+                <p style="text-align:center;margin-top:20px">
+                    <a href="#" onclick="toggleLoginRegister()" id="toggleLoginText" style="color:#C9A962;text-decoration:none">没有账号？点击注册</a>
+                </p>
+                <p id="loginError" style="color:red;text-align:center;margin-top:15px;font-size:14px"></p>
+            </div>
+        </div>
+    </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
+      authDomain: "tapingtrading.firebaseapp.com",
+      projectId: "tapingtrading",
+      storageBucket: "tapingtrading.firebasestorage.app",
+      messagingSenderId: "248437210641",
+      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+
+    onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+      if (user) {
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('userBtn').style.display = 'block';
+        document.getElementById('userEmail').style.display = 'inline';
+        document.getElementById('userEmail').textContent = user.email;
+      } else {
+        document.getElementById('loginBtn').style.display = 'block';
+        document.getElementById('userBtn').style.display = 'none';
+        document.getElementById('userEmail').style.display = 'none';
+      }
+    });
+
+    window.showLoginModal = function() {
+      document.getElementById('loginModal').style.display = 'flex';
+    };
+
+    window.closeLoginModal = function() {
+      document.getElementById('loginModal').style.display = 'none';
+    };
+
+    window.toggleLoginRegister = function() {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const toggleText = document.getElementById('toggleLoginText');
+      
+      if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+        toggleText.textContent = '没有账号？点击注册';
+      } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        toggleText.textContent = '已有账号？点击登录';
+      }
+    };
+
+    window.doLogin = async function() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        closeLoginModal();
+      } catch (e) {
+        document.getElementById('loginError').textContent = e.message;
+      }
+    };
+
+    window.doRegister = async function() {
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        closeLoginModal();
+      } catch (e) {
+        document.getElementById('loginError').textContent = e.message;
+      }
+    };
+
+    window.showUserMenu = function() {
+      window.location.href = 'admin-login.html';
+    };
+  </script>
 </body>
 </html>

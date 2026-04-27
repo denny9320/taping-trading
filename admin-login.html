@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>订单管理 - TapingTrading</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; background: #FAFAFA; }
+    
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    .login-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .login-box { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 350px; }
+    .login-logo { text-align: center; margin-bottom: 30px; font-family: 'Playfair Display', serif; }
+    .login-logo span:first-child { font-size: 24px; font-weight: 700; color: #1A1A1A; }
+    .login-logo span:last-child { font-size: 24px; color: #C9A962; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; }
+    .form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; }
+    .btn { width: 100%; padding: 14px; background: #1A1A1A; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    .btn:hover { background: #333; }
+    .btn-green { background: #27ae60; }
+    .btn-green:hover { background: #219a52; }
+    .error { color: red; font-size: 14px; margin-top: 10px; text-align: center; }
+    .header { background: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .header-logo { font-family: 'Playfair Display', serif; font-size: 20px; }
+    .header-logo span:first-child { font-weight: 700; }
+    .header-logo span:last-child { color: #C9A962; }
+    .header-user { display: flex; align-items: center; gap: 15px; }
+    .logout-btn { background: none; border: 1px solid #ddd; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+    .admin-badge { background: #C9A962; color: white; padding: 3px 8px; border-radius: 3px; font-size: 11px; margin-left: 8px; }
+    .tabs { display: flex; border-bottom: 2px solid #ddd; margin-bottom: 20px; }
+    .tab { padding: 15px 25px; cursor: pointer; color: #666; }
+    .tab.active { color: #C9A962; border-bottom: 2px solid #C9A962; margin-bottom: -2px; }
+    .order-card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .order-id { font-weight: 600; color: #1A1A1A; }
+    .order-status { padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+    .status-pending { background: #fff3cd; color: #856404; }
+    .status-completed { background: #d4edda; color: #155724; }
+    .info-row { display: flex; padding: 10px 0; border-bottom: 1px solid #eee; }
+    .info-label { color: #999; width: 80px; }
+    .info-value { color: #1A1A1A; flex: 1; }
+    .order-total { font-weight: 600; font-size: 18px; margin-top: 15px; padding-top: 15px; border-top: 2px solid #1A1A1A; display: flex; justify-content: space-between; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <!-- 登录页面 -->
+  <div id="loginPage" class="login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <span>TAPING</span><span>TRADING</span>
+      </div>
+      <p style="text-align:center;margin-bottom:20px;color:#666">管理员后台</p>
+      <div class="form-group">
+        <label>邮箱</label>
+        <input type="email" id="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>密码</label>
+        <input type="password" id="password" placeholder="密码">
+      </div>
+      <button class="btn" onclick="login()">登录</button>
+      <button class="btn btn-green" onclick="register()" style="margin-top:10px">注册新账号</button>
+      <p id="loginMsg" class="error"></p>
+      <p style="margin-top:20px;font-size:12px;color:#999;text-align:center">
+        管理员账号: admin@tapingtrading.com
+      </p>
+    </div>
+  </div>
+
+  <!-- 管理后台 -->
+  <div id="adminPage" class="hidden">
+    <div class="header">
+      <div class="header-logo">
+        <span>TAPING</span><span>TRADING</span> 订单管理
+        <span id="adminBadge" class="admin-badge hidden">管理员</span>
+      </div>
+      <div class="header-user">
+        <span id="userEmail"></span>
+        <button class="logout-btn" onclick="logout()">退出</button>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="tabs">
+        <div class="tab active" onclick="showTab('orders')" id="tabOrders">所有订单</div>
+        <div class="tab" onclick="showTab('myorders')" id="tabMyOrders">我的订单</div>
+      </div>
+      
+      <div id="ordersList"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy, where } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
+      authDomain: "tapingtrading.firebaseapp.com",
+      projectId: "tapingtrading",
+      storageBucket: "tapingtrading.firebasestorage.app",
+      messagingSenderId: "248437210641",
+      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+
+    // 检查登录状态
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        currentUser = user;
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('adminPage').classList.remove('hidden');
+        document.getElementById('userEmail').textContent = user.email;
+        
+        // 检查是否是管理员
+        if (user.email === 'admin@tapingtrading.com') {
+          document.getElementById('adminBadge').classList.remove('hidden');
+        }
+        
+        loadOrders(window.currentTab || 'orders');
+      } else {
+        document.getElementById('loginPage').classList.remove('hidden');
+        document.getElementById('adminPage').classList.add('hidden');
+      }
+    });
+
+    window.login = async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        document.getElementById('loginMsg').textContent = '';
+        await signInWithEmailAndPassword(auth, email, password);
+      } catch (e) {
+        document.getElementById('loginMsg').textContent = e.message;
+      }
+    };
+
+    window.register = async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      if (password.length < 6) {
+        document.getElementById('loginMsg').textContent = '密码至少6位';
+        return;
+      }
+      try {
+        document.getElementById('loginMsg').textContent = '';
+        await createUserWithEmailAndPassword(auth, email, password);
+      } catch (e) {
+        document.getElementById('loginMsg').textContent = e.message;
+      }
+    };
+
+    window.logout = async () => {
+      await signOut(auth);
+    };
+
+    window.currentTab = 'orders';
+    window.showTab = function(tab) {
+      window.currentTab = tab;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(tab === 'orders' ? 'tabOrders' : 'tabMyOrders').classList.add('active');
+      loadOrders(tab);
+    };
+
+    window.loadOrders = async function(viewType) {
+      let q;
+      if (viewType === 'myorders' && currentUser) {
+        q = query(collection(db, "orders"), where("userId", "==", currentUser.uid), orderBy("createdAt", "desc"));
+      } else {
+        q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+      }
+      
+      const snapshot = await getDocs(q);
+      const list = document.getElementById('ordersList');
+      list.innerHTML = '';
+      
+      if (snapshot.empty) {
+        list.innerHTML = '<p style="text-align:center;color:#999;padding:40px">暂无订单</p>';
+        return;
+      }
+      
+      snapshot.forEach(doc => {
+        const order = doc.data();
+        const date = order.createdAt ? new Date(order.createdAt).toLocaleString() : '-';
+        const statusText = order.status === 'completed' ? '已完成' : '待处理';
+        
+        list.innerHTML += `
+          <div class="order-card">
+            <div class="order-header">
+              <span class="order-id">订单 #${doc.id.substring(0,8)}</span>
+              <span class="order-status status-${order.status || 'pending'}">${statusText}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">客户:</span>
+              <span class="info-value">${order.customerName || '-'}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">电话:</span>
+              <span class="info-value">${order.phone || '-'}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">地址:</span>
+              <span class="info-value">${order.address || '-'}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">产品:</span>
+              <span class="info-value">${order.productName || '-'}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">日期:</span>
+              <span class="info-value">${date}</span>
+            </div>
+            <div class="order-total">
+              <span>总计</span>
+              <span>$${order.price || 0}</span>
+            </div>
+          </div>
+        `;
+      });
+    };
+  </script>
+</body>
+</html>

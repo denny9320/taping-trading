@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>简单测试</title>
+</head>
+<body>
+  <h1>🧪 点击按钮测试添加订单</h1>
+  <button style="padding:20px;font-size:18px" id="btn">点击添加订单</button>
+  <p id="result" style="margin-top:20px;font-size:16px"></p>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
+      authDomain: "tapingtrading.firebaseapp.com",
+      projectId: "tapingtrading",
+      storageBucket: "tapingtrading.firebasestorage.app",
+      messagingSenderId: "248437210641",
+      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    document.getElementById('btn').onclick = async () => {
+      document.getElementById('result').textContent = "正在添加...";
+      try {
+        const docRef = await addDoc(collection(db, "orders"), {
+          product: "测试产品",
+          price: 99,
+          createdAt: new Date().toISOString()
+        });
+        document.getElementById('result').textContent = "✅ 成功! 订单ID: " + docRef.id;
+        document.getElementById('result').style.color = "green";
+      } catch (e) {
+        document.getElementById('result').textContent = "❌ 错误: " + e.message;
+        document.getElementById('result').style.color = "red";
+      }
+    };
+  </script>
+</body>
+</html>

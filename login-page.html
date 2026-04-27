@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录 - TapingTrading</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Lato', sans-serif; background: #FAFAFA; margin: 0; padding: 0; }
+    .container { max-width: 400px; margin: 100px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    h1 { text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 30px; }
+    h1 span { color: #C9A962; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; }
+    .form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+    .btn { width: 100%; padding: 14px; background: #1A1A1A; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    .btn:hover { background: #333; }
+    .btn-green { background: #27ae60; margin-top: 10px; }
+    .btn-green:hover { background: #219a52; }
+    .error { color: red; font-size: 14px; margin-top: 10px; text-align: center; }
+    .links { text-align: center; margin-top: 20px; }
+    .links a { color: #C9A962; text-decoration: none; }
+    .nav { display: flex; justify-content: space-between; padding: 20px; background: white; border-bottom: 1px solid #eee; }
+    .nav a { color: #1A1A1A; text-decoration: none; margin: 0 15px; }
+    .nav a:hover { color: #C9A962; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← 返回首页</a>
+    <a href="admin-login.html">订单管理</a>
+  </nav>
+  
+  <div class="container">
+    <h1>TAPING<span>TRADING</span></h1>
+    
+    <div id="loginForm">
+      <div class="form-group">
+        <label>邮箱</label>
+        <input type="email" id="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>密码</label>
+        <input type="password" id="password" placeholder="密码">
+      </div>
+      <button class="btn" onclick="login()">登录</button>
+    </div>
+    
+    <div id="registerForm" style="display:none">
+      <div class="form-group">
+        <label>名字</label>
+        <input type="text" id="name" placeholder="您的名字">
+      </div>
+      <div class="form-group">
+        <label>邮箱</label>
+        <input type="email" id="regEmail" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>密码</label>
+        <input type="password" id="regPassword" placeholder="密码(至少6位)">
+      </div>
+      <button class="btn btn-green" onclick="register()">注册</button>
+    </div>
+    
+    <p class="error" id="error"></p>
+    
+    <p class="links">
+      <a href="#" onclick="toggle()" id="toggleText">没有账号？点击注册</a>
+    </p>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
+      authDomain: "tapingtrading.firebaseapp.com",
+      projectId: "tapingtrading",
+      storageBucket: "tapingtrading.firebasestorage.app",
+      messagingSenderId: "248437210641",
+      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.login = async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        window.location.href = 'admin-login.html';
+      } catch (e) {
+        document.getElementById('error').textContent = e.message;
+      }
+    };
+
+    window.register = async () => {
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+      if (password.length < 6) {
+        document.getElementById('error').textContent = '密码至少6位';
+        return;
+      }
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        window.location.href = 'admin-login.html';
+      } catch (e) {
+        document.getElementById('error').textContent = e.message;
+      }
+    };
+
+    window.toggle = () => {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const toggleText = document.getElementById('toggleText');
+      
+      if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+        toggleText.textContent = '没有账号？点击注册';
+      } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        toggleText.textContent = '已有账号？点击登录';
+      }
+    };
+  </script>
+</body>
+</html>

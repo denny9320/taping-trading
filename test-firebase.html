@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试登录 - TapingTrading</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 500px; margin: 0 auto; }
+    .test { background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 10px 0; }
+    .success { background: #d4edda; color: #155724; }
+    .error { background: #f8d7da; color: #721c24; }
+    button { padding: 10px 20px; cursor: pointer; margin: 5px; }
+    pre { background: #eee; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Firebase 登录测试</h1>
+  
+  <div class="test">
+    <h3>测试1: 注册用户</h3>
+    <button onclick="testRegister()">注册 test@test.com</button>
+    <pre id="result1">等待测试...</pre>
+  </div>
+  
+  <div class="test">
+    <h3>测试2: 登录</h3>
+    <button onclick="testLogin()">登录</button>
+    <pre id="result2">等待测试...</pre>
+  </div>
+  
+  <div class="test">
+    <h3>测试3: 添加订单</h3>
+    <button onclick="testOrder()">添加测试订单</button>
+    <pre id="result3">等待测试...</pre>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
+      authDomain: "tapingtrading.firebaseapp.com",
+      projectId: "tapingtrading",
+      storageBucket: "tapingtrading.firebasestorage.app",
+      messagingSenderId: "248437210641",
+      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    window.testRegister = async () => {
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, "test@test.com", "test123456");
+        document.getElementById('result1').textContent = "✅ 注册成功! UID: " + userCred.user.uid;
+        document.getElementById('result1').className = "success";
+      } catch (e) {
+        document.getElementById('result1').textContent = "❌ " + e.message;
+        document.getElementById('result1').className = "error";
+      }
+    };
+
+    window.testLogin = async () => {
+      try {
+        const userCred = await signInWithEmailAndPassword(auth, "test@test.com", "test123456");
+        document.getElementById('result2').textContent = "✅ 登录成功! Email: " + userCred.user.email;
+        document.getElementById('result2').className = "success";
+      } catch (e) {
+        document.getElementById('result2').textContent = "❌ " + e.message;
+        document.getElementById('result2').className = "error";
+      }
+    };
+
+    window.testOrder = async () => {
+      try {
+        const docRef = await addDoc(collection(db, "orders"), {
+          product: "测试产品",
+          price: 99,
+          userEmail: "test@test.com",
+          status: "pending",
+          createdAt: new Date().toISOString()
+        });
+        document.getElementById('result3').textContent = "✅ 订单已添加! ID: " + docRef.id;
+        document.getElementById('result3').className = "success";
+      } catch (e) {
+        document.getElementById('result3').textContent = "❌ " + e.message;
+        document.getElementById('result3').className = "error";
+      }
+    };
+  </script>
+</body>
+</html>
