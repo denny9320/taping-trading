@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人中心 - TapingTrading</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; background: #FAFAFA; }
+    
+    .header { background: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+    .header a { color: #1A1A1A; text-decoration: none; margin-right: 20px; }
+    .header a:hover { color: #C9A962; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 20px; }
+    .logo span:last-child { color: #C9A962; }
+    
+    .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+    
+    .tabs { display: flex; background: white; border-radius: 10px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .tab { flex: 1; padding: 15px; text-align: center; cursor: pointer; border: none; background: white; font-size: 15px; }
+    .tab.active { background: #C9A962; color: white; }
+    
+    .panel { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: none; }
+    .panel.active { display: block; }
+    
+    .panel h2 { margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+    
+    .info-group { margin-bottom: 20px; }
+    .info-group label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; }
+    .info-group input, .info-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; }
+    
+    .btn { padding: 12px 25px; background: #1A1A1A; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .btn:hover { background: #333; }
+    .btn-green { background: #27ae60; }
+    
+    .order-card { border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 15px; }
+    .order-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .order-id { font-weight: 600; }
+    .order-status { padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+    .status-pending { background: #fff3cd; color: #856404; }
+    .status-completed { background: #d4edda; color: #155724; }
+    .order-item { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #eee; }
+    .order-total { font-weight: 600; font-size: 18px; margin-top: 15px; padding-top: 15px; border-top: 2px solid #1A1A1A; }
+    
+    .address-card { border: 2px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 15px; cursor: pointer; }
+    .address-card.selected { border-color: #C9A962; background: #f9f9f0; }
+    .address-card input { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="index.html" class="logo">TAPING<span>TRADING</span></a>
+    <div>
+      <a href="index.html">返回首页</a>
+      <a href="#" onclick="logout()">退出登录</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('profile')">👤 个人资料</button>
+      <button class="tab" onclick="showTab('address')">📍 收货地址</button>
+      <button class="tab" onclick="showTab('orders')">📦 我的订单</button>
+    </div>
+
+    <!-- 个人资料 -->
+    <div class="panel active" id="panel-profile">
+      <h2>个人资料</h2>
+      <div class="info-group">
+        <label>姓名</label>
+        <input type="text" id="profileName" placeholder="请输入姓名">
+      </div>
+      <div class="info-group">
+        <label>邮箱</label>
+        <input type="email" id="profileEmail" disabled>
+      </div>
+      <div class="info-group">
+        <label>电话</label>
+        <input type="tel" id="profilePhone" placeholder="请输入电话号码">
+      </div>
+      <button class="btn" onclick="saveProfile()">保存资料</button>
+    </div>
+
+    <!-- 收货地址 -->
+    <div class="panel" id="panel-address">
+      <h2>收货地址</h2>
+      <div id="addressList"></div>
+      
+      <h3 style="margin: 25px 0 15px">添加新地址</h3>
+      <div class="info-group">
+        <label>收货人</label>
+        <input type="text" id="newAddressName" placeholder="请输入收货人姓名">
+      </div>
+      <div class="info-group">
+        <label>详细地址</label>
+        <textarea id="newAddressDetail" rows="3" placeholder="请输入详细地址"></textarea>
+      </div>
+      <div class="info-group">
+        <label>电话</label>
+        <input type="tel" id="newAddressPhone" placeholder="请输入联系电话">
+      </div>
+      <button class="btn" onclick="addAddress()">添加地址</button>
+    </div>
+
+    <!-- 订单 -->
+    <div class="panel" id="panel-orders">
+      <h2>我的订单</h2>
+      <div id="ordersList"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
+      authDomain: "tapingtrading.firebaseapp.com",
+      projectId: "tapingtrading",
+      storageBucket: "tapingtrading.firebasestorage.app",
+      messagingSenderId: "248437210641",
+      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+    let userProfile = null;
+    let userAddresses = [];
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = 'login-page.html';
+        return;
+      }
+      currentUser = user;
+      document.getElementById('profileEmail').value = user.email;
+      await loadProfile();
+      await loadAddresses();
+      await loadOrders();
+    });
+
+    window.showTab = function(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('panel-' + tab).classList.add('active');
+    };
+
+    async function loadProfile() {
+      const q = query(collection(db, "users"), where("uid", "==", currentUser.uid));
+      const snapshot = await getDocs(q);
+      if (!snapshot.empty) {
+        userProfile = snapshot.docs[0].data();
+        document.getElementById('profileName').value = userProfile.name || '';
+        document.getElementById('profilePhone').value = userProfile.phone || '';
+      }
+    }
+
+    window.saveProfile = async function() {
+      const name = document.getElementById('profileName').value;
+      const phone = document.getElementById('profilePhone').value;
+      
+      const q = query(collection(db, "users"), where("uid", "==", currentUser.uid));
+      const snapshot = await getDocs(q);
+      
+      if (snapshot.empty) {
+        await addDoc(collection(db, "users"), {
+          uid: currentUser.uid,
+          email: currentUser.email,
+          name: name,
+          phone: phone,
+          createdAt: new Date()
+        });
+      } else {
+        const userDoc = snapshot.docs[0].ref;
+        await updateDoc(userDoc, { name, phone });
+      }
+      alert('资料已保存！');
+    };
+
+    async function loadAddresses() {
+      const q = query(collection(db, "addresses"), where("userId", "==", currentUser.uid));
+      const snapshot = await getDocs(q);
+      userAddresses = [];
+      snapshot.forEach(doc => {
+        userAddresses.push({ id: doc.id, ...doc.data() });
+      });
+      renderAddresses();
+    }
+
+    function renderAddresses() {
+      const list = document.getElementById('addressList');
+      if (userAddresses.length === 0) {
+        list.innerHTML = '<p style="color:#999">暂无收货地址</p>';
+        return;
+      }
+      list.innerHTML = userAddresses.map((addr, i) => `
+        <div class="address-card ${addr.default ? 'selected' : ''}" onclick="selectAddress('${addr.id}')">
+          <input type="radio" name="address" ${addr.default ? 'checked' : ''}>
+          <strong>${addr.name}</strong> ${addr.default ? '<span style="color:#C9A962">[默认]</span>' : ''}
+          <p style="margin-top:8px;color:#666">${addr.detail}</p>
+          <p style="color:#999;font-size:13px">${addr.phone}</p>
+        </div>
+      `).join('');
+    }
+
+    window.addAddress = async function() {
+      const name = document.getElementById('newAddressName').value;
+      const detail = document.getElementById('newAddressDetail').value;
+      const phone = document.getElementById('newAddressPhone').value;
+      
+      if (!name || !detail || !phone) {
+        alert('请填写完整信息');
+        return;
+      }
+      
+      const isFirst = userAddresses.length === 0;
+      await addDoc(collection(db, "addresses"), {
+        userId: currentUser.uid,
+        name, detail, phone,
+        default: isFirst,
+        createdAt: new Date()
+      });
+      
+      document.getElementById('newAddressName').value = '';
+      document.getElementById('newAddressDetail').value = '';
+      document.getElementById('newAddressPhone').value = '';
+      
+      await loadAddresses();
+      alert('地址已添加！');
+    };
+
+    window.selectAddress = async function(addrId) {
+      // 更新默认地址
+      for (const addr of userAddresses) {
+        const docRef = doc(db, "addresses", addr.id);
+        await updateDoc(docRef, { default: addr.id === addrId });
+      }
+      await loadAddresses();
+    };
+
+    async function loadOrders() {
+      const q = query(collection(db, "orders"), where("userId", "==", currentUser.uid), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
+      
+      const list = document.getElementById('ordersList');
+      if (snapshot.empty) {
+        list.innerHTML = '<p style="color:#999;text-align:center;padding:40px">暂无订单</p>';
+        return;
+      }
+      
+      list.innerHTML = snapshot.docs.map(doc => {
+        const order = doc.data();
+        const date = order.createdAt ? new Date(order.createdAt).toLocaleString() : '-';
+        return `
+          <div class="order-card">
+            <div class="order-header">
+              <span class="order-id">订单 #${doc.id.substring(0,8)}</span>
+              <span class="order-status status-${order.status || 'pending'}">${order.status === 'completed' ? '已完成' : '待处理'}</span>
+            </div>
+            <p style="color:#666;margin-bottom:10px">📅 ${date}</p>
+            <div class="order-item">
+              <span>${order.productName || '产品'}</span>
+              <span>¥${order.price || 0}</span>
+            </div>
+            <div class="order-total">
+              <span>总计</span>
+              <span>¥${order.price || 0}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.logout = async function() {
+      await signOut(auth);
+    };
+  </script>
+</body>
+</html>
