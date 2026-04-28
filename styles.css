@@ -1556,43 +1556,66 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background: #fafafa;
     padding: 30px;
     position: relative;
 }
 
-.modal-carousel {
+.modal-main-image-container {
     width: 100%;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 400px;
+    max-height: 60vh;
 }
 
-.modal-carousel-image {
+.modal-main-image {
     max-width: 100%;
     max-height: 60vh;
     object-fit: contain;
-    display: none;
+    cursor: pointer;
 }
 
-.modal-carousel-image.active {
-    display: block;
-}
-
-/* 缩略图 */
-.thumbnail-gallery {
+/* 缩略图条 - 水平可滚动，导航按钮在同一行 */
+.thumbnail-nav-row {
     display: flex;
+    align-items: center;
     gap: 10px;
-    justify-content: center;
     margin-top: 20px;
-    flex-wrap: wrap;
+    width: 100%;
+    max-width: 500px;
 }
 
-.thumbnail {
-    width: 70px;
-    height: 70px;
+.thumbnail-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 5px;
+    flex: 1;
+    justify-content: center;
+}
+
+.thumbnail-strip::-webkit-scrollbar {
+    height: 4px;
+}
+
+.thumbnail-strip::-webkit-scrollbar-track {
+    background: #eee;
+    border-radius: 2px;
+}
+
+.thumbnail-strip::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.modal-thumbnail {
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
     object-fit: cover;
     cursor: pointer;
     border: 2px solid transparent;
@@ -1601,13 +1624,35 @@ button {
     transition: all 0.3s;
 }
 
-.thumbnail:hover {
+.modal-thumbnail:hover {
     opacity: 1;
 }
 
-.thumbnail.active {
+.modal-thumbnail.active {
     border-color: var(--color-accent);
     opacity: 1;
+}
+
+.thumb-nav-btn {
+    background: white;
+    border: 1px solid #ddd;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    color: #333;
+}
+
+.thumb-nav-btn:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
 }
 
 .modal-product-details {

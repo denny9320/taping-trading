@@ -1086,34 +1086,37 @@ function openProductModal(productId, type) {
         }
     }
     
-    console.log('Found product:', product.name, 'type:', type);
+console.log('Found product:', product.name, 'type:', type);
     
     const isClothing = type === 'clothing';
-    const images = product.images || [product.image || ''];
-    const indicators = images.map((img, index) => 
-        `<span class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`
-).join('');
-    const imagesHTML = images.map((img, index) => 
-        `<img src="${img}" alt="${product.name}" class="modal-carousel-image ${index === 0 ? 'active' : ''}" data-index="${index}">`
-    ).join('');
+    const productImages = product.images || [product.image || ''];
     
-    // 缩略图HTML
-    const thumbnailsHTML = images.length > 1 ? images.map((img, index) => 
-        `<img src="${img}" alt="${product.name}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="showImage(${index})">`
+    // 存储当前产品图片数组供切换函数使用
+    window.currentModalProductImages = productImages;
+    
+    const indicators = productImages.map((img, index) => 
+        `<span class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`
+    ).join('');
+    // 缩略图HTML - 大图下方可滚动选择（仅多图时显示）
+    // 使用滚动监听：当缩略图滚动到中间时，主图自动切换
+    const thumbnailsHTML = productImages.length > 1 ? productImages.map((img, index) => 
+        `<img src="${img}" alt="${product.name}" class="modal-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}" onmouseenter="previewThumbnail(this)" onclick="selectThumbnail(this)">`
     ).join('') : '';
     
     modalBody.innerHTML = `
         <div class="modal-product-grid">
             <div class="modal-product-image">
-                <div class="modal-carousel">
-                    ${imagesHTML}
+                <div class="modal-main-image-container">
+                    <img src="${productImages[0]}" alt="${product.name}" class="modal-main-image" id="modalMainImage">
                 </div>
-                ${images.length > 1 ? `
-                <div class="thumbnail-gallery">
-                    ${thumbnailsHTML}
+                ${productImages.length > 1 ? `
+                <div class="thumbnail-nav-row">
+                    <button class="thumb-nav-btn" onclick="changeThumbnailImage(-1)">‹</button>
+                    <div class="thumbnail-strip" id="thumbnailStrip">
+                        ${thumbnailsHTML}
+                    </div>
+                    <button class="thumb-nav-btn" onclick="changeThumbnailImage(1)">›</button>
                 </div>
-                <div class="carousel-nav prev" onclick="modalPrevImage(this)">‹</div>
-                <div class="carousel-nav next" onclick="modalNextImage(this)">›</div>
                 ` : ''}
             </div>
             <div class="modal-product-details">
@@ -1270,6 +1273,54 @@ window.showImage = function(index) {
     
     const thumbnails = modalImage.querySelectorAll('.thumbnail');
     thumbnails.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
+}
+
+// 切换主图 - 悬停预览时调用（或点击后保持选中）
+window.previewThumbnail = function(thumbEl) {
+    const mainImage = document.getElementById('modalMainImage');
+    if (mainImage && window.currentModalProductImages) {
+        const index = parseInt(thumbEl.dataset.index);
+        mainImage.src = window.currentModalProductImages[index];
+    }
+}
+
+// 选中缩略图 - 点击时调用
+window.selectThumbnail = function(thumbEl) {
+    // 先预览
+    window.previewThumbnail(thumbEl);
+    
+    // 更新选中状态
+    const thumbnails = document.querySelectorAll('.modal-thumbnail');
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    thumbEl.classList.add('active');
+}
+
+// 左右箭头切换缩略图和大图
+window.currentThumbnailIndex = 0;
+
+window.changeThumbnailImage = function(direction) {
+    if (!window.currentModalProductImages) return;
+    
+    const total = window.currentModalProductImages.length;
+    window.currentThumbnailIndex = (window.currentThumbnailIndex + direction + total) % total;
+    
+    // 更新大图
+    const mainImage = document.getElementById('modalMainImage');
+    if (mainImage) {
+        mainImage.src = window.currentModalProductImages[window.currentThumbnailIndex];
+    }
+    
+    // 更新缩略图选中状态
+    const thumbnails = document.querySelectorAll('.modal-thumbnail');
+    thumbnails.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === window.currentThumbnailIndex);
+    });
+    
+    // 滚动缩略图到可见区域
+    const activeThumb = thumbnails[window.currentThumbnailIndex];
+    if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
 }
 
 /* ========================================
