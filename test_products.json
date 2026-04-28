@@ -1,0 +1,204 @@
+{
+  "clothing": [
+    {
+      "id": "c00001",
+      "name": "Dior Privee Montaigne Houndstooth Limited Edition 100ml",
+      "nameEn": "Dior Privee Montaigne Houndstooth Limited Edition 100ml",
+      "category": "Clothing",
+      "price": 25.99,
+      "images": [
+        "https://img.jzfileserver.com/products/1384defb88704277af8a14dee81c972e.jpg;https://img.jzfileserver.com/products/669ebecdf81b4f46b5d24a919232495d.jpg;https://img.jzfileserver.com/products/f62983d22d1d405dab886a911848308a.jpg"
+      ],
+      "description": "Inspired by Dior Privee Montaigne Houndstooth Limited Edition. Features exquisite scents including Montaigne, Lucky Lavender, and Jasmine. Comes with beautiful houndstooth packaging. Perfect collector item for fragrance enthusiasts. Multiple variants available in one set.",
+      "featured": true
+    },
+    {
+      "id": "c00004",
+      "name": "budanshiyong",
+      "nameEn": "budanshiyong",
+      "category": "Clothing",
+      "price": 0.1,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/b4ea27ea375c4dcd8e8f9098472feb56.jpg"
+      ],
+      "description": "",
+      "featured": true
+    },
+    {
+      "id": "c00005",
+      "name": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue/Black",
+      "nameEn": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue/Black",
+      "category": "Clothing",
+      "price": 170.0,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/9494efc1d061416f985ae678fd6d398c.jpg;https://img.jzfileserver.com/product/68014/8b06df467bc343838477b5568f090fde.jpg;https://img.jzfileserver.com/product/68014/dbea54fd97ff4875b4c1a0f091184e2a.jpg;https://img.jzfileserver.com/product/68014/87af2cea497d4a38b2b5be1fba239f4b.jpg;https://img.jzfileserver.com/product/68014/cc24cce445784c9a8f16d0449dfb22aa.jpg;https://img.jzfileserver.com/product/68014/abf899b8d68e46a1b0735943fa33485e.jpg;https://img.jzfileserver.com/product/68014/f5a8d014d7cb468786237578adb89091.jpg;https://img.jzfileserver.com/product/68014/d8a665c16b7f4939aae9db847656c824.jpg;https://img.jzfileserver.com/product/68014/20591f6f949d4073ba8f2de249fa3644.jpg"
+      ],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>A standout piece from the Supreme Week 1 collection, this Hooded Work Jacket masterfully merges the utilitarian roots of classic workwear with the high-visibility aesthetics of street culture. Constructed from tough full denim and insulated with quilted padding and a soft flannel plaid lining, it features bold 3M&reg; reflective branding to ensure you stay warm and seen on the autumn and winter streets. The unisex, regular-fit silhouette is a must-have for building a high-impact urban look.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Full Denim Construction:</strong>&nbsp;Built entirely from quality denim, offering durability and a unique washed vintage feel. The fabric provides a structured, iconic silhouette.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Functional Workwear Details:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Ample Storage:</strong>&nbsp;Two large front patch pockets and an internal chest pocket cater to your daily carry essentials.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Weather Defense:</strong>&nbsp;The ribbed knit cuffs and hem help seal out the wind. Quilted construction with cotton insulation and a flannel lining retains heat for cooler days.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Comfortable Lining &amp; Fit:</strong>&nbsp;The soft flannel plaid interior ensures comfort against the skin. The regular workwear cut allows for easy layering and freedom of movement.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Color &amp; Size】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Colors:</strong>&nbsp;Washed Blue / Washed Black</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sizes:</strong> S, M, L, XL</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "Washed Blue"
+      }
+    },
+    {
+      "id": "c00006",
+      "name": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue/Black",
+      "nameEn": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue/Black",
+      "category": "Clothing",
+      "price": 170.0,
+      "images": [],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>A standout piece from the Supreme Week 1 collection, this Hooded Work Jacket masterfully merges the utilitarian roots of classic workwear with the high-visibility aesthetics of street culture. Constructed from tough full denim and insulated with quilted padding and a soft flannel plaid lining, it features bold 3M&reg; reflective branding to ensure you stay warm and seen on the autumn and winter streets. The unisex, regular-fit silhouette is a must-have for building a high-impact urban look.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Full Denim Construction:</strong>&nbsp;Built entirely from quality denim, offering durability and a unique washed vintage feel. The fabric provides a structured, iconic silhouette.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Functional Workwear Details:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Ample Storage:</strong>&nbsp;Two large front patch pockets and an internal chest pocket cater to your daily carry essentials.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Weather Defense:</strong>&nbsp;The ribbed knit cuffs and hem help seal out the wind. Quilted construction with cotton insulation and a flannel lining retains heat for cooler days.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Comfortable Lining &amp; Fit:</strong>&nbsp;The soft flannel plaid interior ensures comfort against the skin. The regular workwear cut allows for easy layering and freedom of movement.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Color &amp; Size】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Colors:</strong>&nbsp;Washed Blue / Washed Black</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sizes:</strong> S, M, L, XL</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "Washed Black"
+      }
+    },
+    {
+      "id": "c00007",
+      "name": "MONCLER Paneled Stand Collar Puffer Jacket | Knitted Cable Sleeves | Luxury Winter Style Redefined",
+      "nameEn": "MONCLER Paneled Stand Collar Puffer Jacket | Knitted Cable Sleeves | Luxury Winter Style Redefined",
+      "category": "Clothing",
+      "price": 95.0,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/d7144efd5cfd472f84f727d15dcac700.jpg;https://img.jzfileserver.com/product/68014/76b4435234be4ef5bea746a482a24803.jpg;https://img.jzfileserver.com/product/68014/5ff1dd7472824b48ac58558bc91e2734.jpg;https://img.jzfileserver.com/product/68014/3cd570d2aa914f029596edbe2555dd28.jpg;https://img.jzfileserver.com/product/68014/4a421100fc1145e087ae970b58d9af93.jpg;https://img.jzfileserver.com/product/68014/6ad2222cf0474393970046beebb82965.jpg;https://img.jzfileserver.com/product/68014/d7245e4c7889494c8051929418a608c5.jpg;https://img.jzfileserver.com/product/68014/18aac03a2bdd4dcba5f41d1fa5915e9c.jpg"
+      ],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>Where MONCLER's luxury DNA meets the innovative fusion of knitting and quilted fabric, this stand collar jacket emerges as the ultimate \"Ace of Texture\" for your fall and winter wardrobe. Transcending the boundaries of a traditional puffer, it strikes a perfect balance between robust warmth and high-fashion through masterful material contrast and meticulous detailing, redefining your winter style with effortless sophistication for any occasion.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Innovative Paneled Design:</strong>&nbsp;The soul of this piece lies in the masterful blend of a quilted main body and intricately knitted cable sleeves. Signature black-and-white stripes and a branded arm patch subtly proclaim its iconic heritage and refined aesthetics.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Dual Luxury Textures:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>The Warmth Zone:</strong>&nbsp;The quilted torso effectively traps body heat, providing confident protection against cold winds and winter chills.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>The Comfort Zone:</strong>&nbsp;The raised cable-knit sleeves offer a supremely soft feel against the skin while providing greater freedom of movement and unique visual texture.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sharp &amp; Structured Silhouette:</strong>&nbsp;The sturdy stand-up collar not only shields against the wind but also frames the neckline for a clean, sharp look. The overall cut prioritizes both insulation and style, effectively avoiding winter bulk.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Boundless Styling Versatility:</strong>&nbsp;Its strong stylistic adaptability allows it to excel in various settings. Layer it over a dress shirt for urban polish, or pair it with a hoodie for instant street-ready flair. One jacket is all you need for all-day style, from daily commutes to casual outings.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Color &amp; Size】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Color:</strong>&nbsp;Black</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sizes:</strong> M, L, XL</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "black"
+      }
+    },
+    {
+      "id": "c00008",
+      "name": "KAILAS Ultralight Primaloft® Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulated Layer",
+      "nameEn": "KAILAS Ultralight Primaloft® Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulated Layer",
+      "category": "Clothing",
+      "price": 88.0,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/5f0a6dbc6c8d4200a65b9985397ddb45.jpg;https://img.jzfileserver.com/product/68014/fbba3a224cb14fdc8ec6bc775a7783ea.jpg;https://img.jzfileserver.com/product/68014/ecfbd9394cd04be384ea6586918722d2.jpg;https://img.jzfileserver.com/product/68014/ef1973c29ed94ba4951b18a5acbc11a5.jpg;https://img.jzfileserver.com/product/68014/e0300fd789ef4f29bdbbb4023260c5d8.jpg;https://img.jzfileserver.com/product/68014/86c23f343a514234b354cb29715376a0.jpg;https://img.jzfileserver.com/product/68014/1f2d711dd2ff415e8d33659d6c4f4da3.jpg;https://img.jzfileserver.com/product/68014/d7f34c972692427383f5332c5cd779b1.jpg;https://img.jzfileserver.com/product/68014/cba1c48d856049f987887a796179530e.jpg"
+      ],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>The KAILAS Ultralight Hooded Jacket is engineered for outdoor enthusiasts who prioritize warmth without the weight. Its classic quilted \"baffle\" construction, filled with high-performance Primaloft&reg; insulation, delivers reliable warmth with exceptional lightweight packability. Perfect as a versatile mid-layer for mountain hikes or a standalone jacket for urban commutes.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Ultralight Primaloft&reg; Insulation:</strong>&nbsp;Filled with renowned Primaloft&reg; synthetic insulation, known for retaining heat even when damp. It provides outstanding warmth for its weight, ensuring comfort in cold climates.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Technical Outdoor Design:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Helmet-Compatible Hood:</strong>&nbsp;The elasticated hood is designed to fit over a climbing helmet, offering protection when the weather turns.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Articulated Gusseted Cuffs:</strong>&nbsp;The ergonomic \"horseshoe\" sleeve design allows for a greater range of motion and prevents ride-up during activity while sealing in warmth.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Secure Storage:</strong>&nbsp;Two zippered hand pockets safely store your essentials for easy access on the trail.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Clean Aesthetics:</strong>&nbsp;The classic quilted pattern is accented with a subtle chest print, blending technical performance with a style that transitions seamlessly from the trail to the city.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Sizing Guide (Based on Weight)】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size L:</strong>&nbsp;Recommended for 55-68 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size XL:</strong>&nbsp;Recommended for 68-78 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size XXL:</strong>&nbsp;Recommended for 78-85 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size 3XL:</strong>&nbsp;Recommended for 85-95 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size 4XL:</strong> Recommended for 95-105 kg&nbsp;</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "Black"
+      }
+    },
+    {
+      "id": "c00009",
+      "name": "KAILAS Ultralight Primaloft® Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulated Layer",
+      "nameEn": "KAILAS Ultralight Primaloft® Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulated Layer",
+      "category": "Clothing",
+      "price": 88.0,
+      "images": [],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>The KAILAS Ultralight Hooded Jacket is engineered for outdoor enthusiasts who prioritize warmth without the weight. Its classic quilted \"baffle\" construction, filled with high-performance Primaloft&reg; insulation, delivers reliable warmth with exceptional lightweight packability. Perfect as a versatile mid-layer for mountain hikes or a standalone jacket for urban commutes.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Ultralight Primaloft&reg; Insulation:</strong>&nbsp;Filled with renowned Primaloft&reg; synthetic insulation, known for retaining heat even when damp. It provides outstanding warmth for its weight, ensuring comfort in cold climates.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Technical Outdoor Design:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Helmet-Compatible Hood:</strong>&nbsp;The elasticated hood is designed to fit over a climbing helmet, offering protection when the weather turns.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Articulated Gusseted Cuffs:</strong>&nbsp;The ergonomic \"horseshoe\" sleeve design allows for a greater range of motion and prevents ride-up during activity while sealing in warmth.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Secure Storage:</strong>&nbsp;Two zippered hand pockets safely store your essentials for easy access on the trail.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Clean Aesthetics:</strong>&nbsp;The classic quilted pattern is accented with a subtle chest print, blending technical performance with a style that transitions seamlessly from the trail to the city.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Sizing Guide (Based on Weight)】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size L:</strong>&nbsp;Recommended for 55-68 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size XL:</strong>&nbsp;Recommended for 68-78 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size XXL:</strong>&nbsp;Recommended for 78-85 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size 3XL:</strong>&nbsp;Recommended for 85-95 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size 4XL:</strong> Recommended for 95-105 kg&nbsp;</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "navy blue"
+      }
+    },
+    {
+      "id": "c00010",
+      "name": "KAILAS Ultralight Primaloft® Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulated Layer",
+      "nameEn": "KAILAS Ultralight Primaloft® Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulated Layer",
+      "category": "Clothing",
+      "price": 88.0,
+      "images": [],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>The KAILAS Ultralight Hooded Jacket is engineered for outdoor enthusiasts who prioritize warmth without the weight. Its classic quilted \"baffle\" construction, filled with high-performance Primaloft&reg; insulation, delivers reliable warmth with exceptional lightweight packability. Perfect as a versatile mid-layer for mountain hikes or a standalone jacket for urban commutes.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Ultralight Primaloft&reg; Insulation:</strong>&nbsp;Filled with renowned Primaloft&reg; synthetic insulation, known for retaining heat even when damp. It provides outstanding warmth for its weight, ensuring comfort in cold climates.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Technical Outdoor Design:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Helmet-Compatible Hood:</strong>&nbsp;The elasticated hood is designed to fit over a climbing helmet, offering protection when the weather turns.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Articulated Gusseted Cuffs:</strong>&nbsp;The ergonomic \"horseshoe\" sleeve design allows for a greater range of motion and prevents ride-up during activity while sealing in warmth.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Secure Storage:</strong>&nbsp;Two zippered hand pockets safely store your essentials for easy access on the trail.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Clean Aesthetics:</strong>&nbsp;The classic quilted pattern is accented with a subtle chest print, blending technical performance with a style that transitions seamlessly from the trail to the city.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Sizing Guide (Based on Weight)】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size L:</strong>&nbsp;Recommended for 55-68 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size XL:</strong>&nbsp;Recommended for 68-78 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size XXL:</strong>&nbsp;Recommended for 78-85 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size 3XL:</strong>&nbsp;Recommended for 85-95 kg&nbsp;</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Size 4XL:</strong> Recommended for 95-105 kg&nbsp;</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "brown"
+      }
+    },
+    {
+      "id": "c00011",
+      "name": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature Regulation | Wind & Water Resistant | Unisex Outdoor Hiking Hoodie",
+      "nameEn": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature Regulation | Wind & Water Resistant | Unisex Outdoor Hiking Hoodie",
+      "category": "Clothing",
+      "price": 120.0,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/2120024f3ff541fab8a2a6c465cbb370.jpg;https://img.jzfileserver.com/product/68014/96c4fd1a3eb448ac872c0e07afc84000.jpg;https://img.jzfileserver.com/product/68014/b21cb672923b43c3b4c654f316cf7bfa.jpg;https://img.jzfileserver.com/product/68014/b72dc07175c54f65b594d3a1500b3671.jpg;https://img.jzfileserver.com/product/68014/67e9788bdd37417db71b7bcc87ff1402.jpg;https://img.jzfileserver.com/product/68014/de4bfd968be040bbb61b0a66eccdcfd5.jpg;https://img.jzfileserver.com/product/68014/d6a1e6fb1e4543aa9cf8cc89da4ec74f.jpg;https://img.jzfileserver.com/product/68014/34d40be7246f4db59042aa05aa6cf16a.jpg;https://img.jzfileserver.com/product/68014/7a5e7cfd5b924327b134db88dbdd1eb3.jpg;https://img.jzfileserver.com/product/68014/7abc1b6a7aa646f695aa78bf35964d92.jpg"
+      ],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>The KAILAS AC133 redefines outdoor insulation with its advanced technology. It innovatively uses aerospace-grade materials like Aerogel and Volcanic Rock as filling, coupled with smart temperature-regulating technology that dynamically adjusts to \"expand when cold, contract when hot.\" Whether worn as a standalone jacket for urban commutes or as a mid-layer under a shell for alpine skiing and mountaineering, it provides lightweight, consistent, and sleek warmth in extreme cold as low as -15&deg;C to -20&deg;C.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Aerogel Insulation:</strong>&nbsp;The core is filled with Aerogel, known as \"solid smoke,\" which boasts an extremely low thermal conductivity for superior heat retention that outperforms conventional materials, offering maximum warmth with minimal weight.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Versatile All-Rounder:</strong>&nbsp;With wind and water resistance, it performs excellently as a standalone jacket for daily wear and light hiking, or as a technical mid-layer under a hardshell for demanding activities like mountaineering and skiing.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Comfort &amp; Practicality:</strong>&nbsp;Features a slim-fit cut to avoid bulkiness and a protective hood. The fabric is also treated with anti-odor technology for long-lasting freshness.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Color &amp; Size】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Colors:</strong>&nbsp;Black / Grey</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sizes:</strong> S, M, L, XL, 2XL, 3XL</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "Black"
+      }
+    },
+    {
+      "id": "c00012",
+      "name": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature Regulation | Wind & Water Resistant | Unisex Outdoor Hiking Hoodie",
+      "nameEn": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature Regulation | Wind & Water Resistant | Unisex Outdoor Hiking Hoodie",
+      "category": "Clothing",
+      "price": 120.0,
+      "images": [],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>The KAILAS AC133 redefines outdoor insulation with its advanced technology. It innovatively uses aerospace-grade materials like Aerogel and Volcanic Rock as filling, coupled with smart temperature-regulating technology that dynamically adjusts to \"expand when cold, contract when hot.\" Whether worn as a standalone jacket for urban commutes or as a mid-layer under a shell for alpine skiing and mountaineering, it provides lightweight, consistent, and sleek warmth in extreme cold as low as -15&deg;C to -20&deg;C.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Aerogel Insulation:</strong>&nbsp;The core is filled with Aerogel, known as \"solid smoke,\" which boasts an extremely low thermal conductivity for superior heat retention that outperforms conventional materials, offering maximum warmth with minimal weight.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Versatile All-Rounder:</strong>&nbsp;With wind and water resistance, it performs excellently as a standalone jacket for daily wear and light hiking, or as a technical mid-layer under a hardshell for demanding activities like mountaineering and skiing.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Comfort &amp; Practicality:</strong>&nbsp;Features a slim-fit cut to avoid bulkiness and a protective hood. The fabric is also treated with anti-odor technology for long-lasting freshness.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Color &amp; Size】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Colors:</strong>&nbsp;Black / Grey</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sizes:</strong> S, M, L, XL, 2XL, 3XL</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "Grey"
+      }
+    },
+    {
+      "id": "c00013",
+      "name": "ARC‘TERYX Ralle Insulated Waterproof Jacket | Gore-Tex Panels & C棉 Insulation | Windproof & Warm | Unisex",
+      "nameEn": "ARC‘TERYX Ralle Insulated Waterproof Jacket | Gore-Tex Panels & C棉 Insulation | Windproof & Warm | Unisex",
+      "category": "Clothing",
+      "price": 120.0,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/a565fb15aeea4b77add73364939b8da8.jpg;https://img.jzfileserver.com/product/68014/30ab67ee9467444e974bc534eb94d553.jpg;https://img.jzfileserver.com/product/68014/27c0f90666794f699c03df97a3617802.jpg;https://img.jzfileserver.com/product/68014/65c6c886be854bc684cbe63b611be7e8.jpg;https://img.jzfileserver.com/product/68014/d6b52e0c2f7448ce88e04b35e0b79197.jpg;https://img.jzfileserver.com/product/68014/3abc68374392408b9c89af882a59c141.jpg;https://img.jzfileserver.com/product/68014/b1df580f3d0d406bb59b8260a22e4522.jpg;https://img.jzfileserver.com/product/68014/86ed1ad9547148ebad58e23f352907ca.jpg;https://img.jzfileserver.com/product/68014/d3037af4606d420cb9d755ade7780ce3.jpg"
+      ],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>This ARC&rsquo;TERYX Ralle Insulated Jacket is meticulously crafted to 1:1 specifications, from the original fabric and trims down to the hardware. Built for harsh conditions, it combines waterproofness, warmth, breathability, and lightweight packability. The athletic fit, integrated with GORE-TEX technology, ensures peak performance and dryness in rain and snow, making it ideal for alpine climbing and urban outdoor style.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Durable &amp; Mobile:</strong>&nbsp;The custom-developed original fabric offers superior durability without sacrificing softness and freedom of movement. Elastic knit cuffs and a paneled inner collar enhance wind seal.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Practical Features:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>StormHood&trade;:</strong>&nbsp;Helmet-compatible design for comprehensive coverage and warmth.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Storage:</strong>&nbsp;Two hidden zippered hand pockets plus an internal chest pocket secure your essentials.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Lightweight &amp; Packable:</strong>&nbsp;Compresses easily into its own pocket for transport and springs back ready to wear.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Athletic Outdoor Cut:</strong>&nbsp;An athletic fit designed for dynamic movement, blending performance with modern urban aesthetics.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Color &amp; Size】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Colors:</strong>&nbsp;Black / Navy / Red / Light Grey</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sizes:</strong> S, M, L, XL, XXL</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "Black"
+      }
+    },
+    {
+      "id": "c00014",
+      "name": "ARC‘TERYX Ralle Insulated Waterproof Jacket | Gore-Tex Panels & C棉 Insulation | Windproof & Warm | Unisex",
+      "nameEn": "ARC‘TERYX Ralle Insulated Waterproof Jacket | Gore-Tex Panels & C棉 Insulation | Windproof & Warm | Unisex",
+      "category": "Clothing",
+      "price": 120.0,
+      "images": [],
+      "description": "<p class=\"ds-markdown-paragraph\"><strong>【Product Overview】</strong><br>This ARC&rsquo;TERYX Ralle Insulated Jacket is meticulously crafted to 1:1 specifications, from the original fabric and trims down to the hardware. Built for harsh conditions, it combines waterproofness, warmth, breathability, and lightweight packability. The athletic fit, integrated with GORE-TEX technology, ensures peak performance and dryness in rain and snow, making it ideal for alpine climbing and urban outdoor style.</p>\n<p class=\"ds-markdown-paragraph\"><strong>【Key Features】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Durable &amp; Mobile:</strong>&nbsp;The custom-developed original fabric offers superior durability without sacrificing softness and freedom of movement. Elastic knit cuffs and a paneled inner collar enhance wind seal.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Practical Features:</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>StormHood&trade;:</strong>&nbsp;Helmet-compatible design for comprehensive coverage and warmth.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Storage:</strong>&nbsp;Two hidden zippered hand pockets plus an internal chest pocket secure your essentials.</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Lightweight &amp; Packable:</strong>&nbsp;Compresses easily into its own pocket for transport and springs back ready to wear.</p>\n</li>\n</ul>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Athletic Outdoor Cut:</strong>&nbsp;An athletic fit designed for dynamic movement, blending performance with modern urban aesthetics.</p>\n</li>\n</ul>\n<p class=\"ds-markdown-paragraph\"><strong>【Color &amp; Size】</strong></p>\n<ul>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Colors:</strong>&nbsp;Black / Navy / Red / Light Grey</p>\n</li>\n<li>\n<p class=\"ds-markdown-paragraph\"><strong>Sizes:</strong> S, M, L, XL, XXL</p>\n</li>\n</ul>",
+      "featured": true,
+      "spec1": {
+        "name": "color",
+        "value": "Navy"
+      }
+    }
+  ],
+  "fragrance": [
+    {
+      "id": "f00002",
+      "name": "Jimmy Choo Pour Homme EDT 100ml - Aromatic Woody",
+      "nameEn": "Jimmy Choo Pour Homme EDT 100ml - Aromatic Woody",
+      "category": "Fragrance",
+      "price": 22.99,
+      "images": [
+        "https://img.jzfileserver.com/products/8093e58f530b443e82fa1eface176638.jpg;https://img.jzfileserver.com/products/3756fd5d80d14d86be5aaaeecfe62024.jpg;https://img.jzfileserver.com/products/182f7827389c4038a781eb3d1826e086.jpg"
+      ],
+      "description": "Inspired by Jimmy Choo Pour Homme. A sophisticated mens fragrance featuring fresh spicy notes with aromatic lavender, pepper, and cedar. Perfect for confident men who appreciate refined scents. Long-lasting formula for all occasions.",
+      "featured": true
+    },
+    {
+      "id": "f00003",
+      "name": "Armaf Night Allure Pure Extension EDT 100ml - Elegant Night",
+      "nameEn": "Armaf Night Allure Pure Extension EDT 100ml - Elegant Night",
+      "category": "Fragrance",
+      "price": 22.99,
+      "images": [
+        "https://img.jzfileserver.com/products/b2ebade2af2b425ea1557e395405598a.jpg"
+      ],
+      "description": "Inspired by Armaf Night Allure Pure Extension. A sophisticated mens fragrance perfect for evening occasions. Features warm spicy notes with aromatic woods and amber. Long-lasting formula ensures a memorable presence.",
+      "featured": true
+    }
+  ]
+}
