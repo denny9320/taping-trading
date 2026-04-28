@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片测试 - TapingTrading</title>
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 { color: #333; }
+        .test-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border: 2px solid #333;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .loading { background: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <h1>图片加载测试</h1>
+    
+    <h2>测试 1: GitHub 内置图片（应该显示）</h2>
+    <img class="test-image" id="test1" src="https://denny9320.github.io/taping-trading/images/product-1.jpg" alt="Product 1">
+    <div id="status1" class="status loading">加载中...</div>
+    
+    <h2>测试 2: 外部服务器图片</h2>
+    <img class="test-image" id="test2" src="https://img.jzfileserver.com/product/68014/9494efc1d061416f985ae678fd6d398c.jpg" alt="Product 2">
+    <div id="status2" class="status loading">加载中...</div>
+    
+    <h2>测试 3: Unsplash 图片</h2>
+    <img class="test-image" id="test3" src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400" alt="Product 3">
+    <div id="status3" class="status loading">加载中...</div>
+
+    <script>
+        function testImage(imgId, statusId) {
+            const img = document.getElementById(imgId);
+            const status = document.getElementById(statusId);
+            
+            img.onload = function() {
+                status.className = 'status success';
+                status.textContent = '✓ 加载成功！尺寸: ' + img.naturalWidth + 'x' + img.naturalHeight;
+            };
+            
+            img.onerror = function() {
+                status.className = 'status error';
+                status.textContent = '✗ 加载失败';
+            };
+            
+            // 超时检测
+            setTimeout(function() {
+                if (status.className === 'status loading') {
+                    status.className = 'status error';
+                    status.textContent = '✗ 加载超时（5秒）';
+                }
+            }, 5000);
+        }
+        
+        testImage('test1', 'status1');
+        testImage('test2', 'status2');
+        testImage('test3', 'status3');
+    </script>
+</body>
+</html>
