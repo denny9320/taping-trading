@@ -79,8 +79,14 @@
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <path d="M16 10a4 4 0 01-8 0"></path>
                     </svg>
-                    <span class="cart-count">0</span>
+<span class="cart-count">0</span>
                 </button>
+                <select id="currencySelector" class="currency-select" onchange="changeCurrency(this.value)">
+                    <option value="USD">USD $</option>
+                    <option value="CNY">¥CNY</option>
+                    <option value="EUR">€EUR</option>
+                    <option value="GBP">£GBP</option>
+                </select>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
                     <span></span>
                     <span></span>

@@ -6,6 +6,34 @@
 const translations = {};
 let currentLang = 'en';
 
+// Currency system with exchange rates
+const currencies = {
+    'USD': { symbol: '$', rate: 1, name: 'US Dollar' },
+    'CNY': { symbol: '¥', rate: 7.2, name: 'Chinese Yuan' },
+    'EUR': { symbol: '€', rate: 0.92, name: 'Euro' },
+    'GBP': { symbol: '£', rate: 0.79, name: 'British Pound' },
+    'JPY': { symbol: '¥', rate: 149, name: 'Japanese Yen' }
+};
+let currentCurrency = 'USD';
+
+// Format price with currency
+function formatPrice(usdPrice, currencyCode = currentCurrency) {
+    const currency = currencies[currencyCode] || currencies['USD'];
+    const convertedPrice = usdPrice * currency.rate;
+    
+    if (currencyCode === 'JPY') {
+        return currency.symbol + Math.round(convertedPrice).toLocaleString();
+    }
+    return currency_symbol = currency.symbol + convertedPrice.toFixed(2);
+}
+
+// Get currency selector HTML
+function getCurrencySelector() {
+    return currencies.map(c => 
+        `<option value="${c.code}" ${c.code === currentCurrency ? 'selected' : ''}>${c.code} - ${c.name}</option>`
+    ).join('');
+}
+
 // Available languages
 const languages = [
     { code: 'en', name: 'English', flag: '🇬🇧' },
@@ -516,15 +544,16 @@ function renderFeaturedProducts() {
 }
 
 function createFeaturedCard(product, type) {
-    const priceFormatted = product.price.toLocaleString('zh-CN');
-    const mainImage = product.images && product.images.length > 0 ? product.images[0] : 'images/products/jacket2.jpg';
+    const priceFormatted = formatPrice(product.price);
+    const images = product.images && product.images.length > 0 ? product.images : [];
+    const mainImage = images[0] || 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PC9zdmc+';
     
     return `
-        <div class="featured-card" style="background-image: url('${mainImage}'); cursor: pointer;" onclick="openProductModal('${product.id}', '${type}')">
+        <div class="featured-card" onclick="openProductModal('${product.id}', '${type}')" style="background-image: url('${mainImage}'); cursor: pointer;">
             <div class="featured-overlay">
                 <div class="featured-info">
                     <h3 class="featured-name">${product.name || '产品'}</h3>
-                    <div class="featured-price">¥${priceFormatted}</div>
+                    <div class="featured-price">${priceFormatted}</div>
                 </div>
             </div>
         </div>
@@ -532,16 +561,16 @@ function createFeaturedCard(product, type) {
 }
 
 function createProductCard(product, type) {
-    const priceFormatted = product.price.toLocaleString('zh-CN');
+    const priceFormatted = formatPrice(product.price);
     // Simple gray placeholder (base64 encoded SVG)
-    const placeholder = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5Y2EzNDEiIGZvbnQtc2l6ZT0iMjAiPkltYWdlPC90ZXh0Pjwvc3ZnPg==';
+    const placeholder = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PC9zdmc+';
     
     // Use product images if available, otherwise use placeholder
     const images = product.images && product.images.length > 0 ? product.images : [placeholder];
     const mainImage = images[0];
     
     return `
-        <div class="product-card" data-id="${product.id}" data-type="${type}">
+        <div class="product-card" onclick="openProductModal('${product.id}', '${type}')" style="cursor: pointer;">
             <div class="product-image">
                 <img src="${mainImage}" alt="${product.name}" class="product-img-simple">
             </div>
@@ -669,6 +698,12 @@ function loadCartFromStorage() {
 
 // Initialize cart from storage
 loadCartFromStorage();
+
+// Currency change function
+window.changeCurrency = function(currencyCode) {
+    currentCurrency = currencyCode;
+    renderFeaturedProducts(); // Re-render to update prices
+};
 
 /* ========================================
    Add to Cart Button Handler
