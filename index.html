@@ -437,9 +437,10 @@ onAuthStateChanged(auth, (user) => {
         document.getElementById('loginBtn').style.display = 'none';
         document.getElementById('userAccountMenu').style.display = 'block';
         
-        // 尝试获取保存的用户名
+        // 获取保存的用户名
         const savedName = localStorage.getItem('tapingUserName');
-        document.getElementById('headerUserEmail').textContent = savedName || user.email;
+        const displayName = savedName || '用户';
+        document.getElementById('headerUserEmail').textContent = displayName;
       } else {
         document.getElementById('loginBtn').style.display = 'flex';
         document.getElementById('userAccountMenu').style.display = 'none';
@@ -493,15 +494,15 @@ window.doLogin = async function() {
         errorEl.textContent = '登录中...';
         await signInWithEmailAndPassword(auth, email, password);
         
-        // 登录成功，显示已保存的用户名（如果没有则提示设置）
-        const savedName = localStorage.getItem('tapingUserName');
-        if (!savedName) {
-          localStorage.setItem('tapingUserName', '用户');
-        }
+        // 登录成功后不在刷新页面，直接更新UI
+        const savedName = localStorage.getItem('tapingUserName') || '用户';
+        
+        // 隐藏登录按钮，显示用户菜单
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('userAccountMenu').style.display = 'block';
+        document.getElementById('headerUserEmail').textContent = savedName;
         
         closeLoginModal();
-        // 刷新页面更新登录状态
-        window.location.reload();
       } catch (e) {
         errorEl.textContent = '登录失败: ' + e.message;
       }
@@ -525,6 +526,12 @@ window.doLogin = async function() {
         // 保存用户名到localStorage和Firestore
         localStorage.setItem('tapingUserName', name);
         
+        // 立即更新header显示，不用等刷新
+        const headerEl = document.getElementById('headerUserEmail');
+        if (headerEl) {
+          headerEl.textContent = name;
+        }
+        
         if (db && userCredential.user) {
           await addDoc(collection(db, 'users'), {
             uid: userCredential.user.uid,
@@ -535,8 +542,6 @@ window.doLogin = async function() {
         }
         
         closeLoginModal();
-        // 刷新页面更新登录状态
-        window.location.reload();
       } catch (e) {
         errorEl.textContent = '注册失败: ' + e.message;
       }
@@ -551,7 +556,9 @@ window.doLogin = async function() {
     window.signOut = async function() {
       try {
         await signOut(auth);
-        window.location.href = 'index.html';
+        localStorage.removeItem('tapingUserName');
+        document.getElementById('loginBtn').style.display = 'flex';
+        document.getElementById('userAccountMenu').style.display = 'none';
       } catch (e) {
         console.error('Sign out error:', e);
       }
