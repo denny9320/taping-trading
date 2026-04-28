@@ -1092,21 +1092,29 @@ function openProductModal(productId, type) {
     const images = product.images || [product.image || ''];
     const indicators = images.map((img, index) => 
         `<span class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`
-    ).join('');
+).join('');
     const imagesHTML = images.map((img, index) => 
         `<img src="${img}" alt="${product.name}" class="modal-carousel-image ${index === 0 ? 'active' : ''}" data-index="${index}">`
     ).join('');
+    
+    // 缩略图HTML
+    const thumbnailsHTML = images.length > 1 ? images.map((img, index) => 
+        `<img src="${img}" alt="${product.name}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="showImage(${index})">`
+    ).join('') : '';
     
     modalBody.innerHTML = `
         <div class="modal-product-grid">
             <div class="modal-product-image">
                 <div class="modal-carousel">
                     ${imagesHTML}
-                    ${images.length > 1 ? `
-                        <div class="carousel-nav prev" onclick="modalPrevImage(this)">‹</div>
-                        <div class="carousel-nav next" onclick="modalNextImage(this)">›</div>
-                        <div class="carousel-dots">${indicators}</div>
-` : ''}
+                </div>
+                ${images.length > 1 ? `
+                <div class="thumbnail-gallery">
+                    ${thumbnailsHTML}
+                </div>
+                <div class="carousel-nav prev" onclick="modalPrevImage(this)">‹</div>
+                <div class="carousel-nav next" onclick="modalNextImage(this)">›</div>
+                ` : ''}
             </div>
             <div class="modal-product-details">
                 <span class="modal-product-category">${product.category}</span>
@@ -1241,12 +1249,27 @@ function modalPrevImage(navBtn) {
 }
 
 function modalNextImage(navBtn) {
-    const modalCarousel = navBtn.closest('.modal-carousel');
+    const modalCarousel = navBtn.closest('.modal-product-image');
     const images = modalCarousel.querySelectorAll('.modal-carousel-image');
     const currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
     const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
     images.forEach((img, i) => img.classList.toggle('active', i === newIndex));
-    modalCarousel.querySelectorAll('.carousel-dot').forEach((dot, i) => dot.classList.toggle('active', i === newIndex));
+    
+    // 更新缩略图
+    const thumbnails = modalCarousel.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, i) => thumb.classList.toggle('active', i === newIndex));
+}
+
+// 点击缩略图切换
+window.showImage = function(index) {
+    const modalImage = document.querySelector('.modal-product-image');
+    if (!modalImage) return;
+    
+    const images = modalImage.querySelectorAll('.modal-carousel-image');
+    images.forEach((img, i) => img.classList.toggle('active', i === index));
+    
+    const thumbnails = modalImage.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
 }
 
 /* ========================================
