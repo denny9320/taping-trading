@@ -2,65 +2,65 @@
   "clothing": [
     {
       "id": "c00005",
-      "name": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue",
+      "name": "Supreme FW25 Reflective Logo Hooded Work Jacket",
       "nameEn": "Supreme FW25 Reflective Logo Hooded Work Jacket",
       "category": "Clothing",
       "price": 170,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
-      "description": "2025春夏Supreme反光logo连帽工装外套，全牛仔棉绗缝保暖",
+      "description": "Supreme反光logo连帽工装外套，全牛仔棉绗缝保暖",
       "featured": true
     },
     {
       "id": "c00007",
-      "name": "MONCLER Paneled Stand Collar Puffer Jacket | Knitted Cable Sleeves",
+      "name": "MONCLER Paneled Stand Collar Puffer Jacket",
       "nameEn": "MONCLER Paneled Stand Collar Puffer Jacket",
       "category": "Clothing",
       "price": 95,
       "images": [
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80"
+        "images/products/jacket2.jpg",
+        "images/products/jacket2.jpg"
       ],
-      "description": "Moncler连帽羽绒服，拼接设计，针织袖口",
+      "description": "Moncler连帽羽绒服，拼接设计",
       "featured": true
     },
     {
       "id": "c00008",
-      "name": "KAILAS Ultralight Primaloft Hooded Jacket | Outdoor Insulation",
+      "name": "KAILAS Ultralight Primaloft Hooded Jacket",
       "nameEn": "KAILAS Ultralight Primaloft Hooded Jacket",
       "category": "Clothing",
       "price": 88,
       "images": [
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80",
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "KAILAS超轻Primaloft连帽夹克",
       "featured": true
     },
     {
       "id": "c00011",
-      "name": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature",
+      "name": "KAILAS AC133 Aerogel Insulated Jacket",
       "nameEn": "KAILAS AC133 Aerogel Insulated Jacket",
       "category": "Clothing",
       "price": 120,
       "images": [
-        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",
-        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80"
+        "images/products/fashion1.jpg",
+        "images/products/fashion1.jpg"
       ],
       "description": "KAILAS气凝胶智能温控夹克",
       "featured": true
     },
     {
       "id": "c00013",
-      "name": "ARC'TERYX Ralle Insulated Waterproof Jacket | Gore-Tex",
+      "name": "ARC'TERYX Ralle Insulated Waterproof Jacket",
       "nameEn": "ARC'TERYX Ralle Insulated Waterproof Jacket",
       "category": "Clothing",
       "price": 120,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "ARC'TERYX高端Gore-Tex夹克",
       "featured": true
@@ -74,8 +74,8 @@
       "category": "Fragrance",
       "price": 25.99,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "Dior高端限定香水",
       "featured": true,
@@ -88,8 +88,8 @@
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80"
+        "images/products/jacket2.jpg",
+        "images/products/jacket2.jpg"
       ],
       "description": "Jimmy Choo男士淡香水",
       "featured": true,
@@ -102,8 +102,8 @@
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80",
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "Armaf夜之魅力特别版",
       "featured": true,
@@ -116,8 +116,8 @@
       "category": "Fragrance",
       "price": 65,
       "images": [
-        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",
-        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80"
+        "images/products/fashion1.jpg",
+        "images/products/fashion1.jpg"
       ],
       "description": "Miu Miu复古格纹马甲",
       "featured": true,
@@ -130,8 +130,8 @@
       "category": "Fragrance",
       "price": 90,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "MLB NY徽章绣花羽绒服马甲",
       "featured": true,
@@ -144,8 +144,8 @@
       "category": "Fragrance",
       "price": 66,
       "images": [
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80"
+        "images/products/jacket2.jpg",
+        "images/products/jacket2.jpg"
       ],
       "description": "Nike立领保暖羽绒服马甲",
       "featured": true,
@@ -158,8 +158,8 @@
       "category": "Fragrance",
       "price": 80,
       "images": [
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80",
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "MONCLER光泽尼龙连帽马甲",
       "featured": true,
