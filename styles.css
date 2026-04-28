@@ -483,6 +483,48 @@ button {
     gap: 30px;
 }
 
+/* Featured Cards with Background Images (3x4 Grid) */
+.featured-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+}
+
+.featured-info {
+    color: var(--color-white);
+    width: 100%;
+}
+
+.featured-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.featured-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: var(--color-white);
+    padding: 8px 16px;
+    display: inline-block;
+    border-radius: 6px;
+}
+
 .product-card {
     opacity: 0;
     transform: translateY(30px);

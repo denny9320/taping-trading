@@ -496,26 +496,39 @@ async function initProductSystem() {
 function renderFeaturedProducts() {
     console.log('renderFeaturedProducts called, productData:', productData);
     
-    // Render clothing products
+    // Render clothing products with background images (3x4 grid)
     const clothingGrid = document.getElementById('clothingGrid');
     if (clothingGrid && productData?.clothing?.length > 0) {
         console.log('Rendering', productData.clothing.length, 'clothing products');
         clothingGrid.innerHTML = productData.clothing.map(product => 
-            createProductCard(product, 'clothing')
+            createFeaturedCard(product, 'clothing')
         ).join('');
     }
     
-    // Render fragrance products  
+    // Render fragrance products with background images (3x4 grid)
     const fragranceGrid = document.getElementById('fragranceGrid');
     if (fragranceGrid && productData?.fragrance?.length > 0) {
         console.log('Rendering', productData.fragrance.length, 'fragrance products');
         fragranceGrid.innerHTML = productData.fragrance.map(product => 
-            createProductCard(product, 'fragrance')
+            createFeaturedCard(product, 'fragrance')
         ).join('');
     }
+}
+
+function createFeaturedCard(product, type) {
+    const priceFormatted = product.price.toLocaleString('zh-CN');
+    const mainImage = product.images && product.images.length > 0 ? product.images[0] : 'images/products/jacket2.jpg';
     
-    // Re-initialize quick view buttons
-    initQuickView();
+    return `
+        <div class="featured-card" style="background-image: url('${mainImage}')">
+            <div class="featured-overlay">
+                <div class="featured-info">
+                    <h3 class="featured-name">${product.name || '产品'}</h3>
+                    <div class="featured-price">¥${priceFormatted}</div>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 function createProductCard(product, type) {
