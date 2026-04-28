@@ -436,7 +436,10 @@ onAuthStateChanged(auth, (user) => {
       if (user) {
         document.getElementById('loginBtn').style.display = 'none';
         document.getElementById('userAccountMenu').style.display = 'block';
-        document.getElementById('headerUserEmail').textContent = user.email;
+        
+        // 尝试获取保存的用户名
+        const savedName = localStorage.getItem('tapingUserName');
+        document.getElementById('headerUserEmail').textContent = savedName || user.email;
       } else {
         document.getElementById('loginBtn').style.display = 'flex';
         document.getElementById('userAccountMenu').style.display = 'none';
@@ -489,6 +492,11 @@ window.doLogin = async function() {
       try {
         errorEl.textContent = '登录中...';
         await signInWithEmailAndPassword(auth, email, password);
+        
+        // 登录成功，保存用户名（使用邮箱前缀）
+        const name = email.split('@')[0];
+        localStorage.setItem('tapingUserName', name);
+        
         closeLoginModal();
         // 刷新页面更新登录状态
         window.location.reload();
@@ -512,7 +520,9 @@ window.doLogin = async function() {
         errorEl.textContent = '注册中...';
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         
-        // 保存用户名到Firestore
+        // 保存用户名到localStorage和Firestore
+        localStorage.setItem('tapingUserName', name);
+        
         if (db && userCredential.user) {
           await addDoc(collection(db, 'users'), {
             uid: userCredential.user.uid,
@@ -528,6 +538,12 @@ window.doLogin = async function() {
       } catch (e) {
         errorEl.textContent = '注册失败: ' + e.message;
       }
+    };
+
+    // 登录后保存用户名
+    window.saveUserName = function(name) {
+      localStorage.setItem('tapingUserName', name);
+      document.getElementById('headerUserEmail').textContent = name;
     };
 
     window.signOut = async function() {
