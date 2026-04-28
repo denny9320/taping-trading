@@ -450,7 +450,12 @@ let cart = [];
 async function initProductSystem() {
     try {
         const response = await fetch('data/products.json');
+        if (!response.ok) {
+            throw new Error('Failed to fetch: ' + response.status);
+        }
         productData = await response.json();
+        
+        console.log('Products loaded:', productData);
         
         // Render featured products
         renderFeaturedProducts();
@@ -458,20 +463,19 @@ async function initProductSystem() {
         // Initialize product filters
         initProductFilters();
         
-console.log('Product system initialized with', productData.clothing.length + productData.fragrance.length, 'products');
+        console.log('Product system initialized');
     } catch (error) {
         console.error('Failed to load products:', error);
-        // Fallback to static HTML content
     }
 }
 
 function renderFeaturedProducts() {
-    // Since we now have only ~10 products per category, show all of them
-    // No need to filter by featured=true anymore
+    console.log('renderFeaturedProducts called, productData:', productData);
     
     // Render clothing products
     const clothingGrid = document.getElementById('clothingGrid');
-    if (clothingGrid && productData.clothing) {
+    if (clothingGrid && productData?.clothing?.length > 0) {
+        console.log('Rendering', productData.clothing.length, 'clothing products');
         clothingGrid.innerHTML = productData.clothing.map(product => 
             createProductCard(product, 'clothing')
         ).join('');
@@ -479,7 +483,8 @@ function renderFeaturedProducts() {
     
     // Render fragrance products  
     const fragranceGrid = document.getElementById('fragranceGrid');
-    if (fragranceGrid && productData.fragrance) {
+    if (fragranceGrid && productData?.fragrance?.length > 0) {
+        console.log('Rendering', productData.fragrance.length, 'fragrance products');
         fragranceGrid.innerHTML = productData.fragrance.map(product => 
             createProductCard(product, 'fragrance')
         ).join('');
