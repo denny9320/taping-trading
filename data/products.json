@@ -6,10 +6,7 @@
       "nameEn": "Supreme FW25 Reflective Logo Hooded Work Jacket",
       "category": "Clothing",
       "price": 170,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/jacket2.jpg"],
       "description": "Supreme反光logo连帽工装外套",
       "featured": true
     },
@@ -19,10 +16,7 @@
       "nameEn": "MONCLER Paneled Stand Collar Puffer Jacket",
       "category": "Clothing",
       "price": 95,
-      "images": [
-        "images/products/jacket2.jpg",
-        "images/products/jacket2.jpg"
-      ],
+      "images": ["images/products/jacket2.jpg"],
       "description": "Moncler连帽羽绒服",
       "featured": true
     },
@@ -32,10 +26,7 @@
       "nameEn": "KAILAS Ultralight Primaloft Hooded Jacket",
       "category": "Clothing",
       "price": 88,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/jacket2.jpg"],
       "description": "KAILAS超轻夹克",
       "featured": true
     },
@@ -45,10 +36,7 @@
       "nameEn": "KAILAS AC133 Aerogel Insulated Jacket",
       "category": "Clothing",
       "price": 120,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/jacket2.jpg"],
       "description": "KAILAS气凝胶夹克",
       "featured": true
     },
@@ -58,10 +46,7 @@
       "nameEn": "ARC'TERYX Ralle Insulated Waterproof Jacket",
       "category": "Clothing",
       "price": 120,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/jacket2.jpg"],
       "description": "ARC'TERYX夹克",
       "featured": true
     }
@@ -73,10 +58,7 @@
       "nameEn": "Dior Privee Montaigne EdP 100ml",
       "category": "Fragrance",
       "price": 25.99,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/perfume3.jpg"],
       "description": "Dior高端香水",
       "featured": true,
       "size": "100ml"
@@ -87,10 +69,7 @@
       "nameEn": "Jimmy Choo Pour Homme EDT 100ml",
       "category": "Fragrance",
       "price": 22.99,
-      "images": [
-        "images/products/jacket2.jpg",
-        "images/products/jacket2.jpg"
-      ],
+      "images": ["images/products/perfume3.jpg"],
       "description": "Jimmy Choo男士香水",
       "featured": true,
       "size": "100ml"
@@ -101,10 +80,7 @@
       "nameEn": "Armaf Night Allure EDT 100ml",
       "category": "Fragrance",
       "price": 22.99,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/perfume3.jpg"],
       "description": "Armaf夜之香水",
       "featured": true,
       "size": "100ml"
@@ -115,10 +91,7 @@
       "nameEn": "Miu Miu 25FW Checked Vest",
       "category": "Fragrance",
       "price": 65,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/perfume3.jpg"],
       "description": "Miu Miu马甲",
       "featured": true,
       "size": "50ml"
@@ -129,10 +102,7 @@
       "nameEn": "MLB NY Embroidered Down Vest",
       "category": "Fragrance",
       "price": 90,
-      "images": [
-        "images/products/jacket2.jpg",
-        "images/products/jacket2.jpg"
-      ],
+      "images": ["images/products/perfume3.jpg"],
       "description": "MLB NY马甲",
       "featured": true,
       "size": "50ml"
@@ -143,10 +113,7 @@
       "nameEn": "Nike Stand Collar Puffer Vest",
       "category": "Fragrance",
       "price": 66,
-      "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
-      ],
+      "images": ["images/products/perfume3.jpg"],
       "description": "Nike马甲",
       "featured": true,
       "size": "50ml"
@@ -157,10 +124,7 @@
       "nameEn": "MONCLER Corydale Hooded Gilet",
       "category": "Fragrance",
       "price": 80,
-      "images": [
-        "images/products/jacket2.jpg",
-        "images/products/jacket2.jpg"
-      ],
+      "images": ["images/products/perfume3.jpg"],
       "description": "MONCLER马甲",
       "featured": true,
       "size": "50ml"
