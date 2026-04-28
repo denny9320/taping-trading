@@ -530,21 +530,13 @@ function createProductCard(product, type) {
     return `
         <div class="product-card" data-id="${product.id}" data-type="${type}">
             <div class="product-image">
-                <div class="product-carousel" data-product-id="${product.id}">
-                    <div class="carousel-main">
-                        <img src="${mainImage}" alt="${product.name}" class="carousel-image active">
-                    </div>
-                </div>
-                <div class="product-overlay">
-                    <button class="quick-view-btn btn-quick-view" data-id="${product.id}" data-type="${type}"></button>
-                    <button class="add-to-cart-btn" data-id="${product.id}" data-type="${type}"></button>
-                </div>
+                <img src="${mainImage}" alt="${product.name}" class="product-img-simple">
             </div>
             <div class="product-info">
                 <span class="product-category">${type === 'clothing' ? '服装' : '香水'}</span>
                 <h3 class="product-name">${product.name || '产品'}</h3>
                 <span class="product-name-en">${product.nameEn || ''}</span>
-                <span class="product-price">¥${priceFormatted}</span>
+                <div class="product-price-display">¥${priceFormatted}</div>
             </div>
         </div>
     `;
