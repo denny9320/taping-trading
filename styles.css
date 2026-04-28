@@ -1549,7 +1549,7 @@ button {
 .modal-product-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    min-height: 85vh;
+    min-height: auto;
 }
 
 .modal-product-image {
@@ -1557,7 +1557,7 @@ button {
     flex-direction: column;
     align-items: center;
     background: #fafafa;
-    padding: 15px;
+    padding: 10px;
     position: relative;
 }
 
@@ -1567,8 +1567,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 300px;
-    max-height: 50vh;
+    min-height: auto;
+    max-height: 45vh;
 }
 
 .modal-main-image {
@@ -1582,18 +1582,18 @@ button {
 .thumbnail-nav-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 10px;
+    gap: 5px;
+    margin-top: 8px;
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
 }
 
 .thumbnail-strip {
     display: flex;
-    gap: 6px;
+    gap: 4px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 3px;
+    padding: 2px;
     flex: 1;
     justify-content: center;
 }
@@ -1613,13 +1613,13 @@ button {
 }
 
 .modal-thumbnail {
-    width: 50px;
-    min-width: 50px;
-    height: 50px;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
     object-fit: cover;
     cursor: pointer;
     border: 2px solid #ddd;
-    border-radius: 3px;
+    border-radius: 2px;
     opacity: 0.6;
     transition: all 0.2s;
 }
@@ -1638,12 +1638,12 @@ button {
 .thumb-nav-btn {
     background: white;
     border: 1px solid #ddd;
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
