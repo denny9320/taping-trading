@@ -45,14 +45,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Washed Blue"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Washed Blue"
     },
     {
       "id": "c00006",
@@ -63,14 +57,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Washed Black"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Washed Black"
     },
     {
       "id": "c00007",
@@ -90,14 +78,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "black"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "black"
     },
     {
       "id": "c00008",
@@ -118,14 +100,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Black"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Black"
     },
     {
       "id": "c00009",
@@ -136,14 +112,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "navy blue"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "navy blue"
     },
     {
       "id": "c00010",
@@ -154,14 +124,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "brown"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "brown"
     },
     {
       "id": "c00011",
@@ -183,14 +147,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Black"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Black"
     },
     {
       "id": "c00012",
@@ -201,14 +159,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Grey"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Grey"
     },
     {
       "id": "c00013",
@@ -229,14 +181,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Black"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Black"
     },
     {
       "id": "c00014",
@@ -247,14 +193,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Navy"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Navy"
     },
     {
       "id": "c00015",
@@ -265,14 +205,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Red"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Red"
     },
     {
       "id": "c00016",
@@ -283,14 +217,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Light Grey"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Light Grey"
     },
     {
       "id": "c00017",
@@ -310,14 +238,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Black"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Black"
     },
     {
       "id": "c00018",
@@ -328,14 +250,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Army Green"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Army Green"
     },
     {
       "id": "c00019",
@@ -356,14 +272,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Khaki"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Khaki"
     },
     {
       "id": "c00020",
@@ -374,14 +284,8 @@
       "images": [],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Dark Grey"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Dark Grey"
     },
     {
       "id": "c00021",
@@ -403,14 +307,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Olive Green"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Olive Green"
     },
     {
       "id": "c00022",
@@ -430,14 +328,8 @@
       ],
       "description": "",
       "featured": true,
-      "specs": [
-        {
-          "name": "color",
-          "values": [
-            "Black"
-          ]
-        }
-      ]
+      "规格1": "color",
+      "规格值1": "Black"
     }
   ],
   "fragrance": [
@@ -463,6 +355,43 @@
       "price": 22.99,
       "images": [
         "https://img.jzfileserver.com/products/b2ebade2af2b425ea1557e395405598a.jpg"
+      ],
+      "description": "",
+      "featured": true
+    },
+    {
+      "id": "f00130",
+      "name": "Maison Francis Kurkdjian Aqua Celestia Cologne forte",
+      "nameEn": "Maison Francis Kurkdjian Aqua Celestia Cologne forte",
+      "category": "Fragrance",
+      "price": 20.99,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/781e026621b54804b1228ad3e8120ea2.jpg",
+        "https://img.jzfileserver.com/product/68014/897ab7e380354746898ef7ba4d344f7f.jpg",
+        "https://img.jzfileserver.com/product/68014/cfa0dd701d3f44bd94cd5af4d796db05.jpg",
+        "https://img.jzfileserver.com/product/68014/8465bf9d459c48709e7ea569cb1f9dd2.jpg",
+        "https://img.jzfileserver.com/product/68014/ed812f8def5d4bbd8968fe5014ae6069.jpg",
+        "https://img.jzfileserver.com/product/68014/cbe5d28d3cc5487191c167f65b59e1b2.jpg",
+        "https://img.jzfileserver.com/product/68014/a918cc48c51a4f7e89905e5d6b2b878a.jpg",
+        "https://img.jzfileserver.com/product/68014/169ab2dd0daf435cb0ac032c86bba7fd.jpg",
+        "https://img.jzfileserver.com/product/68014/0ed58c67474942d4a1817a416ded3287.jpg"
+      ],
+      "description": "",
+      "featured": true
+    },
+    {
+      "id": "f00137",
+      "name": "Maison Francis Kurkdjian Oud Extrait de parfum",
+      "nameEn": "Maison Francis Kurkdjian Oud Extrait de parfum",
+      "category": "Fragrance",
+      "price": 20.99,
+      "images": [
+        "https://img.jzfileserver.com/product/68014/a7144def02a34a3c914cfe6a2648fe29.jpg",
+        "https://img.jzfileserver.com/product/68014/00a6618fcd47480a8403bcee9d9abdfe.jpg",
+        "https://img.jzfileserver.com/product/68014/0557d3cffe264d0bbb0f02e0c405c254.jpg",
+        "https://img.jzfileserver.com/product/68014/adc1cf3baeb24373bd104a64b5e0e6f8.jpg",
+        "https://img.jzfileserver.com/product/68014/921ac7f0bfb54109aaf52096254e8f54.jpg",
+        "https://img.jzfileserver.com/product/68014/70e4dbc8af4a4541aba64d933eb75780.jpg"
       ],
       "description": "",
       "featured": true
@@ -680,131 +609,97 @@
       "featured": true
     },
     {
-      "id": "f00191",
-      "name": "PARFUMS de MARLY Valaya EDP",
-      "nameEn": "PARFUMS de MARLY Valaya EDP",
+      "id": "f00177",
+      "name": "PARFUMS de MARLY Darcy",
+      "nameEn": "PARFUMS de MARLY Darcy",
       "category": "Fragrance",
       "price": 20.99,
       "images": [
-        "https://img.jzfileserver.com/product/68014/9e9f9e9046834d678d1837f1fe4487f5.jpg",
-        "https://img.jzfileserver.com/product/68014/58a7b328168b40d89d8ffbc7619f2e5c.jpg",
-        "https://img.jzfileserver.com/product/68014/2c228017c14846ca8a1b83305c1aa07a.jpg",
-        "https://img.jzfileserver.com/product/68014/2dd72b84cb5b43378689e102b0553937.jpg",
-        "https://img.jzfileserver.com/product/68014/f58d939bd1b249cd85982eeebc5f478c.jpg",
-        "https://img.jzfileserver.com/product/68014/b38922b06f6249e3b5789c4f885e3c92.jpg"
+        "https://img.jzfileserver.com/product/68014/9e594c9fd44045529c4718082fb23527.jpg",
+        "https://img.jzfileserver.com/product/68014/dde32711e57b498d80e73aca0cd97c9c.jpg",
+        "https://img.jzfileserver.com/product/68014/b882e0c142ae44a3abaa71707553e255.jpg",
+        "https://img.jzfileserver.com/product/68014/182e7c4015b1455b9e4eba48661cb6f7.jpg",
+        "https://img.jzfileserver.com/product/68014/5de1b634e32e4049919e034e8dd80ac0.jpg",
+        "https://img.jzfileserver.com/product/68014/1728e8f68c694a508963cae5f186ec11.jpg",
+        "https://img.jzfileserver.com/product/68014/a3c0e3948c3e468aaa2988804d696d01.jpg",
+        "https://img.jzfileserver.com/product/68014/7e990d8ca6ce476b97951cd7131d9e31.jpg"
       ],
       "description": "",
       "featured": true
     },
     {
-      "id": "f00245",
-      "name": "Paco Rabanne PURE XS Women EDP",
-      "nameEn": "Paco Rabanne PURE XS Women EDP",
+      "id": "f00178",
+      "name": "PARFUMS de MARLY Sedbury",
+      "nameEn": "PARFUMS de MARLY Sedbury",
       "category": "Fragrance",
       "price": 20.99,
       "images": [
-        "https://img.jzfileserver.com/product/68014/6752b14493aa41348eb6305ff9623b99.jpg",
-        "https://img.jzfileserver.com/product/68014/4a23952b5f4a4f04bacf68b8451e0884.jpg",
-        "https://img.jzfileserver.com/product/68014/e752b6f0829445f4918152e428e4b485.jpg",
-        "https://img.jzfileserver.com/product/68014/5302d33cf8804b61974b5e7c8634f949.jpg",
-        "https://img.jzfileserver.com/product/68014/75631f955ae5422fb735182654e50e49.jpg",
-        "https://img.jzfileserver.com/product/68014/99c5f8d5bdf54f2cb3a779df1639d212.jpg",
-        "https://img.jzfileserver.com/product/68014/18faa6354d8f4fe3815f9791017698a5.jpg",
-        "https://img.jzfileserver.com/product/68014/2172104fde204a94a7179df5d86d1684.jpg",
-        "https://img.jzfileserver.com/product/68014/0bb3dfafb57144dda1ebfa45d723e1d8.jpg"
+        "https://img.jzfileserver.com/product/68014/23813241b38b40538d3d9a6a879a1365.jpg",
+        "https://img.jzfileserver.com/product/68014/f02b624b027b4ea9809babaa95303ee9.jpg",
+        "https://img.jzfileserver.com/product/68014/2e0912836b644a3ba1f53833bd031af5.jpg",
+        "https://img.jzfileserver.com/product/68014/2f03b21813914919826c458476ac97ca.jpg",
+        "https://img.jzfileserver.com/product/68014/ceac65e86d46466a9026032d561ec335.jpg",
+        "https://img.jzfileserver.com/product/68014/0be3e402fccb448cafadfe321e66b184.jpg",
+        "https://img.jzfileserver.com/product/68014/652c5e155fe74021a40b44ec0ca82425.jpg",
+        "https://img.jzfileserver.com/product/68014/a0cf3c72a3d44b54b1abcde3e7e3550e.jpg"
       ],
       "description": "",
       "featured": true
     },
     {
-      "id": "f00246",
-      "name": "Paco Rabanne PURE XS Men EDT",
-      "nameEn": "Paco Rabanne PURE XS Men EDT",
+      "id": "f00179",
+      "name": "PARFUMS de MARLY Meliora",
+      "nameEn": "PARFUMS de MARLY Meliora",
       "category": "Fragrance",
       "price": 20.99,
       "images": [
-        "https://img.jzfileserver.com/product/68014/30dda1fa001e4211bf484ffd128845cb.jpg",
-        "https://img.jzfileserver.com/product/68014/22e9e96b580a4e4dbdc27fdecb5f8adb.jpg",
-        "https://img.jzfileserver.com/product/68014/c6398b2017034cfcb4686bed67c65887.jpg",
-        "https://img.jzfileserver.com/product/68014/902936e894f6427a85812a2998a4fdd0.jpg",
-        "https://img.jzfileserver.com/product/68014/0e0ce2ce49f742c596fa6151d9928d24.jpg",
-        "https://img.jzfileserver.com/product/68014/bfd7b9f7018a45f1900afa7f96e682af.jpg"
+        "https://img.jzfileserver.com/product/68014/a70e28bc84bf402a860bd02ca5cc970d.jpg",
+        "https://img.jzfileserver.com/product/68014/11e1b80e06cb4ec1ab223c06a66b4128.jpg",
+        "https://img.jzfileserver.com/product/68014/388f97f9534346b993eea87b3ff06a9a.jpg",
+        "https://img.jzfileserver.com/product/68014/2c2dcbcf38054235a439700d119312d2.jpg",
+        "https://img.jzfileserver.com/product/68014/d6fbaec550e0470280c1d55ae3d55e74.jpg",
+        "https://img.jzfileserver.com/product/68014/34cccf973d0149e38fbe7fd8b930b3ac.jpg",
+        "https://img.jzfileserver.com/product/68014/744ab30e875246aa97977d43e32653bf.jpg",
+        "https://img.jzfileserver.com/product/68014/b06440880dc647de8e58ab154717d75a.jpg",
+        "https://img.jzfileserver.com/product/68014/8873d042194c41fb84e9b6f2848c7932.jpg"
       ],
       "description": "",
       "featured": true
     },
     {
-      "id": "f00247",
-      "name": "Paco Rabanne Invictus EDT",
-      "nameEn": "Paco Rabanne Invictus EDT",
+      "id": "f00180",
+      "name": "PARFUMS de MARLY Oriana",
+      "nameEn": "PARFUMS de MARLY Oriana",
       "category": "Fragrance",
       "price": 20.99,
       "images": [
-        "https://img.jzfileserver.com/product/68014/d2b6e9a8b7ff41b28747ffd610ea0814.jpg",
-        "https://img.jzfileserver.com/product/68014/830d458a04094af48e97f64a3e87cf15.jpg",
-        "https://img.jzfileserver.com/product/68014/9b3d779460344228be72bff779d13565.jpg",
-        "https://img.jzfileserver.com/product/68014/8ece026297c443b6a6f896321d11070a.jpg",
-        "https://img.jzfileserver.com/product/68014/c52b705b1d8146e6a6728bc510d4c586.jpg",
-        "https://img.jzfileserver.com/product/68014/7ecfa91f87f045c885d6033b7b94e07b.jpg"
+        "https://img.jzfileserver.com/product/68014/69e890a8ba234e11a3e950f8de886c7d.jpg",
+        "https://img.jzfileserver.com/product/68014/1eecd96f23514b48ac02523c97d7a32e.jpg",
+        "https://img.jzfileserver.com/product/68014/4e28d24785ce48ea97245a1e72007030.jpg",
+        "https://img.jzfileserver.com/product/68014/69a258bc4173440cb28c31d03fc9d00d.jpg",
+        "https://img.jzfileserver.com/product/68014/aaf7915165824fed856ea02dd12d270e.jpg",
+        "https://img.jzfileserver.com/product/68014/a33f4b40690943aba9f9c036e51c881b.jpg",
+        "https://img.jzfileserver.com/product/68014/ec1cf8e86e49459eabe4e1ecc35eeec6.jpg",
+        "https://img.jzfileserver.com/product/68014/5778713e40fb4a6087c3cbcfa4ce19ad.jpg"
       ],
       "description": "",
       "featured": true
     },
     {
-      "id": "f00248",
-      "name": "Paco Rabanne INVICTUS LEGEND EDP",
-      "nameEn": "Paco Rabanne INVICTUS LEGEND EDP",
+      "id": "f00181",
+      "name": "PARFUMS de MARLY Palatine 2024",
+      "nameEn": "PARFUMS de MARLY Palatine 2024",
       "category": "Fragrance",
       "price": 20.99,
       "images": [
-        "https://img.jzfileserver.com/product/68014/08aec41a1b9c4bef82c36aab47a97a2e.jpg",
-        "https://img.jzfileserver.com/product/68014/fdee726258b44592aeedd8e839565dd8.jpg",
-        "https://img.jzfileserver.com/product/68014/1055a72252f44931ac280f783c5b5faf.jpg",
-        "https://img.jzfileserver.com/product/68014/f3109a3f2f2644a287f651784b15a58e.jpg",
-        "https://img.jzfileserver.com/product/68014/dca08f64ba4f4dc19180de16698eceab.jpg",
-        "https://img.jzfileserver.com/product/68014/fd52e1c456b5432eb6d726fa99b48d45.jpg",
-        "https://img.jzfileserver.com/product/68014/add3d036befa4d94a1399cf459102ea2.jpg",
-        "https://img.jzfileserver.com/product/68014/7cf9bfe8ad334544880f73629636638b.jpg"
-      ],
-      "description": "",
-      "featured": true
-    },
-    {
-      "id": "f00250",
-      "name": "Paco Rabanne FAME EDP 2022",
-      "nameEn": "Paco Rabanne FAME EDP 2022",
-      "category": "Fragrance",
-      "price": 20.99,
-      "images": [
-        "https://img.jzfileserver.com/product/68014/381efa7e136b4430b13e856e3bf29346.jpg",
-        "https://img.jzfileserver.com/product/68014/c18ad7dafcc84891ab74d630b92c668a.jpg",
-        "https://img.jzfileserver.com/product/68014/5bb94236f49948348350010539645462.jpg",
-        "https://img.jzfileserver.com/product/68014/b431d62103534482ae8dd7c12aa81c97.jpg",
-        "https://img.jzfileserver.com/product/68014/57029a04fc5a4d39890892ad821157a9.jpg",
-        "https://img.jzfileserver.com/product/68014/91c64ddd3e1c4a1cabfa8fc158c09133.jpg",
-        "https://img.jzfileserver.com/product/68014/38ab91dcb96341a591883c2174b589ff.jpg",
-        "https://img.jzfileserver.com/product/68014/f5807f50e18a4105a74903e84de90819.jpg",
-        "https://img.jzfileserver.com/product/68014/ba0327cdfeee45cd8bc37f6f181767d6.jpg"
-      ],
-      "description": "",
-      "featured": true
-    },
-    {
-      "id": "f00251",
-      "name": "Paco Rabanne FAME EDP 2022",
-      "nameEn": "Paco Rabanne FAME EDP 2022",
-      "category": "Fragrance",
-      "price": 20.99,
-      "images": [
-        "https://img.jzfileserver.com/product/68014/d7632f4e8ba143f1b4ef764f012130a1.jpg",
-        "https://img.jzfileserver.com/product/68014/e7d87eecc1004dcabb155a4bc7d69e4a.jpg",
-        "https://img.jzfileserver.com/product/68014/e181ee987ea243578b8189b15cfeaa37.jpg",
-        "https://img.jzfileserver.com/product/68014/0d643b0fe5f6442fbd1f7b3578872439.jpg",
-        "https://img.jzfileserver.com/product/68014/a9283a05643647a8ab21a1771e6a34a1.jpg",
-        "https://img.jzfileserver.com/product/68014/949ce918dcd644cbaa4b058b44d323d0.jpg",
-        "https://img.jzfileserver.com/product/68014/17b6d700b887456580abb1bad403f6c7.jpg",
-        "https://img.jzfileserver.com/product/68014/c047658b9f0a493d84064d8e0a57236a.jpg",
-        "https://img.jzfileserver.com/product/68014/01a613773d474270af260bcc70162b08.jpg"
+        "https://img.jzfileserver.com/product/68014/10073c603df94c38b309f3851f10e71a.jpg",
+        "https://img.jzfileserver.com/product/68014/943f1859a9e94ada935bda7fca3bf258.jpg",
+        "https://img.jzfileserver.com/product/68014/96707bf5b2ff405ba338cc2b567b1d28.jpg",
+        "https://img.jzfileserver.com/product/68014/2ecfd2b501ee40aeac23017a05beaa80.jpg",
+        "https://img.jzfileserver.com/product/68014/146b61d0fe954237826c8a957e5bafc6.jpg",
+        "https://img.jzfileserver.com/product/68014/e397fd65902246138b6b52aecfce2282.jpg",
+        "https://img.jzfileserver.com/product/68014/30d4f4f042fa4b6d9297b0df0bdb9254.jpg",
+        "https://img.jzfileserver.com/product/68014/866aa9598b3a42aab48866d506273a6b.jpg"
       ],
       "description": "",
       "featured": true
