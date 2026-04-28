@@ -982,19 +982,29 @@ function openProductModal(productId, type) {
                                 ${product.colors.map(color => `
                                     <button class="option-btn" data-option="color">${color}</button>
                                 `).join('')}
-                            </div>
+</div>
                         </div>
                     </div>
                 ` : `
                     <div class="product-options">
+                        ${product['规格1'] ? `
                         <div class="option-group">
-                            <label>香调</label>
-                            <p class="product-notes">${product.notes}</p>
+                            <label>${product['规格1']}</label>
+                            <p class="product-size">${product['规格值1']}</p>
                         </div>
+                        ` : ''}
+                        ${product['规格2'] ? `
                         <div class="option-group">
-                            <label>规格</label>
-                            <p class="product-size">${product.size}</p>
+                            <label>${product['规格2']}</label>
+                            <p class="product-size">${product['规格值2']}</p>
                         </div>
+                        ` : ''}
+                        ${product['规格3'] ? `
+                        <div class="option-group">
+                            <label>${product['规格3']}</label>
+                            <p class="product-size">${product['规格值3']}</p>
+                        </div>
+                        ` : ''}
                     </div>
                 `}
                 
