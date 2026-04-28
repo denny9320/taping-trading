@@ -218,6 +218,12 @@
     let currentLang = localStorage.getItem('taping_lang') || 'zh';
     let currentUser = null;
 
+    // 在页面加载时立即读取URL参数并显示对应的标签页
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTab = urlParams.get('tab') || 'profile';
+    const tabMap = { 'profile': 'profile', 'addresses': 'address', 'orders': 'orders', 'settings': 'settings' };
+    const targetTab = tabMap[initialTab] || 'profile';
+
     // Initialize
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
@@ -234,12 +240,7 @@
       await loadAddresses();
       await loadOrders();
       
-      // 检查URL参数，显示对应的标签页
-      const urlParams = new URLSearchParams(window.location.search);
-      const tab = urlParams.get('tab');
-      // 统一tab名称：addresses -> address, orders -> orders, settings -> settings
-      const tabMap = { 'profile': 'profile', 'addresses': 'address', 'orders': 'orders', 'settings': 'settings' };
-      const targetTab = tabMap[tab] || 'profile';
+      // 立即显示正确的标签页（在applyTranslations之后）
       showTab(targetTab);
     });
 
