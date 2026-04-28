@@ -548,11 +548,14 @@ function createFeaturedCard(product, type) {
     const images = product.images && product.images.length > 0 ? product.images : [];
     const mainImage = images[0] || 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PC9zdmc+';
     
+    // 根据当前语言显示产品名称
+    const displayName = currentLang === 'zh' ? product.name : (product.nameEn || product.name);
+    
     return `
-        <div class="featured-card" onclick="openProductModal('${product.id}', '${type}')" style="background-image: url('${mainImage}'); cursor: pointer;">
+        <div class="featured-card" data-id="${product.id}" data-type="${type}" onclick="openProductModal(this.dataset.id, this.dataset.type)" style="background-image: url('${mainImage}'); cursor: pointer;">
             <div class="featured-overlay">
                 <div class="featured-info">
-                    <h3 class="featured-name">${product.name || '产品'}</h3>
+                    <h3 class="featured-name">${displayName}</h3>
                     <div class="featured-price">${priceFormatted}</div>
                 </div>
             </div>
@@ -956,14 +959,13 @@ function openProductModal(productId, type) {
                         <div class="carousel-nav prev" onclick="modalPrevImage(this)">‹</div>
                         <div class="carousel-nav next" onclick="modalNextImage(this)">›</div>
                         <div class="carousel-dots">${indicators}</div>
-                    ` : ''}
-                </div>
+` : ''}
             </div>
             <div class="modal-product-details">
                 <span class="modal-product-category">${product.category}</span>
-                <h2 class="modal-product-name">${product.name}</h2>
-                <p class="modal-product-name-en">${product.nameEn}</p>
-                <p class="modal-product-price">¥${product.price.toLocaleString('zh-CN')}</p>
+                <h2 class="modal-product-name">${currentLang === 'zh' ? product.name : (product.nameEn || product.name)}</h2>
+                <p class="modal-product-name-en">${currentLang === 'en' ? product.name : (product.nameEn || product.name)}</p>
+                <p class="modal-product-price">${formatPrice(product.price)}</p>
                 <p class="modal-product-description">${product.description}</p>
                 
                 ${isClothing ? `
