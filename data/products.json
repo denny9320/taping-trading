@@ -7,10 +7,10 @@
       "category": "Clothing",
       "price": 170,
       "images": [
-        "images/products/jacket1.jpg",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
         "images/products/jacket1.jpg"
       ],
-      "description": "Supreme反光logo连帽工装外套，全牛仔棉绗缝保暖",
+      "description": "Supreme反光logo连帽工装外套",
       "featured": true
     },
     {
@@ -20,10 +20,10 @@
       "category": "Clothing",
       "price": 95,
       "images": [
-        "images/products/jacket2.jpg",
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=85",
         "images/products/jacket2.jpg"
       ],
-      "description": "Moncler连帽羽绒服，拼接设计",
+      "description": "Moncler连帽羽绒服",
       "featured": true
     },
     {
@@ -33,10 +33,10 @@
       "category": "Clothing",
       "price": 88,
       "images": [
-        "images/products/jacket1.jpg",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
         "images/products/jacket1.jpg"
       ],
-      "description": "KAILAS超轻Primaloft连帽夹克",
+      "description": "KAILAS超轻夹克",
       "featured": true
     },
     {
@@ -46,10 +46,10 @@
       "category": "Clothing",
       "price": 120,
       "images": [
-        "images/products/fashion1.jpg",
-        "images/products/fashion1.jpg"
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
+        "images/products/jacket1.jpg"
       ],
-      "description": "KAILAS气凝胶智能温控夹克",
+      "description": "KAILAS气凝胶夹克",
       "featured": true
     },
     {
@@ -59,10 +59,10 @@
       "category": "Clothing",
       "price": 120,
       "images": [
-        "images/products/jacket1.jpg",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
         "images/products/jacket1.jpg"
       ],
-      "description": "ARC'TERYX高端Gore-Tex夹克",
+      "description": "ARC'TERYX夹克",
       "featured": true
     }
   ],
@@ -74,10 +74,10 @@
       "category": "Fragrance",
       "price": 25.99,
       "images": [
-        "images/products/jacket1.jpg",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
         "images/products/jacket1.jpg"
       ],
-      "description": "Dior高端限定香水",
+      "description": "Dior高端香水",
       "featured": true,
       "size": "100ml"
     },
@@ -88,24 +88,24 @@
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "images/products/jacket2.jpg",
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=85",
         "images/products/jacket2.jpg"
       ],
-      "description": "Jimmy Choo男士淡香水",
+      "description": "Jimmy Choo男士香水",
       "featured": true,
       "size": "100ml"
     },
     {
       "id": "f00003",
-      "name": "Armaf Night Allure Pure Extension EDT 100ml",
-      "nameEn": "Armaf Night Allure Pure Extension EDT 100ml",
+      "name": "Armaf Night Allure EDT 100ml",
+      "nameEn": "Armaf Night Allure EDT 100ml",
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "images/products/jacket1.jpg",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
         "images/products/jacket1.jpg"
       ],
-      "description": "Armaf夜之魅力特别版",
+      "description": "Armaf夜之香水",
       "featured": true,
       "size": "100ml"
     },
@@ -116,10 +116,10 @@
       "category": "Fragrance",
       "price": 65,
       "images": [
-        "images/products/fashion1.jpg",
-        "images/products/fashion1.jpg"
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
+        "images/products/jacket1.jpg"
       ],
-      "description": "Miu Miu复古格纹马甲",
+      "description": "Miu Miu马甲",
       "featured": true,
       "size": "50ml"
     },
@@ -130,10 +130,10 @@
       "category": "Fragrance",
       "price": 90,
       "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=85",
+        "images/products/jacket2.jpg"
       ],
-      "description": "MLB NY徽章绣花羽绒服马甲",
+      "description": "MLB NY马甲",
       "featured": true,
       "size": "50ml"
     },
@@ -144,10 +144,10 @@
       "category": "Fragrance",
       "price": 66,
       "images": [
-        "images/products/jacket2.jpg",
-        "images/products/jacket2.jpg"
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
+        "images/products/jacket1.jpg"
       ],
-      "description": "Nike立领保暖羽绒服马甲",
+      "description": "Nike马甲",
       "featured": true,
       "size": "50ml"
     },
@@ -158,10 +158,10 @@
       "category": "Fragrance",
       "price": 80,
       "images": [
-        "images/products/jacket1.jpg",
-        "images/products/jacket1.jpg"
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=85",
+        "images/products/jacket2.jpg"
       ],
-      "description": "MONCLER光泽尼龙连帽马甲",
+      "description": "MONCLER马甲",
       "featured": true,
       "size": "50ml"
     }
