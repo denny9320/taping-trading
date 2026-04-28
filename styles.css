@@ -1558,7 +1558,7 @@ button {
     display: flex;
     flex-direction: column;
     background: #fafafa;
-    padding: 10px;
+    padding: 8px;
     position: relative;
 }
 
@@ -1571,22 +1571,22 @@ button {
 
 .modal-main-image {
     max-width: 100%;
-    max-height: 40vh;
+    max-height: 35vh;
     object-fit: contain;
 }
 
-/* 缩略图条 - 更紧凑 */
+/* 缩略图条 - 超紧凑 */
 .thumbnail-nav-row {
     display: flex;
     align-items: center;
-    gap: 4px;
-    margin-top: 8px;
+    gap: 3px;
+    margin-top: 5px;
     width: 100%;
 }
 
 .thumbnail-strip {
     display: flex;
-    gap: 3px;
+    gap: 2px;
     overflow-x: auto;
     scroll-behavior: smooth;
     flex: 1;
@@ -1605,11 +1605,11 @@ button {
     background: #ccc;
 }
 
-/* 缩略图 - 完全贴合图片 */
+/* 缩略图 - 更小更紧凑 */
 .modal-thumbnail {
-    width: 36px;
-    min-width: 36px;
-    height: 36px;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
     object-fit: cover;
     cursor: pointer;
     border: 1px solid #ddd;
@@ -1632,15 +1632,16 @@ button {
     box-sizing: border-box;
 }
 
+/* 缩略图导航按钮更小 */
 .thumb-nav-btn {
     background: white;
     border: 1px solid #ddd;
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
