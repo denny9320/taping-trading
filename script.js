@@ -934,13 +934,23 @@ function initProductModal() {
 }
 
 function openProductModal(productId, type) {
+    console.log('Opening modal for:', productId, 'type:', type, 'productData:', productData ? 'loaded' : 'not loaded');
+    
     const modal = document.getElementById('productModal');
     const modalBody = document.getElementById('modalBody');
+    
+    if (!productData || !productData[type]) {
+        console.error('Product data not loaded yet');
+        return;
+    }
     
     const products = productData[type];
     const product = products.find(p => p.id === productId);
     
-    if (!product || !modalBody) return;
+    if (!product || !modalBody) {
+        console.error('Product or modal not found:', product, modalBody);
+        return;
+    }
     
     const isClothing = type === 'clothing';
     const images = product.images || [product.image || ''];
