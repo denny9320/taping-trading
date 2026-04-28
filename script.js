@@ -523,15 +523,16 @@ function createProductCard(product, type) {
     // Simple gray placeholder (base64 encoded SVG)
     const placeholder = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5Y2EzNDEiIGZvbnQtc2l6ZT0iMjAiPkltYWdlPC90ZXh0Pjwvc3ZnPg==';
     
-    // Use placeholder for now to test
-    const images = [placeholder];
+    // Use product images if available, otherwise use placeholder
+    const images = product.images && product.images.length > 0 ? product.images : [placeholder];
+    const mainImage = images[0];
     
     return `
         <div class="product-card" data-id="${product.id}" data-type="${type}">
             <div class="product-image">
                 <div class="product-carousel" data-product-id="${product.id}">
                     <div class="carousel-main">
-                        <img src="${placeholder}" alt="${product.name}" class="carousel-image active">
+                        <img src="${mainImage}" alt="${product.name}" class="carousel-image active">
                     </div>
                 </div>
                 <div class="product-overlay">
