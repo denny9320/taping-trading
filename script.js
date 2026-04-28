@@ -652,39 +652,101 @@ function filterByCategory(category) {
    Shopping Cart
    ======================================== */
 function addToCart(productId, type) {
-    const products = productData[type];
-    const product = products.find(p => p.id === productId);
+    console.log('addToCart called:', productId, type);
     
-    if (product) {
-        // Check if already in cart
-        const existingItem = cart.find(item => item.id === productId);
-        
-        if (existingItem) {
-            existingItem.quantity++;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-        
-        updateCartDisplay();
-        showNotification(`已添加 ${product.name} 到购物车`, 'success');
-        
-        // Save to localStorage
-        saveCartToStorage();
+    // 找不到type的话，根据ID推断
+    if (!type) {
+        type = String(productId).startsWith('f') ? 'fragrance' : 'clothing';
     }
+    
+    console.log('Looking in type:', type);
+    
+    // 确保数据加载
+    if (!productData) {
+        console.error('productData not loaded');
+        showNotification('请稍候再试', 'error');
+        return;
+    }
+    
+    const products = productData[type];
+    if (!products) {
+        console.error('No products for type:', type);
+        // 尝试其他类型
+        if (productData.clothing) {
+            type = 'clothing';
+        } else if (productData.fragrance) {
+            type = 'fragrance';
+        } else {
+            showNotification('产品数据未加载', 'error');
+            return;
+        }
+    }
+    
+    const product = products ? products.find(p => p.id === productId) : null;
+    
+    if (!product) {
+        console.error('Product not found:', productId);
+        showNotification('产品未找到', 'error');
+        return;
+    }
+    
+    console.log('Adding to cart:', product.name);
+    
+    // 检查是否已在购物车
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity++;
+        showNotification(currentLang === 'zh' ? '已添加到购物车' : 'Added to cart', 'success');
+    } else {
+        cart.push({ ...product, quantity: 1 });
+        showNotification(currentLang === 'zh' ? '已添加到购物车' : 'Added to cart', 'success');
+    }
+    
+    // 立即更新显示
+    updateCartDisplay();
+    saveCartToStorage();
+    
+    console.log('Cart now has', cart.length, 'items');
 }
 
 function updateCartDisplay() {
-    const cartCount = document.querySelector('.cart-count');
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    console.log('updateCartDisplay called, cart items:', cart.length);
     
-    if (cartCount) {
-        cartCount.textContent = totalItems;
-        
-        // Animate
-        cartCount.style.transform = 'scale(1.3)';
-        setTimeout(() => {
-            cartCount.style.transform = 'scale(1)';
-        }, 200);
+    const cartCountElements = document.querySelectorAll('.cart-count');
+    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    
+    console.log('Total items:', totalItems);
+    
+    cartCountElements.forEach(cartCount => {
+        if (cartCount) {
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+            
+            // Animate
+            cartCount.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartCount.style.transform = 'scale(1)';
+            }, 200);
+        }
+    });
+    
+    // 更新购物车侧边栏
+    const cartItemsContainer = document.getElementById('cartItems');
+    if (cartItemsContainer) {
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="cart-empty">' + (currentLang === 'zh' ? '购物车是空的' : 'Your cart is empty') + '</p>';
+        } else {
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.images ? item.images[0] : ''}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>${formatPrice(item.price)} x ${item.quantity || 1}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
     }
 }
 
