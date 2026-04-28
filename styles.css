@@ -1548,14 +1548,15 @@ button {
 
 .modal-product-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    min-height: auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 15px;
+    align-items: start;
 }
 
 .modal-product-image {
     display: flex;
     flex-direction: column;
-    align-items: center;
     background: #fafafa;
     padding: 10px;
     position: relative;
@@ -1563,65 +1564,59 @@ button {
 
 .modal-main-image-container {
     width: 100%;
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: auto;
-    max-height: 45vh;
 }
 
 .modal-main-image {
     max-width: 100%;
-    max-height: 55vh;
+    max-height: 40vh;
     object-fit: contain;
-    cursor: pointer;
 }
 
-/* 缩略图条 - 水平可滚动，导航按钮在同一行 */
+/* 缩略图条 - 更紧凑 */
 .thumbnail-nav-row {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     margin-top: 8px;
     width: 100%;
-    max-width: 350px;
 }
 
 .thumbnail-strip {
     display: flex;
-    gap: 4px;
+    gap: 3px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 2px;
     flex: 1;
     justify-content: center;
 }
 
 .thumbnail-strip::-webkit-scrollbar {
-    height: 3px;
+    height: 2px;
 }
 
 .thumbnail-strip::-webkit-scrollbar-track {
     background: #eee;
-    border-radius: 2px;
 }
 
 .thumbnail-strip::-webkit-scrollbar-thumb {
     background: #ccc;
-    border-radius: 2px;
 }
 
+/* 缩略图 - 完全贴合图片 */
 .modal-thumbnail {
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
     object-fit: cover;
     cursor: pointer;
-    border: 2px solid #ddd;
+    border: 1px solid #ddd;
     border-radius: 2px;
     opacity: 0.6;
-    transition: all 0.2s;
+    transition: all 0.15s;
+    display: block;
 }
 
 .modal-thumbnail:hover {
@@ -1629,21 +1624,23 @@ button {
     border-color: #999;
 }
 
+/* 选中状态 - 边框紧贴图片 */
 .modal-thumbnail.active {
-    border-color: var(--color-accent);
-    border-width: 2px;
+    border: 2px solid var(--color-accent);
     opacity: 1;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .thumb-nav-btn {
     background: white;
     border: 1px solid #ddd;
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
