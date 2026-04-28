@@ -3,71 +3,66 @@
     {
       "id": "c00005",
       "name": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue",
-      "nameEn": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue",
+      "nameEn": "Supreme FW25 Reflective Logo Hooded Work Jacket",
       "category": "Clothing",
       "price": 170,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
       ],
-      "description": "2025春夏Supreme反光logo连帽工装外套，全牛仔棉绗缝保暖，宽松落肩版型",
+      "description": "2025春夏Supreme反光logo连帽工装外套，全牛仔棉绗缝保暖",
       "featured": true
     },
     {
       "id": "c00007",
-      "name": "MONCLER Paneled Stand Collar Puffer Jacket | Knitted Cable Sleeves | Luxury Winter Style Redefined",
-      "nameEn": "MONCLER Paneled Stand Collar Puffer Jacket | Knitted Cable Sleeves | Luxury Winter Style Redefined",
+      "name": "MONCLER Paneled Stand Collar Puffer Jacket | Knitted Cable Sleeves",
+      "nameEn": "MONCLER Paneled Stand Collar Puffer Jacket",
       "category": "Clothing",
       "price": 95,
       "images": [
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=85",
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=85",
-        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=85"
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80"
       ],
-      "description": "Moncler连帽羽绒服，拼接设计，针织袖口，冬季保暖必备",
+      "description": "Moncler连帽羽绒服，拼接设计，针织袖口",
       "featured": true
     },
     {
       "id": "c00008",
-      "name": "KAILAS Ultralight Primaloft Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulation",
-      "nameEn": "KAILAS Ultralight Primaloft Hooded Jacket | Quilted Construction | Helmet-Compatible Outdoor Insulation",
+      "name": "KAILAS Ultralight Primaloft Hooded Jacket | Outdoor Insulation",
+      "nameEn": "KAILAS Ultralight Primaloft Hooded Jacket",
       "category": "Clothing",
       "price": 88,
       "images": [
-        "https://images.unsplash.com/photo-1544923246-77307dd628b8?w=600&q=85",
-        "https://images.unsplash.com/photo-1544923246-77307dd628b8?w=600&q=85",
-        "https://images.unsplash.com/photo-1544923246-77307dd628b8?w=600&q=85"
+        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80",
+        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80"
       ],
-      "description": "KAILAS超轻Primaloft连帽夹克，户外保暖专家",
+      "description": "KAILAS超轻Primaloft连帽夹克",
       "featured": true
     },
     {
       "id": "c00011",
-      "name": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature Regulation | Wind & Water Resistant",
-      "nameEn": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature Regulation | Wind & Water Resistant",
+      "name": "KAILAS AC133 Aerogel Insulated Jacket | Smart Temperature",
+      "nameEn": "KAILAS AC133 Aerogel Insulated Jacket",
       "category": "Clothing",
       "price": 120,
       "images": [
-        "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&q=85",
-        "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&q=85",
-        "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&q=85"
+        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",
+        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80"
       ],
-      "description": "KAILAS气凝胶智能温控夹克，防风防水，户外首选",
+      "description": "KAILAS气凝胶智能温控夹克",
       "featured": true
     },
     {
       "id": "c00013",
-      "name": "ARC'TERYX Ralle Insulated Waterproof Jacket | Gore-Tex Panels | Windproof & Warm",
-      "nameEn": "ARC'TERYX Ralle Insulated Waterproof Jacket | Gore-Tex Panels | Windproof & Warm",
+      "name": "ARC'TERYX Ralle Insulated Waterproof Jacket | Gore-Tex",
+      "nameEn": "ARC'TERYX Ralle Insulated Waterproof Jacket",
       "category": "Clothing",
       "price": 120,
       "images": [
-        "https://images.unsplash.com/photo-1487220845219-b2859d9e2f49?w=600&q=85",
-        "https://images.unsplash.com/photo-1487220845219-b2859d9e2f49?w=600&q=85",
-        "https://images.unsplash.com/photo-1487220845219-b2859d9e2f49?w=600&q=85"
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
       ],
-      "description": "ARC'TERYX高端Gore-Tex waterproof夹克，极限户外装备",
+      "description": "ARC'TERYX高端Gore-Tex夹克",
       "featured": true
     }
   ],
@@ -79,39 +74,36 @@
       "category": "Fragrance",
       "price": 25.99,
       "images": [
-        "https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=600&q=85",
-        "https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=600&q=85",
-        "https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=600&q=85"
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
       ],
-      "description": "Dior高端限定香水，蒙田大道系列",
+      "description": "Dior高端限定香水",
       "featured": true,
       "size": "100ml"
     },
     {
       "id": "f00002",
       "name": "Jimmy Choo Pour Homme EDT 100ml",
-      "nameEn": "Jimmy Choo Pour Homme EDT 100ml - Aromatic Woody",
+      "nameEn": "Jimmy Choo Pour Homme EDT 100ml",
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "https://images.unsplash.com/photo-1595428774223-ef526241200d?w=600&q=85",
-        "https://images.unsplash.com/photo-1595428774223-ef526241200d?w=600&q=85",
-        "https://images.unsplash.com/photo-1595428774223-ef526241200d?w=600&q=85"
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80"
       ],
-      "description": "Jimmy Choo男士淡香水，木质调经典",
+      "description": "Jimmy Choo男士淡香水",
       "featured": true,
       "size": "100ml"
     },
     {
       "id": "f00003",
       "name": "Armaf Night Allure Pure Extension EDT 100ml",
-      "nameEn": "Armaf Night Allure Pure Extension EDT 100ml - Elegant Night",
+      "nameEn": "Armaf Night Allure Pure Extension EDT 100ml",
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "https://images.unsplash.com/photo-1615634260167-c8cd4c2ead81?w=600&q=85",
-        "https://images.unsplash.com/photo-1615634260167-c8cd4c2ead81?w=600&q=85",
-        "https://images.unsplash.com/photo-1615634260167-c8cd4c2ead81?w=600&q=85"
+        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80",
+        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80"
       ],
       "description": "Armaf夜之魅力特别版",
       "featured": true,
@@ -120,13 +112,12 @@
     {
       "id": "f00029",
       "name": "Miu Miu 25FW Checked Vest",
-      "nameEn": "Miu Miu 25FW Checked Vest - Sleeveless High Neck Puffer Gilet",
+      "nameEn": "Miu Miu 25FW Checked Vest",
       "category": "Fragrance",
       "price": 65,
       "images": [
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=85",
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=85",
-        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=85"
+        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80",
+        "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80"
       ],
       "description": "Miu Miu复古格纹马甲",
       "featured": true,
@@ -135,13 +126,12 @@
     {
       "id": "f00033",
       "name": "MLB NY Embroidered Down Vest",
-      "nameEn": "MLB NY Embroidered Down Vest - 90% White Duck Down",
+      "nameEn": "MLB NY Embroidered Down Vest",
       "category": "Fragrance",
       "price": 90,
       "images": [
-        "https://images.unsplash.com/photo-1556905055-8f358a817935?w=600&q=85",
-        "https://images.unsplash.com/photo-1556905055-8f358a817935?w=600&q=85",
-        "https://images.unsplash.com/photo-1556905055-8f358a817935?w=600&q=85"
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80",
+        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
       ],
       "description": "MLB NY徽章绣花羽绒服马甲",
       "featured": true,
@@ -150,13 +140,12 @@
     {
       "id": "f00043",
       "name": "Nike Stand Collar Puffer Vest",
-      "nameEn": "Nike Stand Collar Puffer Vest - Thermal Windproof",
+      "nameEn": "Nike Stand Collar Puffer Vest",
       "category": "Fragrance",
       "price": 66,
       "images": [
-        "https://images.unsplash.com/photo-1557418669-df91476a1a9d?w=600&q=85",
-        "https://images.unsplash.com/photo-1557418669-df91476a1a9d?w=600&q=85",
-        "https://images.unsplash.com/photo-1557418669-df91476a1a9d?w=600&q=85"
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80",
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80"
       ],
       "description": "Nike立领保暖羽绒服马甲",
       "featured": true,
@@ -165,13 +154,12 @@
     {
       "id": "f00048",
       "name": "MONCLER Corydale Hooded Gilet",
-      "nameEn": "MONCLER Corydale Hooded Gilet - Glossy Nylon Quilted Vest",
+      "nameEn": "MONCLER Corydale Hooded Gilet",
       "category": "Fragrance",
       "price": 80,
       "images": [
-        "https://images.unsplash.com/photo-1513506003901-1e1a255a923f?w=600&q=85",
-        "https://images.unsplash.com/photo-1513506003901-1e1a255a923f?w=600&q=85",
-        "https://images.unsplash.com/photo-1513506003901-1e1a255a923f?w=600&q=85"
+        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80",
+        "https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=600&q=80"
       ],
       "description": "MONCLER光泽尼龙连帽马甲",
       "featured": true,
