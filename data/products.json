@@ -1,32 +1,6 @@
 {
   "clothing": [
     {
-      "id": "c00001",
-      "name": "Dior Privee Montaigne Houndstooth Limited Edition 100ml",
-      "nameEn": "Dior Privee Montaigne Houndstooth Limited Edition 100ml",
-      "category": "Clothing",
-      "price": 25.99,
-      "images": [
-        "https://img.jzfileserver.com/products/1384defb88704277af8a14dee81c972e.jpg",
-        "https://img.jzfileserver.com/products/669ebecdf81b4f46b5d24a919232495d.jpg",
-        "https://img.jzfileserver.com/products/f62983d22d1d405dab886a911848308a.jpg"
-      ],
-      "description": "",
-      "featured": true
-    },
-    {
-      "id": "c00004",
-      "name": "budanshiyong",
-      "nameEn": "budanshiyong",
-      "category": "Clothing",
-      "price": 0.1,
-      "images": [
-        "https://img.jzfileserver.com/product/68014/b4ea27ea375c4dcd8e8f9098472feb56.jpg"
-      ],
-      "description": "",
-      "featured": true
-    },
-    {
       "id": "c00005",
       "name": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue/Black",
       "nameEn": "Supreme FW25 Reflective Logo Hooded Work Jacket | Full Denim Quilted Insulation | Unisex Washed Blue/Black",
