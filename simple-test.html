@@ -3,103 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>简单图片测试</title>
+    <title>图片可用性测试</title>
     <style>
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
+            max-width: 800px;
+            margin: 30px auto;
             padding: 20px;
         }
-        h1 { text-align: center; color: #333; }
-        .product-grid {
+        h1 { text-align: center; }
+        .grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
         }
-        .product-card {
+        .item {
             border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
             padding: 10px;
+            text-align: center;
         }
-        .product-card img {
+        .item img {
             width: 100%;
-            height: 250px;
+            height: 150px;
             object-fit: cover;
-            display: block;
         }
-        .product-card h3 {
-            font-size: 14px;
-            margin: 10px 0;
-            color: #333;
+        .item p {
+            font-size: 12px;
+            margin: 5px 0;
         }
-        .product-card .price {
-            color: #c41e3a;
+        .status {
+            font-size: 12px;
             font-weight: bold;
         }
+        .ok { color: green; }
+        .fail { color: red; }
     </style>
 </head>
 <body>
-    <h1>产品图片测试</h1>
+    <h1>请告诉我哪些显示正常</h1>
+    <p>把显示不出来的图片编号告诉我</p>
     
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&q=80" alt="夹克" id="img1">
-            <h3>Supreme 夹克</h3>
-            <p class="price">¥170</p>
+    <div class="grid">
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200&q=70" alt="" id="img1">
+            <p>1. 夹克</p>
+            <div class="status" id="s1">加载中...</div>
         </div>
-        
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="羽绒服" id="img2">
-            <h3>MONCLER 羽绒服</h3>
-            <p class="price">¥95</p>
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&q=70" alt="" id="img2">
+            <p>2. 羽绒服</p>
+            <div class="status" id="s2">加载中...</div>
         </div>
-        
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1544923246-77307dd628b8?w=400&q=80" alt="户外夹克" id="img3">
-            <h3>KAILAS 户外夹克</h3>
-            <p class="price">¥88</p>
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1544923246-77307dd628b8?w=200&q=70" alt="" id="img3">
+            <p>3. 户外</p>
+            <div class="status" id="s3">加载中...</div>
         </div>
-        
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=400&q=80" alt="香水" id="img4">
-            <h3>Dior 香水</h3>
-            <p class="price">¥25.99</p>
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=200&q=70" alt="" id="img4">
+            <p>4. 香水</p>
+            <div class="status" id="s4">加载中...</div>
         </div>
     </div>
 
-    <h2 style="margin-top: 50px;">图片加载状态:</h2>
-    <div id="status"></div>
-    
+    <h2>备用方案测试 - 使用Pexels</h2>
+    <div class="grid">
+        <div class="item">
+            <img src="https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?w=200&q=70" alt="" id="img5">
+            <p>5. Pexels夹克</p>
+            <div class="status" id="s5">加载中...</div>
+        </div>
+        <div class="item">
+            <img src="https://images.pexels.com/photos/4937224/pexels-photo-4937224.jpeg?w=200&q=70" alt="" id="img6">
+            <p>6. Pexels服装</p>
+            <div class="status" id="s6">加载中...</div>
+        </div>
+    </div>
+
     <script>
-        const images = document.querySelectorAll('img');
-        const status = document.getElementById('status');
-        let loaded = 0;
-        let failed = 0;
+        const urls = [
+            { id: 'img1', s: 's1', src: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200&q=70' },
+            { id: 'img2', s: 's2', src: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&q=70' },
+            { id: 'img3', s: 's3', src: 'https://images.unsplash.com/photo-1544923246-77307dd628b8?w=200&q=70' },
+            { id: 'img4', s: 's4', src: 'https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=200&q=70' },
+            { id: 'img5', s: 's5', src: 'https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?w=200&q=70' },
+            { id: 'img6', s: 's6', src: 'https://images.pexels.com/photos/4937224/pexels-photo-4937224.jpeg?w=200&q=70' }
+        ];
         
-        images.forEach(img => {
-            img.onload = () => {
-                loaded++;
-                checkStatus();
-            };
-            img.onerror = () => {
-                failed++;
-                checkStatus();
-                console.log('加载失败:', img.src);
-            };
+        urls.forEach(u => {
+            const img = document.getElementById(u.id);
+            const s = document.getElementById(u.s);
+            
+            img.onload = () => { s.textContent = '✓ 正常'; s.className = 'status ok'; };
+            img.onerror = () => { s.textContent = '✗ 失败'; s.className = 'status fail'; };
         });
         
-        function checkStatus() {
-            status.innerHTML = `成功: ${loaded}, 失败: ${failed}`;
-        }
-        
-        // 超时检测
         setTimeout(() => {
-            if (loaded === 0 && failed === 0) {
-                status.innerHTML = '加载超时 - 网络可能被阻止';
-            }
-        }, 5000);
+            urls.forEach(u => {
+                const s = document.getElementById(u.s);
+                if (s.textContent === '加载中...') {
+                    s.textContent = '✗ 超时'; s.className = 'status fail';
+                }
+            });
+        }, 8000);
     </script>
 </body>
 </html>
