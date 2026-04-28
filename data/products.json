@@ -58,7 +58,7 @@
       "nameEn": "Dior Privee Montaigne EdP 100ml",
       "category": "Fragrance",
       "price": 25.99,
-      "images": ["images/products/perfume-custom2.jpg"],
+      "images": ["images/products/test-perfume.jpg"],
       "description": "Dior高端香水",
       "featured": true,
       "size": "100ml"
@@ -69,7 +69,7 @@
       "nameEn": "Jimmy Choo Pour Homme EDT 100ml",
       "category": "Fragrance",
       "price": 22.99,
-      "images": ["images/products/perfume-custom2.jpg"],
+      "images": ["images/products/test-perfume.jpg"],
       "description": "Jimmy Choo男士香水",
       "featured": true,
       "size": "100ml"
@@ -80,7 +80,7 @@
       "nameEn": "Armaf Night Allure EDT 100ml",
       "category": "Fragrance",
       "price": 22.99,
-      "images": ["images/products/perfume-custom2.jpg"],
+      "images": ["images/products/test-perfume.jpg"],
       "description": "Armaf夜之香水",
       "featured": true,
       "size": "100ml"
@@ -91,7 +91,7 @@
       "nameEn": "Miu Miu 25FW Checked Vest",
       "category": "Fragrance",
       "price": 65,
-      "images": ["images/products/perfume-custom2.jpg"],
+      "images": ["images/products/test-perfume.jpg"],
       "description": "Miu Miu马甲",
       "featured": true,
       "size": "50ml"
@@ -102,7 +102,7 @@
       "nameEn": "MLB NY Embroidered Down Vest",
       "category": "Fragrance",
       "price": 90,
-      "images": ["images/products/perfume-custom2.jpg"],
+      "images": ["images/products/test-perfume.jpg"],
       "description": "MLB NY马甲",
       "featured": true,
       "size": "50ml"
@@ -113,7 +113,7 @@
       "nameEn": "Nike Stand Collar Puffer Vest",
       "category": "Fragrance",
       "price": 66,
-      "images": ["images/products/perfume-custom2.jpg"],
+      "images": ["images/products/test-perfume.jpg"],
       "description": "Nike马甲",
       "featured": true,
       "size": "50ml"
@@ -124,7 +124,7 @@
       "nameEn": "MONCLER Corydale Hooded Gilet",
       "category": "Fragrance",
       "price": 80,
-      "images": ["images/products/perfume-custom2.jpg"],
+      "images": ["images/products/test-perfume.jpg"],
       "description": "MONCLER马甲",
       "featured": true,
       "size": "50ml"
