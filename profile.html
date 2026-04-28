@@ -237,9 +237,10 @@
       // 检查URL参数，显示对应的标签页
       const urlParams = new URLSearchParams(window.location.search);
       const tab = urlParams.get('tab');
-      if (tab && ['profile', 'address', 'orders', 'settings'].includes(tab)) {
-        showTab(tab);
-      }
+      // 统一tab名称：addresses -> address, orders -> orders, settings -> settings
+      const tabMap = { 'profile': 'profile', 'addresses': 'address', 'orders': 'orders', 'settings': 'settings' };
+      const targetTab = tabMap[tab] || 'profile';
+      showTab(targetTab);
     });
 
     // Initialize language buttons and apply translations from localStorage
