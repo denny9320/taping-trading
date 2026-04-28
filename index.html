@@ -439,12 +439,20 @@ onAuthStateChanged(auth, (user) => {
       window.updateUserDropdownState && window.updateUserDropdownState();
     });
 
-    window.showLoginModal = function() {
-      document.getElementById('loginModal').style.display = 'flex';
+window.showLoginModal = function() {
+      const modal = document.getElementById('loginModal');
+      if (modal) {
+        modal.style.display = 'flex';
+        modal.classList.add('active');
+      }
     };
 
     window.closeLoginModal = function() {
-      document.getElementById('loginModal').style.display = 'none';
+      const modal = document.getElementById('loginModal');
+      if (modal) {
+        modal.style.display = 'none';
+        modal.classList.remove('active');
+      }
     };
 
     window.toggleLoginRegister = function() {

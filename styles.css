@@ -1533,7 +1533,8 @@ button {
     padding: 24px;
 }
 
-.product-modal.active {
+.product-modal.active,
+.product-modal[style*="display: flex"] {
     opacity: 1;
     visibility: visible;
 }
