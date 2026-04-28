@@ -1557,7 +1557,7 @@ button {
     flex-direction: column;
     align-items: center;
     background: #fafafa;
-    padding: 20px;
+    padding: 15px;
     position: relative;
 }
 
@@ -1567,8 +1567,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 350px;
-    max-height: 55vh;
+    min-height: 300px;
+    max-height: 50vh;
 }
 
 .modal-main-image {
@@ -1582,10 +1582,10 @@ button {
 .thumbnail-nav-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 8px;
+    margin-top: 10px;
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
 }
 
 .thumbnail-strip {
@@ -1618,7 +1618,7 @@ button {
     height: 50px;
     object-fit: cover;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 2px solid #ddd;
     border-radius: 3px;
     opacity: 0.6;
     transition: all 0.2s;
@@ -1626,12 +1626,13 @@ button {
 
 .modal-thumbnail:hover {
     opacity: 1;
+    border-color: #999;
 }
 
 .modal-thumbnail.active {
     border-color: var(--color-accent);
+    border-width: 2px;
     opacity: 1;
-    box-shadow: 0 0 0 1px var(--color-accent);
 }
 
 .thumb-nav-btn {
