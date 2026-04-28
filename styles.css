@@ -222,7 +222,7 @@ button {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1558171813-4c088753af8f?w=1920&q=80');
+    background-image: url('images/products/jacket1.jpg');
     background-size: cover;
     background-position: center;
     transform: scale(1.1);

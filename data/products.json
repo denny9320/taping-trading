@@ -7,8 +7,8 @@
       "category": "Clothing",
       "price": 170,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "Supreme反光logo连帽工装外套",
       "featured": true
@@ -20,8 +20,8 @@
       "category": "Clothing",
       "price": 95,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket2.jpg",
+        "images/products/jacket2.jpg"
       ],
       "description": "Moncler连帽羽绒服",
       "featured": true
@@ -33,8 +33,8 @@
       "category": "Clothing",
       "price": 88,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "KAILAS超轻夹克",
       "featured": true
@@ -46,8 +46,8 @@
       "category": "Clothing",
       "price": 120,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "KAILAS气凝胶夹克",
       "featured": true
@@ -59,8 +59,8 @@
       "category": "Clothing",
       "price": 120,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "ARC'TERYX夹克",
       "featured": true
@@ -74,8 +74,8 @@
       "category": "Fragrance",
       "price": 25.99,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "Dior高端香水",
       "featured": true,
@@ -88,8 +88,8 @@
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket2.jpg",
+        "images/products/jacket2.jpg"
       ],
       "description": "Jimmy Choo男士香水",
       "featured": true,
@@ -102,8 +102,8 @@
       "category": "Fragrance",
       "price": 22.99,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "Armaf夜之香水",
       "featured": true,
@@ -116,8 +116,8 @@
       "category": "Fragrance",
       "price": 65,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "Miu Miu马甲",
       "featured": true,
@@ -130,8 +130,8 @@
       "category": "Fragrance",
       "price": 90,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket2.jpg",
+        "images/products/jacket2.jpg"
       ],
       "description": "MLB NY马甲",
       "featured": true,
@@ -144,8 +144,8 @@
       "category": "Fragrance",
       "price": 66,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket1.jpg",
+        "images/products/jacket1.jpg"
       ],
       "description": "Nike马甲",
       "featured": true,
@@ -158,8 +158,8 @@
       "category": "Fragrance",
       "price": 80,
       "images": [
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85",
-        "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=85"
+        "images/products/jacket2.jpg",
+        "images/products/jacket2.jpg"
       ],
       "description": "MONCLER马甲",
       "featured": true,
