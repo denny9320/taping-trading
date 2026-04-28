@@ -934,23 +934,60 @@ function initProductModal() {
 }
 
 function openProductModal(productId, type) {
-    console.log('Opening modal for:', productId, 'type:', type, 'productData:', productData ? 'loaded' : 'not loaded');
+    console.log('Opening modal for productId:', productId, 'type:', type);
+    
+    // 确保type有效
+    if (!type) {
+        console.error('type is undefined!');
+        // 尝试从ID判断类型
+        type = productId && productId.startsWith('f') ? 'fragrance' : 'clothing';
+        console.log('Using inferred type:', type);
+    }
     
     const modal = document.getElementById('productModal');
     const modalBody = document.getElementById('modalBody');
     
-    if (!productData || !productData[type]) {
-        console.error('Product data not loaded yet');
+    if (!modalBody) {
+        console.error('modalBody not found');
         return;
     }
     
+    if (!productData) {
+        console.error('productData not loaded');
+        return;
+    }
+    
+    // 使用正确的key
     const products = productData[type];
-    const product = products.find(p => p.id === productId);
-    
-    if (!product || !modalBody) {
-        console.error('Product or modal not found:', product, modalBody);
-        return;
+    if (!products) {
+        console.error('No products for type:', type, 'Available keys:', Object.keys(productData));
+        // 尝试其他key
+        if (productData.clothing) {
+            type = 'clothing';
+        } else if (productData.fragrance) {
+            type = 'fragrance';
+        }
     }
+    
+    const product = products ? products.find(p => p.id === productId) : null;
+    
+    if (!product) {
+        console.error('Product not found, id:', productId, 'in type:', type);
+        // 尝试查找
+        if (productData.clothing) {
+            product = productData.clothing.find(p => p.id === productId);
+            type = 'clothing';
+        }
+        if (!product && productData.fragrance) {
+            product = productData.fragrance.find(p => p.id === productId);
+            type = 'fragrance';
+        }
+        if (!product) {
+            return;
+        }
+    }
+    
+    console.log('Found product:', product.name, 'type:', type);
     
     const isClothing = type === 'clothing';
     const images = product.images || [product.image || ''];
@@ -979,24 +1016,20 @@ function openProductModal(productId, type) {
                 <p class="modal-product-price">${formatPrice(product.price)}</p>
                 <p class="modal-product-description">${product.description}</p>
                 
-                ${isClothing ? `
+${isClothing ? `
                     <div class="product-options">
+                        ${product['规格1'] ? `
                         <div class="option-group">
-                            <label>尺码</label>
-                            <div class="option-buttons">
-                                ${product.sizes.map(size => `
-                                    <button class="option-btn" data-option="size">${size}</button>
-                                `).join('')}
-                            </div>
+                            <label>${product['规格1']}</label>
+                            <p class="product-size">${product['规格值1'] || '默认'}</p>
                         </div>
+                        ` : ''}
+                        ${product['规格2'] ? `
                         <div class="option-group">
-                            <label>颜色</label>
-                            <div class="option-buttons">
-                                ${product.colors.map(color => `
-                                    <button class="option-btn" data-option="color">${color}</button>
-                                `).join('')}
-</div>
+                            <label>${product['规格2']}</label>
+                            <p class="product-size">${product['规格值2'] || ''}</p>
                         </div>
+                        ` : ''}
                     </div>
                 ` : `
                     <div class="product-options">
