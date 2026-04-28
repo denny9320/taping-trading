@@ -565,21 +565,22 @@ function createFeaturedCard(product, type) {
 
 function createProductCard(product, type) {
     const priceFormatted = formatPrice(product.price);
-    // Simple gray placeholder (base64 encoded SVG)
+    // Check if image is valid
     const placeholder = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PC9zdmc+';
     
     // Use product images if available, otherwise use placeholder
     const images = product.images && product.images.length > 0 ? product.images : [placeholder];
     const mainImage = images[0];
+    const displayName = currentLang === 'zh' ? product.name : (product.nameEn || product.name);
     
     return `
-        <div class="product-card" onclick="openProductModal('${product.id}', '${type}')" style="cursor: pointer;">
+        <div class="product-card" data-id="${product.id}" data-type="${type}" onclick="openProductModal('${product.id}', '${type}')" style="cursor: pointer;">
             <div class="product-image">
                 <img src="${mainImage}" alt="${product.name}" class="product-img-simple">
             </div>
             <div class="product-info">
                 <span class="product-category">${type === 'clothing' ? '服装' : '香水'}</span>
-                <h3 class="product-name">${product.name || '产品'}</h3>
+                <h3 class="product-name">${displayName}</h3>
                 <span class="product-name-en">${product.nameEn || ''}</span>
                 <div class="product-price-display">¥${priceFormatted}</div>
             </div>
@@ -1008,11 +1009,11 @@ function openProductModal(productId, type) {
                         </div>
                         ` : ''}
                     </div>
-                `}
+`}
                 
                 <div class="modal-product-actions">
                     <button class="btn btn-primary modal-add-to-cart" data-id="${product.id}" data-type="${type}">
-                        加入购物车
+                        ${currentLang === 'zh' ? '加入购物车' : 'Add to Cart'}
                     </button>
                 </div>
             </div>
