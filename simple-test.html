@@ -3,109 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图片可用性测试</title>
+    <title>更多图片测试</title>
     <style>
-        body {
-            font-family: 'Noto Sans SC', sans-serif;
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-        }
+        body { font-family: 'Noto Sans SC', sans-serif; max-width: 800px; margin: 30px auto; padding: 20px; }
         h1 { text-align: center; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-        .item {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-        .item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .item p {
-            font-size: 12px;
-            margin: 5px 0;
-        }
-        .status {
-            font-size: 12px;
-            font-weight: bold;
-        }
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .item { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        .item img { width: 100%; height: 150px; object-fit: cover; }
+        .item p { font-size: 12px; margin: 5px 0; }
+        .status { font-size: 12px; font-weight: bold; }
         .ok { color: green; }
         .fail { color: red; }
     </style>
 </head>
 <body>
     <h1>请告诉我哪些显示正常</h1>
-    <p>把显示不出来的图片编号告诉我</p>
-    
     <div class="grid">
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200&q=70" alt="" id="img1">
-            <p>1. 夹克</p>
-            <div class="status" id="s1">加载中...</div>
-        </div>
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&q=70" alt="" id="img2">
-            <p>2. 羽绒服</p>
-            <div class="status" id="s2">加载中...</div>
-        </div>
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1544923246-77307dd628b8?w=200&q=70" alt="" id="img3">
-            <p>3. 户外</p>
-            <div class="status" id="s3">加载中...</div>
-        </div>
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=200&q=70" alt="" id="img4">
-            <p>4. 香水</p>
-            <div class="status" id="s4">加载中...</div>
-        </div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200&q=70" id="img1"><p>1. 夹克</p><div class="status" id="s1">加载中...</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&q=70" id="img2"><p>2. 羽绒服</p><div class="status" id="s2">加载中...</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae7f?w=200&q=70" id="img3"><p>3. 裤子</p><div class="status" id="s3">加载中...</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6a126?w=200&q=70" id="img4"><p>4. 运动</p><div class="status" id="s4">加载中...</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1515881007613-cef8c33b38f8?w=200&q=70" id="img5"><p>5. 模特</p><div class="status" id="s5">加载中...</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=200&q=70" id="img6"><p>6. 时装</p><div class="status" id="s6">加载中...</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1556905055-8f358a817935?w=200&q=70" id="img7"><p>7. 包包</p><div class="status" id="s7">加载中...</div></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1526045431048-f6c689e7e1fa?w=200&q=70" id="img8"><p>8. 配饰</p><div class="status" id="s8">加载中...</div></div>
     </div>
-
-    <h2>备用方案测试 - 使用Pexels</h2>
-    <div class="grid">
-        <div class="item">
-            <img src="https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?w=200&q=70" alt="" id="img5">
-            <p>5. Pexels夹克</p>
-            <div class="status" id="s5">加载中...</div>
-        </div>
-        <div class="item">
-            <img src="https://images.pexels.com/photos/4937224/pexels-photo-4937224.jpeg?w=200&q=70" alt="" id="img6">
-            <p>6. Pexels服装</p>
-            <div class="status" id="s6">加载中...</div>
-        </div>
-    </div>
-
     <script>
         const urls = [
-            { id: 'img1', s: 's1', src: 'https://images.unsplash.com/photo-1558171813-4c088753af8f?w=200&q=70' },
-            { id: 'img2', s: 's2', src: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=200&q=70' },
-            { id: 'img3', s: 's3', src: 'https://images.unsplash.com/photo-1544923246-77307dd628b8?w=200&q=70' },
-            { id: 'img4', s: 's4', src: 'https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=200&q=70' },
-            { id: 'img5', s: 's5', src: 'https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?w=200&q=70' },
-            { id: 'img6', s: 's6', src: 'https://images.pexels.com/photos/4937224/pexels-photo-4937224.jpeg?w=200&q=70' }
+            {id:'img1',s:'s1'},{id:'img2',s:'s2'},{id:'img3',s:'s3'},{id:'img4',s:'s4'},
+            {id:'img5',s:'s5'},{id:'img6',s:'s6'},{id:'img7',s:'s7'},{id:'img8',s:'s8'}
         ];
-        
         urls.forEach(u => {
-            const img = document.getElementById(u.id);
-            const s = document.getElementById(u.s);
-            
-            img.onload = () => { s.textContent = '✓ 正常'; s.className = 'status ok'; };
-            img.onerror = () => { s.textContent = '✗ 失败'; s.className = 'status fail'; };
+            const img = document.getElementById(u.id), s = document.getElementById(u.s);
+            img.onload = () => { s.textContent = '✓'; s.className = 'status ok'; };
+            img.onerror = () => { s.textContent = '✗'; s.className = 'status fail'; };
         });
-        
-        setTimeout(() => {
-            urls.forEach(u => {
-                const s = document.getElementById(u.s);
-                if (s.textContent === '加载中...') {
-                    s.textContent = '✗ 超时'; s.className = 'status fail';
-                }
-            });
-        }, 8000);
+        setTimeout(() => urls.forEach(u => { const s = document.getElementById(u.s); if(s.textContent==='加载中...') s.textContent='✗'; s.className='status fail'; }), 8000);
     </script>
 </body>
 </html>
