@@ -745,16 +745,45 @@ function updateCartDisplay() {
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p class="cart-empty">' + (currentLang === 'zh' ? '购物车是空的' : 'Your cart is empty') + '</p>';
         } else {
-            cartItemsContainer.innerHTML = cart.map(item => `
+            cartItemsContainer.innerHTML = cart.map((item, index) => `
                 <div class="cart-item">
                     <img src="${item.images ? item.images[0] : ''}" alt="${item.name}" class="cart-item-image">
                     <div class="cart-item-info">
                         <h4>${item.name}</h4>
-                        <p>${formatPrice(item.price)} x ${item.quantity || 1}</p>
+                        <p>${formatPrice(item.price)}</p>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                            <span class="qty-display">${item.quantity || 1}</span>
+                            <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">${currentLang === 'zh' ? '删除' : 'Remove'}</button>
+                        </div>
                     </div>
                 </div>
             `).join('');
         }
+    }
+}
+
+// 增加/减少数量
+window.changeQuantity = function(index, change) {
+    if (cart[index]) {
+        cart[index].quantity = (cart[index].quantity || 1) + change;
+        if (cart[index].quantity < 1) {
+            cart[index].quantity = 1;
+        }
+        updateCartDisplay();
+        saveCartToStorage();
+    }
+}
+
+// 删除产品
+window.removeFromCart = function(index) {
+    if (cart[index]) {
+        const removedItem = cart[index].name;
+        cart.splice(index, 1);
+        updateCartDisplay();
+        saveCartToStorage();
+        showNotification(currentLang === 'zh' ? '已删除 ' + removedItem : 'Removed ' + removedItem, 'success');
     }
 }
 
