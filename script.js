@@ -449,13 +449,21 @@ let cart = [];
 
 async function initProductSystem() {
     try {
-        const response = await fetch('data/products.json');
+        console.log('Loading products from data/products.json...');
+        
+        // Try fetching with cache bypass
+        const response = await fetch('data/products.json?_=' + Date.now());
+        
         if (!response.ok) {
+            console.error('Fetch failed:', response.status, response.statusText);
             throw new Error('Failed to fetch: ' + response.status);
         }
-        productData = await response.json();
         
-        console.log('Products loaded:', productData);
+        const json = await response.json();
+        console.log('Raw JSON:', json);
+        
+        productData = json;
+        console.log('productData set to:', productData);
         
         // Render featured products
         renderFeaturedProducts();
@@ -466,6 +474,22 @@ async function initProductSystem() {
         console.log('Product system initialized');
     } catch (error) {
         console.error('Failed to load products:', error);
+        
+        // Try loading embedded fallback data
+        console.log('Using fallback product data');
+        productData = {
+            clothing: [
+                { id: "c00001", name: "Supreme FW25 Jacket", nameEn: "Supreme FW25 Jacket", price: 170, category: "Clothing" },
+                { id: "c00002", name: "MONCLER Puffer Jacket", nameEn: "MONCLER Puffer Jacket", price: 95, category: "Clothing" },
+                { id: "c00003", name: "BURBERRY Trench Coat", nameEn: "BURBERRY Trench Coat", price: 280, category: "Clothing" }
+            ],
+            fragrance: [
+                { id: "f00001", name: "CHANEL No.5", nameEn: "CHANEL No.5", price: 120, category: "Fragrance" },
+                { id: "f00002", name: "DIOR Sauvage", nameEn: "DIOR Sauvage", price: 95, category: "Fragrance" },
+                { id: "f00003", name: "TOM FORD Oud Wood", nameEn: "TOM FORD Oud Wood", price: 180, category: "Fragrance" }
+            ]
+        };
+        renderFeaturedProducts();
     }
 }
 
@@ -496,36 +520,19 @@ function renderFeaturedProducts() {
 
 function createProductCard(product, type) {
     const priceFormatted = product.price.toLocaleString('zh-CN');
-    // Use placeholder image (data URI for a simple gray background)
-    const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjRGNEY2Ii8+PC9zdmc+';
+    // Simple gray placeholder (base64 encoded SVG)
+    const placeholder = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5Y2EzNDEiIGZvbnQtc2l6ZT0iMjAiPkltYWdlPC90ZXh0Pjwvc3ZnPg==';
     
-    // Fix empty images array
-    const images = (product.images && product.images.length > 0) ? product.images : 
-                (product.image ? [product.image] : [placeholderImage]);
-    
-    // Generate thumbnails for carousel
-    const thumbnailsHTML = images.map((img, index) => 
-        `<div class="carousel-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
-            <img src="${img}" alt="${product.name}" onerror="this.src='${placeholderImage}'">
-        </div>`
-    ).join('');
+    // Use placeholder for now to test
+    const images = [placeholder];
     
     return `
         <div class="product-card" data-id="${product.id}" data-type="${type}">
             <div class="product-image">
                 <div class="product-carousel" data-product-id="${product.id}">
                     <div class="carousel-main">
-                        ${images.map((img, index) => 
-                            `<img src="${img}" alt="${product.name}" loading="lazy" class="carousel-image ${index === 0 ? 'active' : ''}" data-index="${index}" onerror="this.src='${placeholderImage}'">`
-                        ).join('')}
-                        <div class="carousel-nav prev" onclick="prevImage(this)">‹</div>
-                        <div class="carousel-nav next" onclick="nextImage(this)">›</div>
+                        <img src="${placeholder}" alt="${product.name}" class="carousel-image active">
                     </div>
-                    ${images.length > 1 ? `
-                    <div class="carousel-thumbnails">
-                        ${thumbnailsHTML}
-                    </div>
-                    ` : ''}
                 </div>
                 <div class="product-overlay">
                     <button class="quick-view-btn btn-quick-view" data-id="${product.id}" data-type="${type}"></button>
@@ -533,8 +540,8 @@ function createProductCard(product, type) {
                 </div>
             </div>
             <div class="product-info">
-                <span class="product-category">${product.category || type}</span>
-                <h3 class="product-name">${product.name || 'Product'}</h3>
+                <span class="product-category">${type === 'clothing' ? '服装' : '香水'}</span>
+                <h3 class="product-name">${product.name || '产品'}</h3>
                 <span class="product-name-en">${product.nameEn || ''}</span>
                 <span class="product-price">¥${priceFormatted}</span>
             </div>
