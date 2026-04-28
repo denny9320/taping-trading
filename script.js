@@ -520,7 +520,7 @@ function createFeaturedCard(product, type) {
     const mainImage = product.images && product.images.length > 0 ? product.images[0] : 'images/products/jacket2.jpg';
     
     return `
-        <div class="featured-card" style="background-image: url('${mainImage}')">
+        <div class="featured-card" style="background-image: url('${mainImage}')" onclick="openProductModal('${product.id}', '${type}')" style="cursor:pointer">
             <div class="featured-overlay">
                 <div class="featured-info">
                     <h3 class="featured-name">${product.name || '产品'}</h3>
