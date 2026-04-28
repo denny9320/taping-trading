@@ -496,14 +496,17 @@ function renderFeaturedProducts() {
 
 function createProductCard(product, type) {
     const priceFormatted = product.price.toLocaleString('zh-CN');
-    // Fix empty images array - use default placeholder if no images
+    // Use placeholder image (data URI for a simple gray background)
+    const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjRGNEY2Ii8+PC9zdmc+';
+    
+    // Fix empty images array
     const images = (product.images && product.images.length > 0) ? product.images : 
-                (product.image ? [product.image] : ['https://via.placeholder.com/400x500?text=No+Image']);
+                (product.image ? [product.image] : [placeholderImage]);
     
     // Generate thumbnails for carousel
     const thumbnailsHTML = images.map((img, index) => 
         `<div class="carousel-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
-            <img src="${img}" alt="${product.name}">
+            <img src="${img}" alt="${product.name}" onerror="this.src='${placeholderImage}'">
         </div>`
     ).join('');
     
@@ -513,7 +516,7 @@ function createProductCard(product, type) {
                 <div class="product-carousel" data-product-id="${product.id}">
                     <div class="carousel-main">
                         ${images.map((img, index) => 
-                            `<img src="${img}" alt="${product.name}" loading="lazy" class="carousel-image ${index === 0 ? 'active' : ''}" data-index="${index}">`
+                            `<img src="${img}" alt="${product.name}" loading="lazy" class="carousel-image ${index === 0 ? 'active' : ''}" data-index="${index}" onerror="this.src='${placeholderImage}'">`
                         ).join('')}
                         <div class="carousel-nav prev" onclick="prevImage(this)">‹</div>
                         <div class="carousel-nav next" onclick="nextImage(this)">›</div>
@@ -530,9 +533,9 @@ function createProductCard(product, type) {
                 </div>
             </div>
             <div class="product-info">
-                <span class="product-category">${product.category}</span>
-                <h3 class="product-name">${product.name}</h3>
-                <span class="product-name-en">${product.nameEn}</span>
+                <span class="product-category">${product.category || type}</span>
+                <h3 class="product-name">${product.name || 'Product'}</h3>
+                <span class="product-name-en">${product.nameEn || ''}</span>
                 <span class="product-price">¥${priceFormatted}</span>
             </div>
         </div>
