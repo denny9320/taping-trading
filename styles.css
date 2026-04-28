@@ -487,11 +487,20 @@ button {
 .featured-card {
     position: relative;
     aspect-ratio: 3/4;
-    background-size: cover;
-    background-position: center;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
+    min-height: 300px;
+}
+
+.featured-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: currentValue;
 }
 
 .featured-overlay {
