@@ -1,45 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>简单测试</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单图片测试</title>
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 { text-align: center; color: #333; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 10px;
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        .product-card h3 {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .product-card .price {
+            color: #c41e3a;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-  <h1>🧪 点击按钮测试添加订单</h1>
-  <button style="padding:20px;font-size:18px" id="btn">点击添加订单</button>
-  <p id="result" style="margin-top:20px;font-size:16px"></p>
+    <h1>产品图片测试</h1>
+    
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=400&q=80" alt="夹克" id="img1">
+            <h3>Supreme 夹克</h3>
+            <p class="price">¥170</p>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="羽绒服" id="img2">
+            <h3>MONCLER 羽绒服</h3>
+            <p class="price">¥95</p>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1544923246-77307dd628b8?w=400&q=80" alt="户外夹克" id="img3">
+            <h3>KAILAS 户外夹克</h3>
+            <p class="price">¥88</p>
+        </div>
+        
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1541643600914-78b08472a2e2?w=400&q=80" alt="香水" id="img4">
+            <h3>Dior 香水</h3>
+            <p class="price">¥25.99</p>
+        </div>
+    </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyC5SZrLBFQoTPGiDfqe0XYwgT2I0caeBvQ",
-      authDomain: "tapingtrading.firebaseapp.com",
-      projectId: "tapingtrading",
-      storageBucket: "tapingtrading.firebasestorage.app",
-      messagingSenderId: "248437210641",
-      appId: "1:248437210641:web:d542acc355793e7ecd3bb0"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    document.getElementById('btn').onclick = async () => {
-      document.getElementById('result').textContent = "正在添加...";
-      try {
-        const docRef = await addDoc(collection(db, "orders"), {
-          product: "测试产品",
-          price: 99,
-          createdAt: new Date().toISOString()
+    <h2 style="margin-top: 50px;">图片加载状态:</h2>
+    <div id="status"></div>
+    
+    <script>
+        const images = document.querySelectorAll('img');
+        const status = document.getElementById('status');
+        let loaded = 0;
+        let failed = 0;
+        
+        images.forEach(img => {
+            img.onload = () => {
+                loaded++;
+                checkStatus();
+            };
+            img.onerror = () => {
+                failed++;
+                checkStatus();
+                console.log('加载失败:', img.src);
+            };
         });
-        document.getElementById('result').textContent = "✅ 成功! 订单ID: " + docRef.id;
-        document.getElementById('result').style.color = "green";
-      } catch (e) {
-        document.getElementById('result').textContent = "❌ 错误: " + e.message;
-        document.getElementById('result').style.color = "red";
-      }
-    };
-  </script>
+        
+        function checkStatus() {
+            status.innerHTML = `成功: ${loaded}, 失败: ${failed}`;
+        }
+        
+        // 超时检测
+        setTimeout(() => {
+            if (loaded === 0 && failed === 0) {
+                status.innerHTML = '加载超时 - 网络可能被阻止';
+            }
+        }, 5000);
+    </script>
 </body>
 </html>
