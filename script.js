@@ -470,19 +470,17 @@ function renderFeaturedProducts() {
     // No need to filter by featured=true anymore
     
     // Render clothing products
-    const clothingGrid = document.querySelector('#clothing .products-grid');
-    if (clothingGrid) {
-        const allClothing = productData.clothing;
-        clothingGrid.innerHTML = allClothing.map(product => 
+    const clothingGrid = document.getElementById('clothingGrid');
+    if (clothingGrid && productData.clothing) {
+        clothingGrid.innerHTML = productData.clothing.map(product => 
             createProductCard(product, 'clothing')
         ).join('');
     }
     
-    // Render fragrance products
-    const fragranceGrid = document.querySelector('#fragrance .products-grid');
-    if (fragranceGrid) {
-        const allFragrance = productData.fragrance;
-        fragranceGrid.innerHTML = allFragrance.map(product => 
+    // Render fragrance products  
+    const fragranceGrid = document.getElementById('fragranceGrid');
+    if (fragranceGrid && productData.fragrance) {
+        fragranceGrid.innerHTML = productData.fragrance.map(product => 
             createProductCard(product, 'fragrance')
         ).join('');
     }
@@ -493,7 +491,9 @@ function renderFeaturedProducts() {
 
 function createProductCard(product, type) {
     const priceFormatted = product.price.toLocaleString('zh-CN');
-    const images = product.images || [product.image || ''];
+    // Fix empty images array - use default placeholder if no images
+    const images = (product.images && product.images.length > 0) ? product.images : 
+                (product.image ? [product.image] : ['https://via.placeholder.com/400x500?text=No+Image']);
     
     // Generate thumbnails for carousel
     const thumbnailsHTML = images.map((img, index) => 
@@ -520,8 +520,8 @@ function createProductCard(product, type) {
                     ` : ''}
                 </div>
                 <div class="product-overlay">
-                    <button class="quick-view-btn" data-id="${product.id}" data-type="${type}">快速查看</button>
-                    <button class="add-to-cart-btn" data-id="${product.id}" data-type="${type}">加入购物车</button>
+                    <button class="quick-view-btn btn-quick-view" data-id="${product.id}" data-type="${type}"></button>
+                    <button class="add-to-cart-btn" data-id="${product.id}" data-type="${type}"></button>
                 </div>
             </div>
             <div class="product-info">
