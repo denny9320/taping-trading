@@ -715,8 +715,9 @@ function updateCartDisplay() {
     
     const cartCountElements = document.querySelectorAll('.cart-count');
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const cartTotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
     
-    console.log('Total items:', totalItems);
+    console.log('Total items:', totalItems, 'Total price:', cartTotal);
     
     cartCountElements.forEach(cartCount => {
         if (cartCount) {
@@ -730,6 +731,13 @@ function updateCartDisplay() {
             }, 200);
         }
     });
+    
+    // 更新总价显示
+    const cartTotalElement = document.getElementById('cartTotal');
+    if (cartTotalElement) {
+        cartTotalElement.textContent = formatPrice(cartTotal);
+        console.log('Cart total updated to:', formatPrice(cartTotal));
+    }
     
     // 更新购物车侧边栏
     const cartItemsContainer = document.getElementById('cartItems');
