@@ -493,10 +493,10 @@ window.doLogin = async function() {
         errorEl.textContent = '登录中...';
         await signInWithEmailAndPassword(auth, email, password);
         
-        // 登录成功，如果之前没有保存过用户名，使用邮箱前缀
-        if (!localStorage.getItem('tapingUserName')) {
-          const name = email.split('@')[0];
-          localStorage.setItem('tapingUserName', name);
+        // 登录成功，显示已保存的用户名（如果没有则提示设置）
+        const savedName = localStorage.getItem('tapingUserName');
+        if (!savedName) {
+          localStorage.setItem('tapingUserName', '用户');
         }
         
         closeLoginModal();
