@@ -439,8 +439,7 @@ onAuthStateChanged(auth, (user) => {
         
         // 获取保存的用户名
         const savedName = localStorage.getItem('tapingUserName');
-        const displayName = savedName || '用户';
-        document.getElementById('headerUserEmail').textContent = displayName;
+        document.getElementById('headerUserEmail').textContent = savedName || '未设置';
       } else {
         document.getElementById('loginBtn').style.display = 'flex';
         document.getElementById('userAccountMenu').style.display = 'none';

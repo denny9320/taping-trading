@@ -233,6 +233,13 @@
       await loadProfile();
       await loadAddresses();
       await loadOrders();
+      
+      // 检查URL参数，显示对应的标签页
+      const urlParams = new URLSearchParams(window.location.search);
+      const tab = urlParams.get('tab');
+      if (tab && ['profile', 'address', 'orders', 'settings'].includes(tab)) {
+        showTab(tab);
+      }
     });
 
     // Initialize language buttons and apply translations from localStorage
