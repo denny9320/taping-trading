@@ -438,8 +438,12 @@ onAuthStateChanged(auth, (user) => {
         document.getElementById('userAccountMenu').style.display = 'block';
         
         // 获取保存的用户名
-        const savedName = localStorage.getItem('tapingUserName');
-        document.getElementById('headerUserEmail').textContent = savedName || '未设置';
+        let savedName = localStorage.getItem('tapingUserName');
+        // 如果保存的用户名是空或者是电话号码，显示"用户"
+        if (!savedName || savedName.length < 2 || /^\d+$/.test(savedName)) {
+          savedName = '用户';
+        }
+        document.getElementById('headerUserEmail').textContent = savedName;
       } else {
         document.getElementById('loginBtn').style.display = 'flex';
         document.getElementById('userAccountMenu').style.display = 'none';
@@ -494,7 +498,9 @@ window.doLogin = async function() {
         await signInWithEmailAndPassword(auth, email, password);
         
         // 登录成功后不在刷新页面，直接更新UI
-        const savedName = localStorage.getItem('tapingUserName') || '用户';
+        const savedName = localStorage.getItem('tapingUserName');
+        // 如果保存的用户名是空或者是电话号码，显示"用户"
+        const displayName = (!savedName || savedName.length < 2 || /^\d+$/.test(savedName)) ? '用户' : savedName;
         
         // 隐藏登录按钮，显示用户菜单
         document.getElementById('loginBtn').style.display = 'none';
@@ -518,14 +524,16 @@ window.doLogin = async function() {
         return;
       }
       
-      try {
+try {
         errorEl.textContent = '注册中...';
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         
-        // 保存用户名到localStorage和Firestore
-        localStorage.setItem('tapingUserName', name);
+        // 保存用户名到localStorage - 确保保存的是名字而不是电话号码
+        if (name && name.length >= 2 && !/^\d+$/.test(name)) {
+          localStorage.setItem('tapingUserName', name);
+        }
         
-        // 立即更新header显示，不用等刷新
+        // 立即更新header显示
         const headerEl = document.getElementById('headerUserEmail');
         if (headerEl) {
           headerEl.textContent = name;
