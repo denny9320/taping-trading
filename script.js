@@ -143,8 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize product system
     initProductSystem();
     
-    // Initialize search & cart
-    initSearch();
+// Initialize search & cart
     initCartSidebar();
     initProductModal();
     
@@ -499,6 +498,9 @@ async function initProductSystem() {
         // Initialize product filters
         initProductFilters();
         
+        // Initialize search (after products are loaded)
+        initSearch();
+        
         console.log('Product system initialized');
     } catch (error) {
         console.error('Failed to load products:', error);
@@ -518,6 +520,7 @@ async function initProductSystem() {
             ]
         };
         renderFeaturedProducts();
+        initSearch();
     }
 }
 
