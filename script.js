@@ -864,28 +864,42 @@ function performSearch(term) {
         return;
     }
     
-    const results = [...productData.clothing, ...productData.fragrance]
-        .filter(p => p.name.toLowerCase().includes(term.toLowerCase()) || 
-                     p.nameEn.toLowerCase().includes(term.toLowerCase()) ||
-                     p.category.toLowerCase().includes(term.toLowerCase()))
-        .slice(0, 8);
+    const termLower = term.toLowerCase();
+    const allProducts = [...(productData.clothing || []), ...(productData.fragrance || [])];
+    
+    const results = allProducts
+        .filter(p => 
+            (p.name && p.name.toLowerCase().includes(termLower)) || 
+            (p.nameEn && p.nameEn.toLowerCase().includes(termLower)) ||
+            (p.category && p.category.toLowerCase().includes(termLower))
+        )
+        .slice(0, 10);
     
     if (results.length === 0) {
-        resultsContainer.innerHTML = '<p class="no-results">未找到相关产品</p>';
+        resultsContainer.innerHTML = '<p class="no-results" style="padding:20px;text-align:center;color:#666;">未找到相关产品</p>';
         return;
     }
     
     resultsContainer.innerHTML = results.map(product => `
-        <div class="search-result-item" data-id="${product.id}" data-type="${productData.clothing.find(c => c.id === product.id) ? 'clothing' : 'fragrance'}">
-            <img src="${product.image}" alt="${product.name}">
+        <div class="search-result-item" onclick="openProductFromSearch('${product.id}', '${product.category === "Clothing" ? "clothing" : "fragrance"}')">
+            <img src="${product.image}" alt="${product.name}" loading="lazy">
             <div class="search-result-info">
                 <span class="search-result-category">${product.category}</span>
-                <h4>${product.name}</h4>
-                <span>¥${product.price.toLocaleString('zh-CN')}</span>
+                <h4>${currentLang === 'zh' ? product.name : (product.nameEn || product.name)}</h4>
+                <span>${formatPrice(product.price)}</span>
             </div>
         </div>
     `).join('');
 }
+
+// Open product from search results
+window.openProductFromSearch = function(id, type) {
+    const product = productData[type].find(p => p.id === id);
+    if (product) {
+        openProductModal(product, type);
+        document.getElementById('searchOverlay').classList.remove('active');
+    }
+};
 
 /* ========================================
    Cart Sidebar
