@@ -492,7 +492,7 @@ async function initProductSystem() {
         productData = json;
         console.log('productData set to:', productData);
         
-        // Render featured products
+        // Render featured products with current language
         renderFeaturedProducts();
         
         // Initialize product filters
@@ -509,14 +509,14 @@ async function initProductSystem() {
         console.log('Using fallback product data');
         productData = {
             clothing: [
-                { id: "c00001", name: "Supreme FW25 Jacket", nameEn: "Supreme FW25 Jacket", price: 170, category: "Clothing" },
-                { id: "c00002", name: "MONCLER Puffer Jacket", nameEn: "MONCLER Puffer Jacket", price: 95, category: "Clothing" },
-                { id: "c00003", name: "BURBERRY Trench Coat", nameEn: "BURBERRY Trench Coat", price: 280, category: "Clothing" }
+                { id: "c00001", nameZh: "经典夹克", nameEn: "Classic Jacket", nameDe: "Klassische Jacke", nameFr: "Veste Classique", nameEs: "Chaqueta Clásica", nameAr: "سترة كلاسيكية", price: 170, category: "Clothing" },
+                { id: "c00002", nameZh: "羽绒外套", nameEn: "Puffer Jacket", nameDe: "Daunenjacke", nameFr: "Doudoune", nameEs: "Chaqueta Acolchada", nameAr: "سترة مبطنة", price: 95, category: "Clothing" },
+                { id: "c00003", nameZh: "风衣", nameEn: "Trench Coat", nameDe: "Trenchcoat", nameFr: "Trench-coat", nameEs: "Gabardina", nameAr: "معطف ترنش", price: 280, category: "Clothing" }
             ],
             fragrance: [
-                { id: "f00001", name: "CHANEL No.5", nameEn: "CHANEL No.5", price: 120, category: "Fragrance" },
-                { id: "f00002", name: "DIOR Sauvage", nameEn: "DIOR Sauvage", price: 95, category: "Fragrance" },
-                { id: "f00003", name: "TOM FORD Oud Wood", nameEn: "TOM FORD Oud Wood", price: 180, category: "Fragrance" }
+                { id: "f00001", nameZh: "经典五号", nameEn: "Classic No.5", nameDe: "Klassisch Nr.5", nameFr: "Classique No.5", nameEs: "Clásico No.5", nameAr: "كلاسيكي رقم 5", price: 120, category: "Fragrance" },
+                { id: "f00002", nameZh: "野生香水", nameEn: "Wild Fragrance", nameDe: "Wildes Parfüm", nameFr: "Parfum Sauvage", nameEs: "Fragancia Salvaje", nameAr: "عطر بري", price: 95, category: "Fragrance" },
+                { id: "f00003", nameZh: "乌木香水", nameEn: "Oud Wood", nameDe: "Oud-Holz", nameFr: "Bois de Oud", nameEs: "Madera de Oud", nameAr: "خشب العود", price: 180, category: "Fragrance" }
             ]
         };
         renderFeaturedProducts();
@@ -546,13 +546,26 @@ function renderFeaturedProducts() {
     }
 }
 
+// Helper function to get product name based on current language
+function getProductName(product) {
+    const langMap = {
+        'zh': product.nameZh,
+        'en': product.nameEn,
+        'de': product.nameDe,
+        'fr': product.nameFr,
+        'es': product.nameEs,
+        'ar': product.nameAr
+    };
+    return langMap[currentLang] || product.nameEn || product.nameZh || product.name || '';
+}
+
 function createFeaturedCard(product, type) {
     const priceFormatted = formatPrice(product.price);
     const images = product.images && product.images.length > 0 ? product.images : [];
     const mainImage = images[0] || 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWViIi8+PC9zdmc+';
     
-    // 根据当前语言显示产品名称
-    const displayName = currentLang === 'zh' ? product.name : (product.nameEn || product.name);
+    // Get product name based on current language
+    const displayName = getProductName(product);
     
     return `
         <div class="featured-card" data-id="${product.id}" data-type="${type}" onclick="openProductModal(this.dataset.id, this.dataset.type)" style="background-image: url('${mainImage}'); cursor: pointer;">
@@ -574,15 +587,15 @@ function createProductCard(product, type) {
     // Use product images if available, otherwise use placeholder
     const images = product.images && product.images.length > 0 ? product.images : [placeholder];
     const mainImage = images[0];
-    const displayName = currentLang === 'zh' ? product.name : (product.nameEn || product.name);
+    const displayName = getProductName(product);
     
     return `
         <div class="product-card" data-id="${product.id}" data-type="${type}" onclick="openProductModal('${product.id}', '${type}')" style="cursor: pointer;">
             <div class="product-image">
-                <img src="${mainImage}" alt="${product.name}" class="product-img-simple">
+                <img src="${mainImage}" alt="${displayName}" class="product-img-simple">
             </div>
             <div class="product-info">
-                <span class="product-category">${type === 'clothing' ? '服装' : '香水'}</span>
+                <span class="product-category">${type === 'clothing' ? (currentLang === 'zh' ? '服装' : currentLang === 'de' ? 'Kleidung' : currentLang === 'fr' ? 'Vêtements' : currentLang === 'es' ? 'Ropa' : currentLang === 'ar' ? 'الأزياء' : 'Clothing') : (currentLang === 'zh' ? '香水' : currentLang === 'de' ? 'Düfte' : currentLang === 'fr' ? 'Parfums' : currentLang === 'es' ? 'Fragancias' : currentLang === 'ar' ? 'العطور' : 'Fragrance')}</span>
                 <h3 class="product-name">${displayName}</h3>
                 <span class="product-name-en">${product.nameEn || ''}</span>
                 <div class="product-price-display">¥${priceFormatted}</div>
@@ -872,8 +885,12 @@ function performSearch(term) {
     
     const results = allProducts
         .filter(p => 
-            (p.name && p.name.toLowerCase().includes(termLower)) || 
+            (p.nameZh && p.nameZh.toLowerCase().includes(termLower)) || 
             (p.nameEn && p.nameEn.toLowerCase().includes(termLower)) ||
+            (p.nameDe && p.nameDe.toLowerCase().includes(termLower)) ||
+            (p.nameFr && p.nameFr.toLowerCase().includes(termLower)) ||
+            (p.nameEs && p.nameEs.toLowerCase().includes(termLower)) ||
+            (p.nameAr && p.nameAr.toLowerCase().includes(termLower)) ||
             (p.category && p.category.toLowerCase().includes(termLower))
         )
         .slice(0, 10);
@@ -885,10 +902,10 @@ function performSearch(term) {
     
     resultsContainer.innerHTML = results.map(product => `
         <div class="search-result-item" onclick="openProductFromSearch('${product.id}', '${product.category === "Clothing" ? "clothing" : "fragrance"}')">
-            <img src="${product.image}" alt="${product.name}" loading="lazy">
+            <img src="${product.images && product.images[0] ? product.images[0] : ''}" alt="${getProductName(product)}" loading="lazy">
             <div class="search-result-info">
                 <span class="search-result-category">${product.category}</span>
-                <h4>${currentLang === 'zh' ? product.name : (product.nameEn || product.name)}</h4>
+                <h4>${getProductName(product)}</h4>
                 <span>${formatPrice(product.price)}</span>
             </div>
         </div>
@@ -1117,14 +1134,14 @@ console.log('Found product:', product.name, 'type:', type);
     // 缩略图HTML - 大图下方可滚动选择（仅多图时显示）
     // 使用滚动监听：当缩略图滚动到中间时，主图自动切换
     const thumbnailsHTML = productImages.length > 1 ? productImages.map((img, index) => 
-        `<img src="${img}" alt="${product.name}" class="modal-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}" onmouseenter="previewThumbnail(this)" onclick="selectThumbnail(this)">`
+        `<img src="${img}" alt="${getProductName(product)}" class="modal-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}" onmouseenter="previewThumbnail(this)" onclick="selectThumbnail(this)">`
     ).join('') : '';
     
     modalBody.innerHTML = `
         <div class="modal-product-grid">
             <div class="modal-product-image">
                 <div class="modal-main-image-container">
-                    <img src="${productImages[0]}" alt="${product.name}" class="modal-main-image" id="modalMainImage">
+                    <img src="${productImages[0]}" alt="${getProductName(product)}" class="modal-main-image" id="modalMainImage">
                 </div>
                 ${productImages.length > 1 ? `
                 <div class="thumbnail-nav-row">
@@ -1138,8 +1155,8 @@ console.log('Found product:', product.name, 'type:', type);
             </div>
             <div class="modal-product-details">
                 <span class="modal-product-category">${product.category}</span>
-                <h2 class="modal-product-name">${currentLang === 'zh' ? product.name : (product.nameEn || product.name)}</h2>
-                <p class="modal-product-name-en">${currentLang === 'en' ? product.name : (product.nameEn || product.name)}</p>
+                <h2 class="modal-product-name">${getProductName(product)}</h2>
+                <p class="modal-product-name-en">${product.nameEn || product.nameZh || ''}</p>
                 <p class="modal-product-price">${formatPrice(product.price)}</p>
                 <p class="modal-product-description">${product.description}</p>
                 
@@ -1375,6 +1392,22 @@ function setLanguage(langCode) {
     // Update all translatable elements
     updatePageTranslations();
     updateLanguageSwitcher();
+    
+    // Re-render products with new language (check if productData is loaded)
+    if (productData && productData.clothing && productData.fragrance) {
+        renderFeaturedProducts();
+    } else {
+        // If productData is not loaded yet, wait for it to load and then re-render
+        const checkInterval = setInterval(() => {
+            if (productData && productData.clothing && productData.fragrance) {
+                clearInterval(checkInterval);
+                renderFeaturedProducts();
+            }
+        }, 100);
+
+        // Clear interval after 5 seconds to prevent infinite loop
+        setTimeout(() => clearInterval(checkInterval), 5000);
+    }
 }
 
 function updatePageTranslations() {
