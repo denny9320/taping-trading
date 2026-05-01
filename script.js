@@ -149,6 +149,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize multi-language
     initI18n();
+    // Attempt to synchronize cart with server if user is logged in
+    syncCartFromServerIfNeeded();
+    // Listen for login/logout in other tabs and resync cart when it changes
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'taping_user_token') {
+            syncCartFromServerIfNeeded();
+        }
+    });
 });
 
 /* ========================================
