@@ -822,6 +822,34 @@ function loadCartFromStorage() {
     }
 }
 
+// Attempt to synchronize cart with server if user is logged in
+async function syncCartFromServerIfNeeded() {
+    try {
+        const userToken = localStorage.getItem('taping_user_token');
+        const isLoggedIn = !!userToken;
+        if (!isLoggedIn) return;
+        // Minimalistic sync: fetch current server cart for the user
+        const resp = await fetch('/api/cart', {
+            credentials: 'include',
+            headers: { 'Authorization': 'Bearer ' + userToken }
+        });
+        if (!resp.ok) {
+            console.warn('Server cart sync failed:', resp.status);
+            return;
+        }
+        const serverCart = await resp.json();
+        if (Array.isArray(serverCart?.items)) {
+            cart = serverCart.items.map(it => ({ ...it }));
+            renderCartItems();
+            updateCartDisplay();
+            saveCartToStorage();
+            console.log('Cart synchronized with server. Items:', cart.length);
+        }
+    } catch (err) {
+        console.warn('Cart server sync error:', err);
+    }
+}
+
 // Initialize cart from storage
 loadCartFromStorage();
 
