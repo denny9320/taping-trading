@@ -810,7 +810,14 @@ function saveCartToStorage() {
 function loadCartFromStorage() {
     const saved = localStorage.getItem('taping_cart');
     if (saved) {
-        cart = JSON.parse(saved);
+        try {
+            cart = JSON.parse(saved);
+        } catch (e) {
+            console.error('Failed to parse cart from storage:', e);
+            cart = [];
+        }
+        // Ensure UI reflects the persisted cart state
+        renderCartItems();
         updateCartDisplay();
     }
 }
