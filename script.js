@@ -465,6 +465,10 @@ if ('IntersectionObserver' in window) {
 let productData = { clothing: [], fragrance: [] };
 let cart = [];
 
+// Expose to global scope
+window.productData = productData;
+window.cart = cart;
+
 async function initProductSystem() {
     try {
         console.log('Loading products from data/products.json...');
