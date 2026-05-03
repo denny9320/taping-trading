@@ -400,6 +400,19 @@ button {
    ======================================== */
 .section {
     padding: var(--section-padding) 0;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.section.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .section-header {
@@ -515,7 +528,7 @@ button {
     content: '';
     position: absolute;
     inset: 0;
-    background: currentValue;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .featured-overlay {
@@ -588,6 +601,10 @@ button {
     background: var(--color-white);
     display: inline-block;
 }
+
+.product-overlay {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1471,6 +1488,8 @@ button {
     background: #e74c3c;
     color: white;
 }
+
+.qty-btn {
     cursor: pointer;
     transition: var(--transition-fast);
 }

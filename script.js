@@ -246,7 +246,6 @@ function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Add staggered delay for product cards
                 const card = entry.target;
                 const parent = card.parentElement;
                 const siblings = Array.from(parent.querySelectorAll('.product-card'));
@@ -261,29 +260,49 @@ function initScrollReveal() {
         });
     }, observerOptions);
     
-    // Observe product cards
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         observer.observe(card);
     });
     
-    // Also observe sections for fade in effect
+    // Section reveal - use CSS classes instead of inline styles
     const sections = document.querySelectorAll('.section');
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.remove('reveal-hidden');
+                entry.target.classList.add('reveal-visible');
+                sectionObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.01, rootMargin: '100px' });
     
     sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        section.classList.add('reveal-hidden');
         sectionObserver.observe(section);
     });
+    
+    // Fallback: reveal sections already in viewport
+    function revealVisibleSections() {
+        const vh = window.innerHeight;
+        sections.forEach(section => {
+            if (section.classList.contains('reveal-hidden')) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < vh + 200 && rect.bottom > -200) {
+                    section.classList.remove('reveal-hidden');
+                    section.classList.add('reveal-visible');
+                    sectionObserver.unobserve(section);
+                }
+            }
+        });
+    }
+    
+    // Run fallback multiple times with increasing delays
+    setTimeout(revealVisibleSections, 50);
+    setTimeout(revealVisibleSections, 200);
+    setTimeout(revealVisibleSections, 500);
+    setTimeout(revealVisibleSections, 1000);
+    setTimeout(revealVisibleSections, 2000);
 }
 
 /* ========================================
