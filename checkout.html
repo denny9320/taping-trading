@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - TapingTrading</title>
+  <script src="https://js.stripe.com/v3/"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -366,12 +367,19 @@
       
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Processing...';
+      submitBtn.textContent = 'Processing Payment...';
       
       try {
         const addressId = selectedRadio.value;
         const address = addresses.find(a => a.id === addressId);
+        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
         
+        // Initialize Stripe (replace with your publishable key)
+        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Replace with real key
+        const elements = stripe.elements();
+        
+        // Create payment intent on server (simplified - in production, use backend)
+        // For now, we'll simulate success
         const orderData = {
           userId: currentUser.uid,
           userEmail: currentUser.email,
@@ -392,13 +400,15 @@
             detail: address.detail,
             postalCode: address.postalCode
           },
-          total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+          total: total,
           status: 'pending',
           createdAt: new Date().toISOString()
         };
         
+        // Save order to Firebase
         await addDoc(collection(db, "orders"), orderData);
         
+        // Clear cart
         localStorage.removeItem('tapingCart');
         
         showMessage(translations[currentLang].orders.success, 'success');
@@ -407,6 +417,7 @@
         setTimeout(() => {
           window.location.href = 'profile.html#orders';
         }, 2000);
+        
       } catch (e) {
         console.error('Order error:', e);
         showMessage('Error placing order: ' + e.message, 'error');
