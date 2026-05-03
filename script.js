@@ -119,7 +119,7 @@ const translationsData = {
         products: { featured: 'مميز', clothingTitle: 'الأزياء', fragranceTitle: 'العطور', viewAllClothing: 'عرض الكل', viewAllFragrance: 'عرض الكل', quickView: 'عرض سريع', addToCart: 'أضف للسلة' },
         about: { subtitle: 'قصتنا', title: 'عن TapingTrading', text1: 'ن curate أفضل المنتجات.', text2: 'كل منتج يتم اختياره بعناية.', years: 'سنوات', brands: 'علامات', customers: 'عملاء' },
         newsletter: { title: 'النشرة', desc: 'احصل على التحديثات', placeholder: 'البريد', button: 'اشترك' },
-        footer: { desc: 'أزياء فاخرة من كل العالم.', quickLinks: 'روابط', service: 'خدمة', contact: 'اتصل', shipping: 'شحن', returns: 'إرجاع', privacy: 'خصوصية', contactUs: 'اتصل', globalSourcing: 'عالمي', copyright: 'جميع الحقوق.' },
+        footer: { desc: 'أزياء فاخرة من كل العالم.', quickLinks: 'روابط', service: 'خدمة', contact: 'اتصل', shipping: 'شحن', returns: 'إرجاع', privacy: 'خصوصية', contactUs: 'اتصل', globalSourcing: 'عالمي', copyright: 'جميع الحقوق.', email: 'البريد: kyx9320@163.com', whatsapp1: 'واتساب: +86 13397655758', whatsapp2: 'واتساب: +86 19186706454' },
         cart: { title: 'السلة', empty: 'فارغة', total: 'المجموع', checkout: 'إتمام', addedToCart: 'تمت الإضافة' },
         search: { placeholder: 'ابحث...', noResults: 'لا نتائج' },
         notifications: { subscribeSuccess: 'شكراً!', invalidEmail: 'بريد غير صالح', cartAdded: 'تمت الإضافة' }
@@ -1529,6 +1529,9 @@ function updatePageTranslations() {
     updateElement('[data-i18n="footer.privacy"]', t.footer.privacy);
     updateElement('[data-i18n="footer.contactUs"]', t.footer.contactUs);
     updateElement('[data-i18n="footer.globalSourcing"]', t.footer.globalSourcing);
+    updateElement('[data-i18n="footer.email"]', t.footer.email);
+    updateElement('[data-i18n="footer.whatsapp1"]', t.footer.whatsapp1);
+    updateElement('[data-i18n="footer.whatsapp2"]', t.footer.whatsapp2);
     updateElement('[data-i18n="footer.copyright"]', t.footer.copyright);
     
     // Cart
