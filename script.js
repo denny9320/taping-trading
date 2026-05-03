@@ -1610,3 +1610,5 @@ function updateLanguageSwitcher() {
 
 // Expose functions to global scope
 window.addToCart = addToCart;
+
+window.setLanguage = setLanguage;
