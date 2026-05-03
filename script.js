@@ -485,6 +485,7 @@ async function initProductSystem() {
         console.log('Raw JSON:', json);
         
         productData = json;
+        window.productData = productData; // Sync to window
         console.log('productData set to:', productData);
         
         // Render featured products with current language
