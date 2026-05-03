@@ -267,8 +267,8 @@
             <div class="newsletter-content">
                 <h2 class="newsletter-title" data-i18n="newsletter.title">Subscribe to Our Newsletter</h2>
                 <p class="newsletter-desc" data-i18n="newsletter.desc">Get the latest product updates, exclusive offers, and fashion insights</p>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address" data-i18n-placeholder="newsletter.placeholder">
+                <form class="newsletter-form" action="https://formspree.io/f/your-form-id" method="POST">
+                    <input type="email" class="newsletter-input" name="email" placeholder="Enter your email address" data-i18n-placeholder="newsletter.placeholder" required>
                     <button type="submit" class="btn btn-primary" data-i18n="newsletter.button">Subscribe</button>
                 </form>
             </div>
