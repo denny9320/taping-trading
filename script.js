@@ -704,6 +704,29 @@ function addToCart(productId, type) {
     
     console.log('Adding to cart:', product.name);
     
+    // Google Analytics event
+    if (window.gtag) {
+        gtag('event', 'add_to_cart', {
+            'items': [{
+                'id': product.id,
+                'name': getProductName(product),
+                'price': product.price,
+                'quantity': 1
+            }]
+        });
+    }
+    
+    // Facebook Pixel event
+    if (window.fbq) {
+        fbq('track', 'AddToCart', {
+            content_name: getProductName(product),
+            content_ids: [product.id],
+            content_type: 'product',
+            value: product.price,
+            currency: 'USD'
+        });
+    }
+    
     // 检查是否已在购物车
     const existingItem = cart.find(item => item.id === productId);
     
