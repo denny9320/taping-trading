@@ -588,7 +588,7 @@ function createProductCard(product, type) {
     return `
         <div class="product-card" data-id="${product.id}" data-type="${type}" onclick="openProductModal('${product.id}', '${type}')" style="cursor: pointer;">
             <div class="product-image">
-                <img src="${mainImage}" alt="${displayName}" class="product-img-simple">
+                <img src="${mainImage}" alt="${displayName}" class="product-img-simple" loading="lazy">
             </div>
             <div class="product-info">
                 <span class="product-category">${type === 'clothing' ? (currentLang === 'zh' ? '服装' : currentLang === 'de' ? 'Kleidung' : currentLang === 'fr' ? 'Vêtements' : currentLang === 'es' ? 'Ropa' : currentLang === 'ar' ? 'الأزياء' : 'Clothing') : (currentLang === 'zh' ? '香水' : currentLang === 'de' ? 'Düfte' : currentLang === 'fr' ? 'Parfums' : currentLang === 'es' ? 'Fragancias' : currentLang === 'ar' ? 'العطور' : 'Fragrance')}</span>
@@ -759,7 +759,7 @@ function updateCartDisplay() {
         } else {
             cartItemsContainer.innerHTML = cart.map((item, index) => `
                 <div class="cart-item">
-                    <img src="${item.images ? item.images[0] : ''}" alt="${item.name}" class="cart-item-image">
+                    <img src="${item.images ? item.images[0] : ''}" alt="${item.name}" class="cart-item-image" loading="lazy">
                     <div class="cart-item-info">
                         <h4>${item.name}</h4>
                         <p>${formatPrice(item.price)}</p>
@@ -1165,14 +1165,14 @@ console.log('Found product:', product.name, 'type:', type);
     // 缩略图HTML - 大图下方可滚动选择（仅多图时显示）
     // 使用滚动监听：当缩略图滚动到中间时，主图自动切换
     const thumbnailsHTML = productImages.length > 1 ? productImages.map((img, index) => 
-        `<img src="${img}" alt="${getProductName(product)}" class="modal-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}" onmouseenter="previewThumbnail(this)" onclick="selectThumbnail(this)">`
+        `<img src="${img}" alt="${getProductName(product)}" class="modal-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}" onmouseenter="previewThumbnail(this)" onclick="selectThumbnail(this)" loading="lazy">`
     ).join('') : '';
     
     modalBody.innerHTML = `
         <div class="modal-product-grid">
             <div class="modal-product-image">
                 <div class="modal-main-image-container">
-                    <img src="${productImages[0]}" alt="${getProductName(product)}" class="modal-main-image" id="modalMainImage">
+                    <img src="${productImages[0]}" alt="${getProductName(product)}" class="modal-main-image" id="modalMainImage" loading="lazy">
                 </div>
                 ${productImages.length > 1 ? `
                 <div class="thumbnail-nav-row">
