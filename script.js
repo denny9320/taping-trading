@@ -433,23 +433,9 @@ styleSheet.textContent = notificationStyles;
 document.head.appendChild(styleSheet);
 
 /* ========================================
-   Cart Functionality (Placeholder)
+   Cart Functionality
    ======================================== */
 let cartCount = 0;
-
-function addToCart(productName, price) {
-    cartCount++;
-    const cartCountElement = document.querySelector('.cart-count');
-    cartCountElement.textContent = cartCount;
-    
-    // Animate cart
-    cartCountElement.style.transform = 'scale(1.2)';
-    setTimeout(() => {
-        cartCountElement.style.transform = 'scale(1)';
-    }, 200);
-    
-    showNotification(`${product.name} added to cart`, 'success');
-}
 
 /* ========================================
    Image Lazy Loading Enhancement
@@ -1616,3 +1602,6 @@ function updateLanguageSwitcher() {
         option.classList.toggle('active', option.dataset.lang === currentLang);
     });
 }
+
+// Expose functions to global scope
+window.addToCart = addToCart;
