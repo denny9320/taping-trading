@@ -265,12 +265,12 @@ function initScrollReveal() {
         observer.observe(card);
     });
     
-    // Section reveal - use CSS classes instead of inline styles
+    // Section reveal - simplified: sections are visible by default
+    // Animation is handled by CSS if needed
     const sections = document.querySelectorAll('.section');
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.remove('reveal-hidden');
                 entry.target.classList.add('reveal-visible');
                 sectionObserver.unobserve(entry.target);
             }
@@ -278,31 +278,9 @@ function initScrollReveal() {
     }, { threshold: 0.01, rootMargin: '100px' });
     
     sections.forEach(section => {
-        section.classList.add('reveal-hidden');
+        // Don't add reveal-hidden - let sections be visible by default
         sectionObserver.observe(section);
     });
-    
-    // Fallback: reveal sections already in viewport
-    function revealVisibleSections() {
-        const vh = window.innerHeight;
-        sections.forEach(section => {
-            if (section.classList.contains('reveal-hidden')) {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < vh + 200 && rect.bottom > -200) {
-                    section.classList.remove('reveal-hidden');
-                    section.classList.add('reveal-visible');
-                    sectionObserver.unobserve(section);
-                }
-            }
-        });
-    }
-    
-    // Run fallback multiple times with increasing delays
-    setTimeout(revealVisibleSections, 50);
-    setTimeout(revealVisibleSections, 200);
-    setTimeout(revealVisibleSections, 500);
-    setTimeout(revealVisibleSections, 1000);
-    setTimeout(revealVisibleSections, 2000);
 }
 
 /* ========================================
