@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - TapingTrading</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', sans-serif; background: #FAFAFA; color: #2D2D2D; }
+        
+        .header { background: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; }
+        .header a { color: #1A1A1A; text-decoration: none; margin-right: 20px; }
+        .header a:hover { color: #C9A962; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 20px; }
+        .logo span:last-child { color: #C9A962; }
+        
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: white; padding: 30px; border-radius: 10px; }
+        
+        .product-images { display: flex; flex-direction: column; gap: 10px; }
+        .main-image { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; }
+        .thumbnail-strip { display: flex; gap: 8px; overflow-x: auto; }
+        .thumbnail { width: 80px; height: 80px; object-fit: cover; border: 2px solid #ddd; border-radius: 4px; cursor: pointer; opacity: 0.6; }
+        .thumbnail.active { border-color: #C9A962; opacity: 1; }
+        
+        .product-info { padding: 20px; }
+        .product-category { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 10px; }
+        .product-name { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 10px; }
+        .product-name-en { font-size: 14px; color: #666; font-style: italic; margin-bottom: 20px; }
+        .product-price { font-size: 28px; font-weight: 700; color: #C9A962; margin-bottom: 30px; }
+        .product-description { font-size: 14px; line-height: 1.8; color: #666; margin-bottom: 30px; }
+        
+        .options { margin-bottom: 20px; }
+        .option-group { margin-bottom: 15px; }
+        .option-group label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #666; }
+        .option-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+        .option-btn { min-width: 45px; height: 40px; border: 1px solid #ddd; background: white; cursor: pointer; padding: 0 12px; }
+        .option-btn:hover, .option-btn.selected { background: #1A1A1A; color: white; border-color: #1A1A1A; }
+        
+        .quantity-selector { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+        .qty-btn { width: 40px; height: 40px; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 16px; font-weight: bold; }
+        .qty-btn:hover { border-color: #C9A962; }
+        .qty-display { font-size: 18px; font-weight: 600; min-width: 40px; text-align: center; }
+        
+        .add-to-cart-btn { width: 100%; padding: 15px; background: #C9A962; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+        .add-to-cart-btn:hover { background: #B8984F; }
+        
+        .back-link { display: inline-block; margin-bottom: 20px; color: #C9A962; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">TAPING<span>TRADING</span></a>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+            <a href="profile.html">Profile</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Products</a>
+        
+        <div class="product-grid">
+            <div class="product-images">
+                <img id="mainImage" src="" alt="Product" class="main-image">
+                <div class="thumbnail-strip" id="thumbnailStrip"></div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-category" id="productCategory"></div>
+                <h1 class="product-name" id="productName"></h1>
+                <div class="product-name-en" id="productNameEn"></div>
+                <div class="product-price" id="productPrice"></div>
+                <div class="product-description" id="productDescription"></div>
+                
+                <div class="options" id="productOptions"></div>
+                
+                <div class="quantity-selector">
+                    <button class="qty-btn" onclick="changeQuantity(-1)">-</button>
+                    <span class="qty-display" id="quantityDisplay">1</span>
+                    <button class="qty-btn" onclick="changeQuantity(1)">+</button>
+                </div>
+                
+                <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let productData = { clothing: [], fragrance: [] };
+        let currentProduct = null;
+        let currentQuantity = 1;
+        let selectedOptions = {};
+        
+        // Load product data
+        async function loadProductData() {
+            try {
+                const response = await fetch('data/products.json?_=' + Date.now());
+                productData = await response.json();
+            } catch (e) {
+                console.error('Error loading products:', e);
+            }
+        }
+        
+        // Get product ID from URL
+        function getProductId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('id');
+        }
+        
+        // Load product details
+        async function loadProduct() {
+            await loadProductData();
+            
+            const productId = getProductId();
+            if (!productId) {
+                alert('Product not found');
+                return;
+            }
+            
+            // Find product
+            let product = null;
+            let type = null;
+            
+            product = productData.clothing.find(p => p.id === productId);
+            if (product) type = 'clothing';
+            
+            if (!product) {
+                product = productData.fragrance.find(p => p.id === productId);
+                if (product) type = 'fragrance';
+            }
+            
+            if (!product) {
+                alert('Product not found');
+                return;
+            }
+            
+            currentProduct = product;
+            
+            // Update page
+            document.title = product.nameEn + ' - TapingTrading';
+            document.getElementById('productCategory').textContent = product.category;
+            document.getElementById('productName').textContent = getProductName(product);
+            document.getElementById('productNameEn').textContent = product.nameEn || '';
+            document.getElementById('productPrice').textContent = '$' + product.price.toFixed(2);
+            document.getElementById('productDescription').textContent = product.description || '';
+            
+            // Load images
+            loadImages(product);
+            
+            // Load options if available
+            loadOptions(product);
+        }
+        
+        function getProductName(product) {
+            const lang = localStorage.getItem('taping_lang') || 'en';
+            const langMap = {
+                'zh': product.nameZh,
+                'en': product.nameEn,
+                'de': product.nameDe,
+                'fr': product.nameFr,
+                'es': product.nameEs,
+                'ar': product.nameAr
+            };
+            return langMap[lang] || product.nameEn || product.nameZh || '';
+        }
+        
+        function loadImages(product) {
+            const mainImage = document.getElementById('mainImage');
+            const thumbnailStrip = document.getElementById('thumbnailStrip');
+            
+            const images = product.images || [product.image].filter(Boolean);
+            if (images.length === 0) return;
+            
+            mainImage.src = images[0];
+            
+            if (images.length > 1) {
+                thumbnailStrip.innerHTML = images.map((img, index) => 
+                    `<img src="${img}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage(${index})">`
+                ).join('');
+            }
+        }
+        
+        window.changeMainImage = function(index) {
+            const product = currentProduct;
+            if (!product) return;
+            
+            const images = product.images || [];
+            if (images[index]) {
+                document.getElementById('mainImage').src = images[index];
+                
+                // Update active thumbnail
+                document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            }
+        };
+        
+        function loadOptions(product) {
+            const optionsContainer = document.getElementById('productOptions');
+            if (!product.attributes) {
+                optionsContainer.style.display = 'none';
+                return;
+            }
+            
+            // Example: render size/color options if available
+            // This can be extended based on product attributes
+        }
+        
+        window.changeQuantity = function(change) {
+            currentQuantity += change;
+            if (currentQuantity < 1) currentQuantity = 1;
+            document.getElementById('quantityDisplay').textContent = currentQuantity;
+        };
+        
+        window.addToCart = function() {
+            if (!currentProduct) return;
+            
+            // Get existing cart
+            let cart = JSON.parse(localStorage.getItem('tapingCart') || '[]');
+            
+            // Check if already in cart
+            const existingIndex = cart.findIndex(item => item.id === currentProduct.id);
+            
+            if (existingIndex >= 0) {
+                cart[existingIndex].quantity += currentQuantity;
+            } else {
+                cart.push({
+                    id: currentProduct.id,
+                    name: getProductName(currentProduct),
+                    price: currentProduct.price,
+                    image: (currentProduct.images && currentProduct.images[0]) || '',
+                    quantity: currentQuantity
+                });
+            }
+            
+            localStorage.setItem('tapingCart', JSON.stringify(cart));
+            alert('Added to cart!');
+        };
+        
+        // Load product on page load
+        loadProduct();
+    </script>
+</body>
+</html>
