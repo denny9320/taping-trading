@@ -409,16 +409,23 @@
         return;
       }
       
-      container.innerHTML = cart.map(item => `
+      container.innerHTML = cart.map(item => {
+        // 处理图片：优先使用 image，否则使用 images[0]
+        const imgSrc = item.image || (item.images && item.images[0]) || '';
+        // 处理名称：优先使用 name，否则根据语言选择 nameZh 或 nameEn
+        const itemName = item.name || (currentLang === 'zh' ? item.nameZh : item.nameEn) || 'Unknown Product';
+        
+        return `
         <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}">
+          <img src="${imgSrc}" alt="${itemName}">
           <div class="cart-item-info">
-            <h3>${item.name}</h3>
+            <h3>${itemName}</h3>
             <p>Qty: ${item.quantity}</p>
           </div>
           <div class="cart-item-price">¥${(item.price * item.quantity).toLocaleString()}</div>
         </div>
-      `).join('');
+        `;
+      }).join('');
       
       updateSummary();
     }

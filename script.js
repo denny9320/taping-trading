@@ -1232,7 +1232,14 @@ function addToCart(productId, type) {
         existingItem.quantity++;
         showNotification(currentLang === 'zh' ? '已添加到购物车' : 'Added to cart', 'success');
     } else {
-        cart.push({ ...product, quantity: 1 });
+        // 规范化商品数据，确保购物车使用统一的属性名
+        const cartItem = {
+            ...product,
+            image: product.images && product.images[0] ? product.images[0] : '',
+            name: currentLang === 'zh' ? (product.nameZh || product.nameEn) : (product.nameEn || product.nameZh),
+            quantity: 1
+        };
+        cart.push(cartItem);
         showNotification(currentLang === 'zh' ? '已添加到购物车' : 'Added to cart', 'success');
     }
     
