@@ -248,6 +248,12 @@
            </div>
          </div>
        </div>
+       
+       <!-- Add New Card Button (for PayPal) -->
+       <div id="addCardSection" style="margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px; display: none;">
+         <p style="margin: 0 0 10px 0; font-size: 14px; color: #666;">To add a new card, click the PayPal button below and select "Pay with Debit or Credit Card"</p>
+         <button class="btn btn-outline" onclick="scrollToPayPal()" style="font-size: 13px; padding: 8px 16px;">Add Card via PayPal</button>
+       </div>
      </div>
      
      <!-- PayPal Button Container (shown when PayPal is selected) -->
@@ -430,6 +436,7 @@
        // Show/hide payment forms
        document.getElementById('paypal-button-container').style.display = method === 'paypal' ? 'block' : 'none';
        document.getElementById('card-payment-form').style.display = method === 'card' ? 'block' : 'none';
+       document.getElementById('addCardSection').style.display = method === 'paypal' ? 'block' : 'none';
        
        // Update button text
        const submitBtn = document.getElementById('submitBtn');
@@ -439,6 +446,11 @@
          submitBtn.style.display = 'block';
          submitBtn.textContent = method === 'card' ? 'Pay with Card' : 'Complete Payment';
        }
+     };
+     
+     // Scroll to PayPal button
+     window.scrollToPayPal = function() {
+       document.getElementById('paypal-button-container').scrollIntoView({ behavior: 'smooth' });
      };
 
     window.addAddress = async function() {
