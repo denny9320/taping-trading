@@ -384,8 +384,9 @@
     }
 
     async function loadData() {
-      cart = JSON.parse(localStorage.getItem('tapingCart') || '[]');
+      cart = JSON.parse(localStorage.getItem('taping_cart') || '[]');
       renderCartItems();
+      updateSummary(); // 确保加载后立即更新金额
       await loadAddresses();
     }
 
@@ -587,7 +588,7 @@
          await addDoc(collection(db, "orders"), orderData);
          
          // Clear cart
-         localStorage.removeItem('tapingCart');
+         localStorage.removeItem('taping_cart');
          
          showMessage(translations[currentLang].orders.success, 'success');
          submitBtn.textContent = 'Order Placed!';
@@ -680,7 +681,7 @@
          };
          
          await addDoc(collection(db, "orders"), orderData);
-         localStorage.removeItem('tapingCart');
+         localStorage.removeItem('taping_cart');
          
          showMessage(translations[currentLang].orders.success, 'success');
          submitBtn.textContent = 'Order Placed!';
@@ -772,7 +773,7 @@
              };
              
              await addDoc(collection(db, "orders"), orderData);
-             localStorage.removeItem('tapingCart');
+             localStorage.removeItem('taping_cart');
              
              showMessage('Payment successful! Order placed.', 'success');
              setTimeout(() => {
