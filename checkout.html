@@ -262,20 +262,42 @@
      <!-- Card Payment Form (shown when Card is selected) -->
      <div id="card-payment-form" style="display:none; margin-top: 20px;">
        <div class="section">
-         <h3>Card Details</h3>
-         <div class="info-group">
-           <label>Card Number</label>
-           <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+         <h3>Add Payment Card</h3>
+         <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+           <p style="margin: 0 0 15px 0; color: #1a1a1a; font-size: 14px;">
+             <strong>💳 How to add your card:</strong><br><br>
+             1. Click the button below to open PayPal<br>
+             2. Select <strong>"Pay with Debit or Credit Card"</strong><br>
+             3. Enter your card details securely in PayPal<br>
+             4. Your card will be saved in your PayPal account
+           </p>
+           <button class="btn btn-primary" onclick="openPayPalToAddCard()" style="width: 100%; padding: 12px; font-size: 15px;">
+             ➕ Add Card via PayPal
+           </button>
+           <p style="margin: 15px 0 0 0; font-size: 12px; color: #666; text-align: center;">
+             🔒 Secured by PayPal - We never see your card details
+           </p>
          </div>
-         <div style="display:flex;gap:15px;">
-           <div class="info-group" style="flex:1;">
-             <label>Expiry Date</label>
-             <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+         
+         <div style="border-top: 1px solid #eee; padding-top: 20px;">
+           <h4 style="margin-bottom: 15px; color: #666;">Or enter card details directly:</h4>
+           <div class="info-group">
+             <label>Card Number</label>
+             <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
            </div>
-           <div class="info-group" style="flex:1;">
-             <label>CVV</label>
-             <input type="text" id="cardCVV" placeholder="123" maxlength="3">
+           <div style="display:flex;gap:15px;">
+             <div class="info-group" style="flex:1;">
+               <label>Expiry Date</label>
+               <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+             </div>
+             <div class="info-group" style="flex:1;">
+               <label>CVV</label>
+               <input type="text" id="cardCVV" placeholder="123" maxlength="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+             </div>
            </div>
+           <p style="font-size: 12px; color: #999; margin-top: 10px;">
+             ⚠️ Note: This is a demo form. For real payments, please use the "Add Card via PayPal" button above.
+           </p>
          </div>
        </div>
      </div>
@@ -442,10 +464,21 @@
        const submitBtn = document.getElementById('submitBtn');
        if (method === 'paypal') {
          submitBtn.style.display = 'none'; // PayPal button will handle payment
+       } else if (method === 'card') {
+         submitBtn.style.display = 'block';
+         submitBtn.textContent = 'Add Card & Pay';
+         submitBtn.onclick = function() { openPayPalToAddCard(); };
        } else {
          submitBtn.style.display = 'block';
-         submitBtn.textContent = method === 'card' ? 'Pay with Card' : 'Complete Payment';
+         submitBtn.textContent = 'Complete Payment';
+         submitBtn.onclick = function() { processPayment(); };
        }
+     };
+     
+     // Open PayPal to add card
+     window.openPayPalToAddCard = function() {
+       alert('You will be redirected to PayPal to securely add your card.\n\nAfter adding your card, you can return here to complete payment.');
+       document.getElementById('paypal-button-container').scrollIntoView({ behavior: 'smooth' });
      };
      
      // Scroll to PayPal button
