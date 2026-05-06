@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - TapingTrading</title>
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=Af4IqaC4UtwlZ4u0oANQPqvqVwcQf989LepssM_UwkGzr4yCvsopdNwNJidkwhlhasQjm9Rn305P2sCg&currency=USD"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -73,10 +73,32 @@
     .login-required { text-align: center; padding: 50px; }
     .login-required a { color: #C9A962; }
     
-    .lang-selector { display: flex; gap: 10px; align-items: center; }
-    .lang-btn { padding: 5px 10px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 3px; }
-    .lang-btn.active { background: #C9A962; color: white; border-color: #C9A962; }
-  </style>
+     .lang-selector { display: flex; gap: 10px; align-items: center; }
+     .lang-btn { padding: 5px 10px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 3px; }
+     .lang-btn.active { background: #C9A962; color: white; border-color: #C9A962; }
+     
+     /* Payment Method Selection */
+     .payment-methods { display: flex; flex-direction: column; gap: 15px; }
+     .payment-method { 
+       display: flex; 
+       align-items: center; 
+       gap: 15px; 
+       padding: 15px; 
+       border: 2px solid #eee; 
+       border-radius: 8px; 
+       cursor: pointer; 
+       transition: all 0.2s; 
+     }
+     .payment-method:hover { border-color: #C9A962; }
+     .payment-method.selected { border-color: #C9A962; background: #FDF9F0; }
+     .payment-method input[type="radio"] { width: 18px; height: 18px; accent-color: #C9A962; cursor: pointer; }
+     .payment-method-content { display: flex; align-items: center; gap: 15px; flex: 1; }
+     .payment-icon-large { display: flex; align-items: center; }
+     .payment-label { font-weight: 500; color: #1A1A1A; font-size: 15px; }
+     
+     /* PayPal button container */
+     #paypal-button-container { max-width: 500px; margin: 0 auto; }
+   </style>
 </head>
 <body>
   <header class="header">
@@ -144,26 +166,115 @@
       </div>
     </div>
     
-    <!-- Order Summary -->
-    <div class="section">
-      <h2>Order Summary</h2>
-      <div class="order-summary">
-        <div class="summary-row">
-          <span>Subtotal</span>
-          <span id="subtotal">¥0</span>
-        </div>
-        <div class="summary-row">
-          <span>Shipping</span>
-          <span>¥0</span>
-        </div>
-        <div class="summary-row total">
-          <span>Total</span>
-          <span class="price" id="totalPrice">¥0</span>
-        </div>
-      </div>
-    </div>
-    
-    <button class="submit-btn" id="submitBtn" onclick="placeOrder()">Place Order</button>
+     <!-- Order Summary -->
+     <div class="section">
+       <h2>Order Summary</h2>
+       <div class="order-summary">
+         <div class="summary-row">
+           <span>Subtotal</span>
+           <span id="subtotal">¥0</span>
+         </div>
+         <div class="summary-row">
+           <span>Shipping</span>
+           <span>¥0</span>
+         </div>
+         <div class="summary-row total">
+           <span>Total</span>
+           <span class="price" id="totalPrice">¥0</span>
+         </div>
+       </div>
+     </div>
+     
+     <!-- Payment Method Selection -->
+     <div class="section">
+       <h2>Select Payment Method</h2>
+       <div class="payment-methods">
+         <div class="payment-method selected" onclick="selectPaymentMethod('paypal')" id="paypalMethod">
+           <input type="radio" name="paymentMethod" value="paypal" checked>
+           <div class="payment-method-content">
+             <div class="payment-icon-large">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 32" width="80" height="26">
+                 <rect width="100" height="32" rx="4" fill="#fff" stroke="#003087" stroke-width="1"/>
+                 <text x="50" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#003087" text-anchor="middle">PayPal</text>
+               </svg>
+             </div>
+             <span class="payment-label">PayPal</span>
+           </div>
+         </div>
+         
+         <div class="payment-method" onclick="selectPaymentMethod('card')" id="cardMethod">
+           <input type="radio" name="paymentMethod" value="card">
+           <div class="payment-method-content">
+             <div class="payment-icon-large">
+               <div style="display:flex;gap:5px;">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="36" height="24">
+                   <rect width="48" height="32" rx="4" fill="#1A1F71"/>
+                   <text x="24" y="20" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">VISA</text>
+                 </svg>
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="36" height="24">
+                   <rect width="48" height="32" rx="4" fill="#fff" stroke="#ddd" stroke-width="1"/>
+                   <circle cx="19" cy="16" r="8" fill="#EB001B"/>
+                   <circle cx="29" cy="16" r="8" fill="#F79E1B"/>
+                 </svg>
+               </div>
+             </div>
+             <span class="payment-label">Credit/Debit Card</span>
+           </div>
+         </div>
+         
+         <div class="payment-method" onclick="selectPaymentMethod('wechat')" id="wechatMethod">
+           <input type="radio" name="paymentMethod" value="wechat">
+           <div class="payment-method-content">
+             <div class="payment-icon-large">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
+                 <rect width="48" height="32" rx="4" fill="#07C160"/>
+                 <text x="24" y="20" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">WeChat Pay</text>
+               </svg>
+             </div>
+             <span class="payment-label">WeChat Pay</span>
+           </div>
+         </div>
+         
+         <div class="payment-method" onclick="selectPaymentMethod('alipay')" id="alipayMethod">
+           <input type="radio" name="paymentMethod" value="alipay">
+           <div class="payment-method-content">
+             <div class="payment-icon-large">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
+                 <rect width="48" height="32" rx="4" fill="#1677FF"/>
+                 <text x="24" y="20" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">Alipay</text>
+               </svg>
+             </div>
+             <span class="payment-label">Alipay</span>
+           </div>
+         </div>
+       </div>
+     </div>
+     
+     <!-- PayPal Button Container (shown when PayPal is selected) -->
+     <div id="paypal-button-container" style="margin-top: 20px;"></div>
+     
+     <!-- Card Payment Form (shown when Card is selected) -->
+     <div id="card-payment-form" style="display:none; margin-top: 20px;">
+       <div class="section">
+         <h3>Card Details</h3>
+         <div class="info-group">
+           <label>Card Number</label>
+           <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+         </div>
+         <div style="display:flex;gap:15px;">
+           <div class="info-group" style="flex:1;">
+             <label>Expiry Date</label>
+             <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+           </div>
+           <div class="info-group" style="flex:1;">
+             <label>CVV</label>
+             <input type="text" id="cardCVV" placeholder="123" maxlength="3">
+           </div>
+         </div>
+       </div>
+     </div>
+     
+     <button class="submit-btn" id="submitBtn" onclick="processPayment()">Pay Now</button>
     
     <div id="message" class="message"></div>
   </div>
@@ -213,9 +324,10 @@
     };
 
     let currentLang = localStorage.getItem('tapingLang') || 'zh';
-    let currentUser = null;
-    let cart = [];
-    let addresses = [];
+     let currentUser = null;
+     let cart = [];
+     let addresses = [];
+     let selectedPaymentMethod = 'paypal'; // Default payment method
 
     // Initialize
     onAuthStateChanged(auth, async (user) => {
@@ -302,11 +414,32 @@
       }
     }
 
-    window.selectAddress = function(id) {
-      document.querySelectorAll('.address-item').forEach(el => el.classList.remove('selected'));
-      document.querySelector(`.address-item input[value="${id}"]`).closest('.address-item').classList.add('selected');
-      document.querySelector(`.address-item input[value="${id}"]`).checked = true;
-    };
+     window.selectAddress = function(id) {
+       document.querySelectorAll('.address-item').forEach(el => el.classList.remove('selected'));
+       document.querySelector(`.address-item input[value="${id}"]`).closest('.address-item').classList.add('selected');
+       document.querySelector(`.address-item input[value="${id}"]`).checked = true;
+     };
+     
+     // Payment method selection
+     window.selectPaymentMethod = function(method) {
+       selectedPaymentMethod = method;
+       document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+       document.getElementById(method + 'Method').classList.add('selected');
+       document.querySelector(`input[name="paymentMethod"][value="${method}"]`).checked = true;
+       
+       // Show/hide payment forms
+       document.getElementById('paypal-button-container').style.display = method === 'paypal' ? 'block' : 'none';
+       document.getElementById('card-payment-form').style.display = method === 'card' ? 'block' : 'none';
+       
+       // Update button text
+       const submitBtn = document.getElementById('submitBtn');
+       if (method === 'paypal') {
+         submitBtn.style.display = 'none'; // PayPal button will handle payment
+       } else {
+         submitBtn.style.display = 'block';
+         submitBtn.textContent = method === 'card' ? 'Pay with Card' : 'Complete Payment';
+       }
+     };
 
     window.addAddress = async function() {
       const recipient = document.getElementById('newAddressName').value;
@@ -353,78 +486,170 @@
       document.getElementById('totalPrice').textContent = `¥${subtotal.toLocaleString()}`;
     }
 
-    window.placeOrder = async function() {
-      const selectedRadio = document.querySelector('input[name="address"]:checked');
-      if (!selectedRadio) {
-        showMessage('Please select a shipping address', 'error');
-        return;
-      }
-      
-      if (cart.length === 0) {
-        showMessage('Cart is empty', 'error');
-        return;
-      }
-      
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Processing Payment...';
-      
-      try {
-        const addressId = selectedRadio.value;
-        const address = addresses.find(a => a.id === addressId);
-        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        
-        // Initialize Stripe (replace with your publishable key)
-        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Replace with real key
-        const elements = stripe.elements();
-        
-        // Create payment intent on server (simplified - in production, use backend)
-        // For now, we'll simulate success
-        const orderData = {
-          userId: currentUser.uid,
-          userEmail: currentUser.email,
-          items: cart.map(item => ({
-            id: item.id,
-            name: item.name,
-            price: item.price,
-            quantity: item.quantity,
-            image: item.image
-          })),
-          address: {
-            id: address.id,
-            recipient: address.recipient,
-            phone: address.phone,
-            province: address.province,
-            city: address.city,
-            district: address.district,
-            detail: address.detail,
-            postalCode: address.postalCode
-          },
-          total: total,
-          status: 'pending',
-          createdAt: new Date().toISOString()
-        };
-        
-        // Save order to Firebase
-        await addDoc(collection(db, "orders"), orderData);
-        
-        // Clear cart
-        localStorage.removeItem('tapingCart');
-        
-        showMessage(translations[currentLang].orders.success, 'success');
-        submitBtn.textContent = 'Order Placed!';
-        
-        setTimeout(() => {
-          window.location.href = 'profile.html#orders';
-        }, 2000);
-        
-      } catch (e) {
-        console.error('Order error:', e);
-        showMessage('Error placing order: ' + e.message, 'error');
-        submitBtn.disabled = false;
-        submitBtn.textContent = translations[currentLang].orders.placeOrder;
-      }
-    };
+     window.placeOrder = async function() {
+       const selectedRadio = document.querySelector('input[name="address"]:checked');
+       if (!selectedRadio) {
+         showMessage('Please select a shipping address', 'error');
+         return;
+       }
+       
+       if (cart.length === 0) {
+         showMessage('Cart is empty', 'error');
+         return;
+       }
+       
+       const submitBtn = document.getElementById('submitBtn');
+       submitBtn.disabled = true;
+       submitBtn.textContent = 'Processing Payment...';
+       
+       try {
+         const addressId = selectedRadio.value;
+         const address = addresses.find(a => a.id === addressId);
+         const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+         
+         // Initialize Stripe (replace with your publishable key)
+         const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Replace with real key
+         const elements = stripe.elements();
+         
+         // Create payment intent on server (simplified - in production, use backend)
+         // For now, we'll simulate success
+         const orderData = {
+           userId: currentUser.uid,
+           userEmail: currentUser.email,
+           items: cart.map(item => ({
+             id: item.id,
+             name: item.name,
+             price: item.price,
+             quantity: item.quantity,
+             image: item.image
+           })),
+           address: {
+             id: address.id,
+             recipient: address.recipient,
+             phone: address.phone,
+             province: address.province,
+             city: address.city,
+             district: address.district,
+             detail: address.detail,
+             postalCode: address.postalCode
+           },
+           total: total,
+           status: 'pending',
+           createdAt: new Date().toISOString()
+         };
+         
+         // Save order to Firebase
+         await addDoc(collection(db, "orders"), orderData);
+         
+         // Clear cart
+         localStorage.removeItem('tapingCart');
+         
+         showMessage(translations[currentLang].orders.success, 'success');
+         submitBtn.textContent = 'Order Placed!';
+         
+         setTimeout(() => {
+           window.location.href = 'profile.html#orders';
+         }, 2000);
+         
+       } catch (e) {
+         console.error('Order error:', e);
+         showMessage('Error placing order: ' + e.message, 'error');
+         submitBtn.disabled = false;
+         submitBtn.textContent = translations[currentLang].orders.placeOrder;
+       }
+     };
+     
+     // New function to process payment based on selected method
+     window.processPayment = async function() {
+       const selectedRadio = document.querySelector('input[name="address"]:checked');
+       if (!selectedRadio) {
+         showMessage('Please select a shipping address', 'error');
+         return;
+       }
+       
+       if (cart.length === 0) {
+         showMessage('Cart is empty', 'error');
+         return;
+       }
+       
+       const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+       const addressId = selectedRadio.value;
+       const address = addresses.find(a => a.id === addressId);
+       
+       if (selectedPaymentMethod === 'paypal') {
+         // PayPal payment is handled by PayPal button
+         showMessage('Please use the PayPal button above', 'error');
+         return;
+       } else if (selectedPaymentMethod === 'card') {
+         // Process card payment (simplified - in production, use Stripe)
+         const cardNumber = document.getElementById('cardNumber').value;
+         const cardExpiry = document.getElementById('cardExpiry').value;
+         const cardCVV = document.getElementById('cardCVV').value;
+         
+         if (!cardNumber || !cardExpiry || !cardCVV) {
+           showMessage('Please fill in all card details', 'error');
+           return;
+         }
+         
+         // Simulate card payment
+         await completeOrder(address, total);
+       } else if (selectedPaymentMethod === 'wechat' || selectedPaymentMethod === 'alipay') {
+         // For WeChat/Alipay, redirect to payment page (simplified)
+         showMessage(`Redirecting to ${selectedPaymentMethod}...`, 'success');
+         setTimeout(() => {
+           completeOrder(address, total);
+         }, 2000);
+       }
+     };
+     
+     async function completeOrder(address, total) {
+       const submitBtn = document.getElementById('submitBtn');
+       submitBtn.disabled = true;
+       submitBtn.textContent = 'Processing...';
+       
+       try {
+         const orderData = {
+           userId: currentUser.uid,
+           userEmail: currentUser.email,
+           items: cart.map(item => ({
+             id: item.id,
+             name: item.name,
+             price: item.price,
+             quantity: item.quantity,
+             image: item.image
+           })),
+           address: {
+             id: address.id,
+             recipient: address.recipient,
+             phone: address.phone,
+             province: address.province,
+             city: address.city,
+             district: address.district,
+             detail: address.detail,
+             postalCode: address.postalCode
+           },
+           total: total,
+           paymentMethod: selectedPaymentMethod,
+           status: 'paid',
+           createdAt: new Date().toISOString()
+         };
+         
+         await addDoc(collection(db, "orders"), orderData);
+         localStorage.removeItem('tapingCart');
+         
+         showMessage(translations[currentLang].orders.success, 'success');
+         submitBtn.textContent = 'Order Placed!';
+         
+         setTimeout(() => {
+           window.location.href = 'profile.html#orders';
+         }, 2000);
+       } catch (e) {
+         console.error('Order error:', e);
+         showMessage('Error placing order: ' + e.message, 'error');
+         submitBtn.disabled = false;
+         submitBtn.textContent = 'Pay Now';
+       }
+     }
 
     function showMessage(text, type) {
       const msg = document.getElementById('message');
@@ -439,10 +664,83 @@
       window.location.href = 'index.html';
     };
 
-    // Initialize lang buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.textContent.toLowerCase().includes(currentLang));
-    });
-  </script>
+     // Initialize lang buttons
+     document.querySelectorAll('.lang-btn').forEach(btn => {
+       btn.classList.toggle('active', btn.textContent.toLowerCase().includes(currentLang));
+     });
+     
+     // Initialize PayPal button when page loads
+     initializePayPalButton();
+     
+     // Initialize PayPal Buttons
+     function initializePayPalButton() {
+       if (typeof paypal === 'undefined') {
+         console.error('PayPal SDK not loaded');
+         return;
+       }
+       
+       paypal.Buttons({
+         createOrder: function(data, actions) {
+           const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+           return actions.order.create({
+             purchase_units: [{
+               amount: {
+                 value: total.toFixed(2)
+               }
+             }]
+           });
+         },
+         onApprove: function(data, actions) {
+           return actions.order.capture().then(async function(details) {
+             // Payment successful
+             const selectedRadio = document.querySelector('input[name="address"]:checked');
+             const addressId = selectedRadio.value;
+             const address = addresses.find(a => a.id === addressId);
+             const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+             
+             // Save order to Firebase
+             const orderData = {
+               userId: currentUser.uid,
+               userEmail: currentUser.email,
+               paypalTransactionId: details.id,
+               items: cart.map(item => ({
+                 id: item.id,
+                 name: item.name,
+                 price: item.price,
+                 quantity: item.quantity,
+                 image: item.image
+               })),
+               address: {
+                 id: address.id,
+                 recipient: address.recipient,
+                 phone: address.phone,
+                 province: address.province,
+                 city: address.city,
+                 district: address.district,
+                 detail: address.detail,
+                 postalCode: address.postalCode
+               },
+               total: total,
+               paymentMethod: 'paypal',
+               status: 'paid',
+               createdAt: new Date().toISOString()
+             };
+             
+             await addDoc(collection(db, "orders"), orderData);
+             localStorage.removeItem('tapingCart');
+             
+             showMessage('Payment successful! Order placed.', 'success');
+             setTimeout(() => {
+               window.location.href = 'profile.html#orders';
+             }, 2000);
+           });
+         },
+         onError: function(err) {
+           console.error('PayPal error:', err);
+           showMessage('PayPal payment failed. Please try again.', 'error');
+         }
+       }).render('#paypal-button-container');
+     }
+   </script>
 </body>
 </html>
