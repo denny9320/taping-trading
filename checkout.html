@@ -362,24 +362,32 @@
     // Load currency from localStorage (synced from main page)
     let currentCurrency = localStorage.getItem('taping_currency') || 'USD';
     
-    // Format price with currency
-    function formatPrice(usdPrice, currencyCode = currentCurrency) {
-      const currency = currencies[currencyCode] || currencies['USD'];
+    // Format price with currency - Always read from localStorage to avoid scope issues
+    function formatPrice(usdPrice, currencyCode) {
+      // Always get currency from localStorage to avoid module scope issues
+      const currentCurrency = currencyCode || localStorage.getItem('taping_currency') || 'USD';
+      const currency = currencies[currentCurrency] || currencies['USD'];
       const convertedPrice = usdPrice * currency.rate;
       
-      if (currencyCode === 'JPY') {
+      if (currentCurrency === 'JPY') {
         return currency.symbol + Math.round(convertedPrice).toLocaleString();
       }
       return currency.symbol + convertedPrice.toFixed(2);
     }
     
-    // Change currency in checkout page
+    // Change currency in checkout page - Call global functions
     window.changeCurrency = function(currencyCode) {
-      currentCurrency = currencyCode;
+      // Save to localStorage
       localStorage.setItem('taping_currency', currencyCode);
-      // Re-render cart items and summary with new currency
-      renderCartItems();
-      updateSummary();
+      // Update global variable
+      window.currentCurrency = currencyCode;
+      // Re-render cart items and summary with new currency (call global functions)
+      if (typeof window.renderCartItems === 'function') {
+        window.renderCartItems();
+      }
+      if (typeof window.updateSummary === 'function') {
+        window.updateSummary();
+      }
     };
 
     // Translations
@@ -424,13 +432,18 @@
       }
     });
 
-    function setLang(lang) {
-      currentLang = lang;
+    window.setLang = function(lang) {
+      // Update global variable
+      window.currentLang = lang;
       localStorage.setItem('tapingLang', lang);
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.toLowerCase().includes(lang));
       });
       applyTranslations();
+      // Re-render cart items with new language
+      if (typeof window.renderCartItems === 'function') {
+        window.renderCartItems();
+      }
     }
 
     function applyTranslations() {
@@ -456,7 +469,8 @@
       await loadAddresses();
     }
 
-    function renderCartItems() {
+    // Make renderCartItems global so changeCurrency can call it
+    window.renderCartItems = function() {
       const container = document.getElementById('cartItems');
       if (cart.length === 0) {
         container.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">Cart is empty</p>';
@@ -464,12 +478,22 @@
         return;
       }
       
+      // 直接读取当前语言设置（每次调用都重新读取）
+      const currentLang = localStorage.getItem('tapingLang') || 'zh';
+      
       container.innerHTML = cart.map(item => {
         // 处理图片：优先使用 image，否则使用 images[0]
         const imgSrc = item.image || (item.images && item.images[0]) || '';
-        // 处理名称：优先使用 name，否则根据语言选择 nameZh 或 nameEn
-        const itemName = item.name || (currentLang === 'zh' ? item.nameZh : item.nameEn) || 'Unknown Product';
-        // 单价（USD价格，然后用 formatPrice 转换）
+        // 处理名称：优先使用 item.name，否则根据当前语言选择
+        let itemName = item.name;
+        if (!itemName) {
+          if (currentLang === 'zh') {
+            itemName = item.nameZh || item.nameEn || '未知商品';
+          } else {
+            itemName = item.nameEn || item.nameZh || 'Unknown Product';
+          }
+        }
+        // 单价（USD价格）
         const unitPriceUSD = item.price || 0;
         const totalPriceUSD = unitPriceUSD * (item.quantity || 1);
         
@@ -486,7 +510,7 @@
         `;
       }).join('');
       
-      updateSummary();
+      window.updateSummary();
     }
 
     async function loadAddresses() {
@@ -603,10 +627,13 @@
       }
     };
 
-    function updateSummary() {
+    // Make updateSummary global so changeCurrency can call it
+    window.updateSummary = function() {
+      // Always read currency from localStorage to avoid scope issues
+      const currentCurrency = localStorage.getItem('taping_currency') || 'USD';
       const subtotalUSD = cart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
-      document.getElementById('subtotal').textContent = formatPrice(subtotalUSD);
-      document.getElementById('totalPrice').textContent = formatPrice(subtotalUSD);
+      document.getElementById('subtotal').textContent = formatPrice(subtotalUSD, currentCurrency);
+      document.getElementById('totalPrice').textContent = formatPrice(subtotalUSD, currentCurrency);
     }
 
      window.placeOrder = async function() {
