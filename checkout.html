@@ -384,7 +384,18 @@
     }
 
     async function loadData() {
-      cart = JSON.parse(localStorage.getItem('taping_cart') || '[]');
+      try {
+        const saved = localStorage.getItem('taping_cart');
+        if (saved) {
+          cart = JSON.parse(saved);
+        } else {
+          cart = [];
+        }
+      } catch (e) {
+        console.error('Failed to parse cart from storage:', e);
+        cart = [];
+      }
+      console.log('Cart loaded:', cart); // 调试信息
       renderCartItems();
       updateSummary(); // 确保加载后立即更新金额
       await loadAddresses();
