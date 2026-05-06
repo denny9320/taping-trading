@@ -1487,6 +1487,8 @@ function initCartSidebar() {
     cartBtn.addEventListener('click', () => {
         cartSidebar.classList.add('active');
         cartOverlay.classList.add('active');
+        // 打开购物车时，更新显示内容
+        updateCartDisplay();
     });
     
     if (cartClose) {
