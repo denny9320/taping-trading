@@ -25,13 +25,21 @@
     .section { background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
     .section h2 { font-size: 18px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
     
-    .cart-item { display: flex; gap: 15px; padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
+    .cart-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #f0f0f0; }
     .cart-item:last-child { border-bottom: none; }
-    .cart-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 5px; }
+    .cart-item img { 
+      width: 120px; 
+      height: 120px; 
+      object-fit: cover; 
+      border-radius: 8px; 
+      border: 1px solid #eee;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
     .cart-item-info { flex: 1; }
-    .cart-item-info h3 { font-size: 14px; margin-bottom: 5px; }
-    .cart-item-info p { color: #666; font-size: 13px; }
-    .cart-item-price { color: #C9A962; font-weight: bold; font-size: 16px; }
+    .cart-item-info h3 { font-size: 16px; margin-bottom: 8px; color: #1A1A1A; }
+    .cart-item-info p { color: #666; font-size: 14px; margin-bottom: 5px; }
+    .cart-item-price { color: #C9A962; font-weight: bold; font-size: 18px; }
+    .price-detail { color: #999; font-size: 13px; margin-top: 5px; }
     
     .address-list { display: flex; flex-direction: column; gap: 15px; }
     .address-item { display: flex; gap: 15px; padding: 15px; border: 2px solid #eee; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
@@ -414,15 +422,19 @@
         const imgSrc = item.image || (item.images && item.images[0]) || '';
         // 处理名称：优先使用 name，否则根据语言选择 nameZh 或 nameEn
         const itemName = item.name || (currentLang === 'zh' ? item.nameZh : item.nameEn) || 'Unknown Product';
+        // 单价
+        const unitPrice = item.price || 0;
+        const totalPrice = unitPrice * (item.quantity || 1);
         
         return `
         <div class="cart-item">
           <img src="${imgSrc}" alt="${itemName}">
           <div class="cart-item-info">
             <h3>${itemName}</h3>
-            <p>Qty: ${item.quantity}</p>
+            <p>Qty: ${item.quantity || 1}</p>
+            <p class="price-detail">Unit Price: ¥${unitPrice.toLocaleString()}</p>
           </div>
-          <div class="cart-item-price">¥${(item.price * item.quantity).toLocaleString()}</div>
+          <div class="cart-item-price">¥${totalPrice.toLocaleString()}</div>
         </div>
         `;
       }).join('');
