@@ -24,7 +24,7 @@ function formatPrice(usdPrice, currencyCode = currentCurrency) {
     if (currencyCode === 'JPY') {
         return currency.symbol + Math.round(convertedPrice).toLocaleString();
     }
-    return currency_symbol = currency.symbol + convertedPrice.toFixed(2);
+    return currency.symbol + convertedPrice.toFixed(2);
 }
 
 // Get currency selector HTML
@@ -1279,17 +1279,27 @@ function updateCartDisplay() {
         console.log('Cart total updated to:', formatPrice(cartTotal));
     }
     
-    // 更新购物车侧边栏
+    // 更新购物车侧边栏 - 直接读取语言设置
     const cartItemsContainer = document.getElementById('cartItems');
     if (cartItemsContainer) {
+        // 直接读取当前语言设置（每次调用都重新读取）
+        const currentLang = localStorage.getItem('tapingLang') || 'zh';
+        
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p class="cart-empty">' + (currentLang === 'zh' ? '购物车是空的' : 'Your cart is empty') + '</p>';
         } else {
-            cartItemsContainer.innerHTML = cart.map((item, index) => `
+            cartItemsContainer.innerHTML = cart.map((item, index) => {
+                // 使用统一的 getProductName 函数获取产品名称
+                const itemName = item.name || getProductName(item);
+                
+                // 确保有图片
+                const imgSrc = item.image || (item.images && item.images[0]) || '';
+                
+                return `
                 <div class="cart-item">
-                    <img src="${item.images ? item.images[0] : ''}" alt="${item.name}" class="cart-item-image" loading="lazy">
+                    <img src="${imgSrc}" alt="${itemName}" class="cart-item-image" loading="lazy">
                     <div class="cart-item-info">
-                        <h4>${item.name}</h4>
+                        <h4>${itemName}</h4>
                         <p>${formatPrice(item.price)}</p>
                         <div class="quantity-controls">
                             <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
@@ -1299,7 +1309,8 @@ function updateCartDisplay() {
                         </div>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
     }
 }
@@ -1382,6 +1393,7 @@ window.changeCurrency = function(currencyCode) {
     currentCurrency = currencyCode;
     localStorage.setItem('taping_currency', currencyCode); // 保存到 localStorage
     renderFeaturedProducts(); // Re-render to update prices
+    updateCartDisplay(); // 更新购物车侧边栏金额显示
 };
 
 /* ========================================
@@ -1944,7 +1956,7 @@ function setLanguage(langCode) {
     if (!translations[langCode]) return;
     
     currentLang = langCode;
-    localStorage.setItem('taping_lang', langCode);
+    localStorage.setItem('tapingLang', langCode); // 统一使用驼峰命名
     
     // Update document direction (for RTL support)
     const dir = translations[langCode].meta.dir;
@@ -1970,6 +1982,9 @@ function setLanguage(langCode) {
         // Clear interval after 5 seconds to prevent infinite loop
         setTimeout(() => clearInterval(checkInterval), 5000);
     }
+    
+    // 更新购物车显示（语言切换时重新渲染购物车侧边栏）
+    updateCartDisplay();
 }
 
 function updatePageTranslations() {

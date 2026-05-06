@@ -422,14 +422,29 @@
         document.getElementById('loginRequired').style.display = 'block';
         return;
       }
-      await loadData();
-      applyTranslations();
+      
+      // 从 localStorage 读取语言和货币设置（确保与首页同步）
+      const savedLang = localStorage.getItem('tapingLang') || 'zh';
+      const savedCurrency = localStorage.getItem('taping_currency') || 'USD';
+      
+      // 更新全局变量
+      window.currentLang = savedLang;
+      window.currentCurrency = savedCurrency;
+      currentCurrency = savedCurrency; // 更新局部变量
       
       // 初始化货币选择器选中状态
       const currencySelect = document.getElementById('currencySelect');
       if (currencySelect) {
-        currencySelect.value = currentCurrency;
+        currencySelect.value = savedCurrency;
       }
+      
+      // 初始化语言按钮状态
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().includes(savedLang));
+      });
+      
+      await loadData();
+      applyTranslations();
     });
 
     window.setLang = function(lang) {
@@ -473,7 +488,8 @@
     window.renderCartItems = function() {
       const container = document.getElementById('cartItems');
       if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">Cart is empty</p>';
+        container.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">' + 
+          (localStorage.getItem('tapingLang') === 'zh' ? '购物车是空的' : 'Cart is empty') + '</p>';
         document.getElementById('submitBtn').disabled = true;
         return;
       }
@@ -484,6 +500,7 @@
       container.innerHTML = cart.map(item => {
         // 处理图片：优先使用 image，否则使用 images[0]
         const imgSrc = item.image || (item.images && item.images[0]) || '';
+        
         // 处理名称：优先使用 item.name，否则根据当前语言选择
         let itemName = item.name;
         if (!itemName) {
@@ -493,6 +510,7 @@
             itemName = item.nameEn || item.nameZh || 'Unknown Product';
           }
         }
+        
         // 单价（USD价格）
         const unitPriceUSD = item.price || 0;
         const totalPriceUSD = unitPriceUSD * (item.quantity || 1);
