@@ -1380,6 +1380,7 @@ loadCartFromStorage();
 // Currency change function
 window.changeCurrency = function(currencyCode) {
     currentCurrency = currencyCode;
+    localStorage.setItem('taping_currency', currencyCode); // 保存到 localStorage
     renderFeaturedProducts(); // Re-render to update prices
 };
 

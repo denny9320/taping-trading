@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - TapingTrading</title>
-  <script src="https://www.paypal.com/sdk/js?client-id=Af4IqaC4UtwlZ4u0oANQPqvqVwcQf989LepssM_UwkGzr4yCvsopdNwNJidkwhlhasQjm9Rn305P2sCg&currency=USD"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=Af4IqaC4UtwlZ4u0oANQPqvqVwcQf989LepssM_UwkGzr4yCvsopdNwNJidkwhlhasQjm9Rn305P2sCg"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -109,12 +109,21 @@
    </style>
 </head>
 <body>
-  <header class="header">
+    <header class="header">
     <a href="index.html" class="logo">TAPING<span>TRADING</span></a>
     <div class="header-right">
       <div class="lang-selector">
         <button class="lang-btn" onclick="setLang('en')">EN</button>
         <button class="lang-btn" onclick="setLang('zh')">中文</button>
+      </div>
+      <div class="currency-selector" style="margin-left: 15px;">
+        <select id="currencySelect" onchange="changeCurrency(this.value)" style="padding: 5px 10px; border: 1px solid #ddd; border-radius: 3px; background: white; cursor: pointer;">
+          <option value="USD">USD - US Dollar</option>
+          <option value="CNY">CNY - Chinese Yuan</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="GBP">GBP - British Pound</option>
+          <option value="JPY">JPY - Japanese Yen</option>
+        </select>
       </div>
       <a href="profile.html">Profile</a>
       <button class="logout-btn" onclick="logout()">Logout</button>
@@ -341,6 +350,38 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
+    // Currency system (same as script.js)
+    const currencies = {
+      'USD': { symbol: '$', rate: 1, name: 'US Dollar' },
+      'CNY': { symbol: '¥', rate: 7.2, name: 'Chinese Yuan' },
+      'EUR': { symbol: '€', rate: 0.92, name: 'Euro' },
+      'GBP': { symbol: '£', rate: 0.79, name: 'British Pound' },
+      'JPY': { symbol: '¥', rate: 149, name: 'Japanese Yen' }
+    };
+    
+    // Load currency from localStorage (synced from main page)
+    let currentCurrency = localStorage.getItem('taping_currency') || 'USD';
+    
+    // Format price with currency
+    function formatPrice(usdPrice, currencyCode = currentCurrency) {
+      const currency = currencies[currencyCode] || currencies['USD'];
+      const convertedPrice = usdPrice * currency.rate;
+      
+      if (currencyCode === 'JPY') {
+        return currency.symbol + Math.round(convertedPrice).toLocaleString();
+      }
+      return currency.symbol + convertedPrice.toFixed(2);
+    }
+    
+    // Change currency in checkout page
+    window.changeCurrency = function(currencyCode) {
+      currentCurrency = currencyCode;
+      localStorage.setItem('taping_currency', currencyCode);
+      // Re-render cart items and summary with new currency
+      renderCartItems();
+      updateSummary();
+    };
+
     // Translations
     const translations = {
       en: {
@@ -375,6 +416,12 @@
       }
       await loadData();
       applyTranslations();
+      
+      // 初始化货币选择器选中状态
+      const currencySelect = document.getElementById('currencySelect');
+      if (currencySelect) {
+        currencySelect.value = currentCurrency;
+      }
     });
 
     function setLang(lang) {
@@ -422,9 +469,9 @@
         const imgSrc = item.image || (item.images && item.images[0]) || '';
         // 处理名称：优先使用 name，否则根据语言选择 nameZh 或 nameEn
         const itemName = item.name || (currentLang === 'zh' ? item.nameZh : item.nameEn) || 'Unknown Product';
-        // 单价
-        const unitPrice = item.price || 0;
-        const totalPrice = unitPrice * (item.quantity || 1);
+        // 单价（USD价格，然后用 formatPrice 转换）
+        const unitPriceUSD = item.price || 0;
+        const totalPriceUSD = unitPriceUSD * (item.quantity || 1);
         
         return `
         <div class="cart-item">
@@ -432,9 +479,9 @@
           <div class="cart-item-info">
             <h3>${itemName}</h3>
             <p>Qty: ${item.quantity || 1}</p>
-            <p class="price-detail">Unit Price: ¥${unitPrice.toLocaleString()}</p>
+            <p class="price-detail">Unit Price: ${formatPrice(unitPriceUSD)}</p>
           </div>
-          <div class="cart-item-price">¥${totalPrice.toLocaleString()}</div>
+          <div class="cart-item-price">${formatPrice(totalPriceUSD)}</div>
         </div>
         `;
       }).join('');
@@ -557,9 +604,9 @@
     };
 
     function updateSummary() {
-      const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      document.getElementById('subtotal').textContent = `¥${subtotal.toLocaleString()}`;
-      document.getElementById('totalPrice').textContent = `¥${subtotal.toLocaleString()}`;
+      const subtotalUSD = cart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
+      document.getElementById('subtotal').textContent = formatPrice(subtotalUSD);
+      document.getElementById('totalPrice').textContent = formatPrice(subtotalUSD);
     }
 
      window.placeOrder = async function() {
@@ -755,17 +802,21 @@
          return;
        }
        
-       paypal.Buttons({
-         createOrder: function(data, actions) {
-           const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-           return actions.order.create({
-             purchase_units: [{
-               amount: {
-                 value: total.toFixed(2)
-               }
-             }]
-           });
-         },
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            const totalUSD = cart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
+            const currency = currencies[currentCurrency] || currencies['USD'];
+            const totalConverted = (totalUSD * currency.rate).toFixed(2);
+            
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  currency_code: currentCurrency,
+                  value: totalConverted
+                }
+              }]
+            });
+          },
          onApprove: function(data, actions) {
            return actions.order.capture().then(async function(details) {
              // Payment successful
